@@ -1,5 +1,14 @@
 .gradle
+Splash.iml
+Main App.iml
+app.iml
+local.properties
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
 build/
+captures/
 
 # Ignore Gradle GUI config
 gradle-app.setting
