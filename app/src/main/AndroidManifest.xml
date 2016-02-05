@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.appteam.nimbus">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".homeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppTheme.Login" />
+        <activity
+            android:name=".DepartmentalTeam"
+            android:label="@string/title_activity_departmental_team"
+            android:parentActivityName=".homeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.homeActivity" />
+        </activity>
+        <activity
+            android:name=".Team"
+            android:label="@string/title_activity_team"
+            android:parentActivityName=".DepartmentalTeam"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.DepartmentalTeam" />
+        </activity>
+        <activity
+            android:name=".Event"
+            android:label="@string/title_activity_event"
+            android:parentActivityName=".Team"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".EventDetail"
+            android:label="@string/title_activity_event_detail"
+            android:parentActivityName=".Event"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".teamEvent"
+            android:label="@string/title_activity_team_event"
+            android:parentActivityName=".homeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.homeActivity" />
+        </activity>
+    </application>
+
+</manifest>

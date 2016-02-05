@@ -1,0 +1,149 @@
+<resources>
+    <string name="app_name">Nimbus2k16</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="ABOUT_NIMBUS">ABOUT NIMBUS</string>
+    <string name="EVENT_NOTE" translatable="false">CAR EXPO:\nJan 19,2016\n9-12am</string>
+    <string name="ADD_TO_CALENDAR">ADD TO CALENDAR</string>
+    <string name="title_activity_login">Login</string>
+    <string name="DEPARTMENT">Departmental Teams</string>
+    <string name="title_activity_departmental_team">Departmental Team</string>
+    <string name="title_activity_team">Team</string>
+
+    <string name="fake_text"> Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="ece_contact">ECE CONTACT Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="electrical_contact">ELECTRICAL CONTACT Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="civil_contact">CIVIL CONTACT Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="mechanical_contact">MECHANICAL CONTACT Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="cse_contact">CSE CONTACT Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="chemical_contact">CHEMICAL CONTACT Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+
+    <string name="ece">ECE Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="electrical">ELECTRICAL Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="civil">CIVIL Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="mechanical">MECHANICAL Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="cse">CSE Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+    <string name="chemical">CHEMICAL Lorem ipsum dolor sit amet, ea dicta appetere iracundia eam,aliquam explicari in mel. Et sed elitr munere.</string>
+
+    <string-array name="ece_event">
+        <item>SOMETHING ECE 1</item>
+        <item>SOMETHING ECE 2</item>
+        <item>SOMETHING ECE 3</item>
+        <item>SOMETHING ECE 4</item>
+        <item>SOMETHING ECE 5</item>
+    </string-array>
+    <string-array name="electrical_event">
+        <item>SOMETHING ELECTRICAL 1</item>
+        <item>SOMETHING ELECTRICAL 2</item>
+        <item>SOMETHING ELECTRICAL 3</item>
+        <item>SOMETHING ELECTRICAL 4</item>
+        <item>SOMETHING ELECTRICAL 5</item>
+    </string-array>
+    <string-array name="civil_event">
+        <item>SOMETHING CIVIL 1</item>
+        <item>SOMETHING CIVIL 2</item>
+        <item>SOMETHING CIVIL 3</item>
+        <item>SOMETHING CIVIL 4</item>
+        <item>SOMETHING CIVIL 5</item>
+    </string-array>
+    <string-array name="cse_event">
+        <item>SOMETHING CSE 1</item>
+        <item>SOMETHING CSE 2</item>
+        <item>SOMETHING CSE 3</item>
+        <item>SOMETHING CSE 4</item>
+        <item>SOMETHING CSE 5</item>
+    </string-array>
+    <string-array name="chemical_event">
+        <item>SOMETHING CHEMICAL 1</item>
+        <item>SOMETHING CHEMICAL 2</item>
+        <item>SOMETHING CHEMICAL 3</item>
+        <item>SOMETHING CHEMICAL 4</item>
+        <item>SOMETHING CHEMICAL 5</item>
+    </string-array>
+    <string-array name="mechanical_event">
+        <item>SOMETHING MECHANICAL 1</item>
+        <item>SOMETHING MECHANICAL 2</item>
+        <item>SOMETHING MECHANICAL 3</item>
+        <item>SOMETHING MECHANICAL 4</item>
+        <item>SOMETHING MECHANICAL 5</item>
+    </string-array>
+
+    <string name="SOMETHINGECE1_event">ECE EVENT 1 </string>
+    <string name="SOMETHINGECE2_event">ECE EVENT 2 </string>
+    <string name="SOMETHINGECE3_event">ECE EVENT 3 </string>
+    <string name="SOMETHINGECE4_event">ECE EVENT 4 </string>
+    <string name="SOMETHINGECE5_event">ECE EVENT 5 </string>
+
+    <string name="SOMETHINGMECHANICAL1_event">MECHANICAL EVENT 1 </string>
+    <string name="SOMETHINGMECHANICAL2_event">MECHANICAL EVENT 2 </string>
+    <string name="SOMETHINGMECHANICAL3_event">MECHANICAL EVENT 3 </string>
+    <string name="SOMETHINGMECHANICAL4_event">MECHANICAL EVENT 4 </string>
+    <string name="SOMETHINGMECHANICAL5_event">MECHANICAL EVENT 5 </string>
+
+    <string name="SOMETHINGCIVIL1_event">CIVIL EVENT 1 </string>
+    <string name="SOMETHINGCIVIL2_event">CIVIL EVENT 2 </string>
+    <string name="SOMETHINGCIVIL3_event">CIVIL EVENT 3 </string>
+    <string name="SOMETHINGCIVIL4_event">CIVIL EVENT 4 </string>
+    <string name="SOMETHINGCIVIL5_event">CIVIL EVENT 5 </string>
+
+    <string name="SOMETHINGELECTRICAL1_event">ELECTRICAL EVENT 1 </string>
+    <string name="SOMETHINGELECTRICAL2_event">ELECTRICAL EVENT 2 </string>
+    <string name="SOMETHINGELECTRICAL3_event">ELECTRICAL EVENT 3 </string>
+    <string name="SOMETHINGELECTRICAL4_event">ELECTRICAL EVENT 4 </string>
+    <string name="SOMETHINGELECTRICAL5_event">ELECTRICAL EVENT 5 </string>
+
+    <string name="SOMETHINGCHEMICAL1_event">CHEMICAL EVENT 1 </string>
+    <string name="SOMETHINGCHEMICAL2_event">CHEMICAL EVENT 2 </string>
+    <string name="SOMETHINGCHEMICAL3_event">CHEMICAL EVENT 3 </string>
+    <string name="SOMETHINGCHEMICAL4_event">CHEMICAL EVENT 4 </string>
+    <string name="SOMETHINGCHEMICAL5_event">CHEMICAL EVENT 5 </string>
+
+    <string name="SOMETHINGCSE1_event">CSE EVENT 1 </string>
+    <string name="SOMETHINGCSE2_event">CSE EVENT 2 </string>
+    <string name="SOMETHINGCSE3_event">CSE EVENT 3 </string>
+    <string name="SOMETHINGCSE4_event">CSE EVENT 4 </string>
+    <string name="SOMETHINGCSE5_event">CSE EVENT 5 </string>
+
+    <string name="SOMETHINGECE1_contact">ECE EVENT 1 CONTACT</string>
+    <string name="SOMETHINGECE2_contact">ECE EVENT 2 CONTACT</string>
+    <string name="SOMETHINGECE3_contact">ECE EVENT 3 CONTACT</string>
+    <string name="SOMETHINGECE4_contact">ECE EVENT 4 CONTACT</string>
+    <string name="SOMETHINGECE5_contact">ECE EVENT 5 CONTACT</string>
+
+    <string name="SOMETHINGMECHANICAL1_contact">MECHANICAL EVENT 1 CONTACT</string>
+    <string name="SOMETHINGMECHANICAL2_contact">MECHANICAL EVENT 2 CONTACT</string>
+    <string name="SOMETHINGMECHANICAL3_contact">MECHANICAL EVENT 3 CONTACT</string>
+    <string name="SOMETHINGMECHANICAL4_contact">MECHANICAL EVENT 4 CONTACT</string>
+    <string name="SOMETHINGMECHANICAL5_contact">MECHANICAL EVENT 5 CONTACT</string>
+
+    <string name="SOMETHINGCIVIL1_contact">CIVIL EVENT 1 CONTACT</string>
+    <string name="SOMETHINGCIVIL2_contact">CIVIL EVENT 2 CONTACT</string>
+    <string name="SOMETHINGCIVIL3_contact">CIVIL EVENT 3 CONTACT</string>
+    <string name="SOMETHINGCIVIL4_contact">CIVIL EVENT 4 CONTACT</string>
+    <string name="SOMETHINGCIVIL5_contact">CIVIL EVENT 5 CONTACT</string>
+
+    <string name="SOMETHINGELECTRICAL1_contact">ELECTRICAL EVENT 1 CONTACT</string>
+    <string name="SOMETHINGELECTRICAL2_contact">ELECTRICAL EVENT 2 CONTACT</string>
+    <string name="SOMETHINGELECTRICAL3_contact">ELECTRICAL EVENT 3 CONTACT</string>
+    <string name="SOMETHINGELECTRICAL4_contact">ELECTRICAL EVENT 4 CONTACT</string>
+    <string name="SOMETHINGELECTRICAL5_contact">ELECTRICAL EVENT 5 CONTACT</string>
+
+    <string name="SOMETHINGCHEMICAL1_contact">CHEMICAL EVENT 1 CONTACT</string>
+    <string name="SOMETHINGCHEMICAL2_contact">CHEMICAL EVENT 2 CONTACT</string>
+    <string name="SOMETHINGCHEMICAL3_contact">CHEMICAL EVENT 3 CONTACT</string>
+    <string name="SOMETHINGCHEMICAL4_contact">CHEMICAL EVENT 4 CONTACT</string>
+    <string name="SOMETHINGCHEMICAL5_contact">CHEMICAL EVENT 5 CONTACT</string>
+
+    <string name="SOMETHINGCSE1_contact">CSE EVENT 1 CONTACT</string>
+    <string name="SOMETHINGCSE2_contact">CSE EVENT 2 CONTACT</string>
+    <string name="SOMETHINGCSE3_contact">CSE EVENT 3 CONTACT</string>
+    <string name="SOMETHINGCSE4_contact">CSE EVENT 4 CONTACT</string>
+    <string name="SOMETHINGCSE5_contact">CSE EVENT 5 CONTACT</string>
+
+    <string name="title_activity_event">Event</string>
+    <string name="title_activity_event_detail">Event Detail</string>
+    <string name="title_activity_team_event">Event</string>
+</resources>
