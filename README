@@ -6,7 +6,7 @@ How to setup this project in android studio:-
 1. Firstly, fork this repo from appteam-nith/festnimbus by clicking on fork button 
 2. Now clone the forked repo in your pc. For this first copy the url of your forked rep
 
- Command to clone:
+ Command used to clone (use termainal or git bash):
    git clone https://github.com/[username]/festnumbus.git
    
    [username] is replaced by your github username
