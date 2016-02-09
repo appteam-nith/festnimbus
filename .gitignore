@@ -9,6 +9,9 @@ local.properties
 .DS_Store
 build/
 captures/
+festnimbus.iml
+patches/
+*.patch
 
 # Ignore Gradle GUI config
 gradle-app.setting
