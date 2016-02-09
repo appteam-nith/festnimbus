@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
  * Created by lenovo on 1/23/2016.
  */
 public class PersonalData {
+    private static final String TOKEN ="token" ;
     private  final String NODATA ="N/A" ;
     private  final String NAME = "name";
     private  final String EMAIL = "email";
@@ -35,6 +36,10 @@ public class PersonalData {
         editor.putString(URL, url);
         editor.commit();
     }
+    public  void SaveToken(String token){
+        editor.putString(TOKEN,token);
+        editor.commit();
+    }
 
     public String getNAME() {
         return getSharedPreferences().getString(NAME,NODATA);
@@ -49,5 +54,7 @@ public class PersonalData {
     }
     public boolean getStatus(){
         return getSharedPreferences().getBoolean(STATUS,false);
+
     }
+    public String getToken(){return  getSharedPreferences().getString(TOKEN,"no token");}
 }

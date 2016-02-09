@@ -1,27 +1,18 @@
 package com.appteam.nimbus;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 
-public class homeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class homeActivity extends AppCompatActivity {
 private PersonalData personalData;
 private ImageLoader imageLoader;
     @Override
@@ -45,11 +36,8 @@ private ImageLoader imageLoader;
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        imageLoader=MySingleton.getInstance(MyApplication.getAppContext()).getImageLoader();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        setDetail(navigationView);
-
+        //navigationView.setNavigationItemSelectedListener(this);
         findViewById(R.id.department).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,38 +54,6 @@ private ImageLoader imageLoader;
         });
     }
 
-    private void setDetail(NavigationView navigationView) {
-        View v=navigationView.getHeaderView(0);
-        TextView textEmail= (TextView) v.findViewById(R.id.textView);
-        textEmail.setText(personalData.getEMAIL());
-        TextView textName= (TextView) v.findViewById(R.id.name_text);
-        ImageView image= (ImageView) v.findViewById(R.id.imageView);
-        textName.setText(personalData.getNAME());
-        String url=personalData.getURL();
-        loadimage(url.substring(0,url.length()-2)+""+(int)Utils.convertDpToPixel(50f,MyApplication.getAppContext()),image);
-
-    }
-
-    private void loadimage(String url, final ImageView image) {
-        imageLoader.get(url, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                setRounded(response.getBitmap(),image);
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-    }
-
-    private void setRounded(Bitmap bitmap,ImageView image) {
-        RoundedBitmapDrawable bitmapDrawable= RoundedBitmapDrawableFactory.create(homeActivity.this.getResources(),bitmap);
-        bitmapDrawable.setCircular(true);
-        image.setImageDrawable(bitmapDrawable);
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -107,7 +63,7 @@ private ImageLoader imageLoader;
             super.onBackPressed();
         }
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -154,4 +110,5 @@ private ImageLoader imageLoader;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    */
 }
