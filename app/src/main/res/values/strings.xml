@@ -146,4 +146,7 @@
     <string name="title_activity_event">Event</string>
     <string name="title_activity_event_detail">Event Detail</string>
     <string name="title_activity_team_event">Event</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

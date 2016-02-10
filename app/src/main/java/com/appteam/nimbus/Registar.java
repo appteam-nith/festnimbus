@@ -91,7 +91,7 @@ PersonalData personalData;
     }
     private void sendRequest(String string, String string1,String string2,String string3) {
         Map<String,String> params=new HashMap<String, String>();
-        params.put("phoneno",string2);
+        params.put("mobile",string2);
         params.put("email",string);
         params.put("password",string1);
         params.put("rollno",string3);
@@ -126,10 +126,9 @@ PersonalData personalData;
         MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(jsonObjectRequest);
     }
 
+
     private String getURL() {
         return "https://edzoo.herokuapp.com/register/";
     }
-    private boolean checkData(String string){
-        return  !string.isEmpty()&&string.trim().length()!=0;
-    }
+
 }

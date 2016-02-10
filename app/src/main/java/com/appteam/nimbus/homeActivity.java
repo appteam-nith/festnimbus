@@ -18,7 +18,7 @@ private ImageLoader imageLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        personalData=new PersonalData(this);
+     /*personalData=new PersonalData(this);
         if(personalData.getStatus()==false){
             Intent i=new Intent(homeActivity.this,Login.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -26,6 +26,7 @@ private ImageLoader imageLoader;
             startActivity(i);
             finish();
         }
+        */
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,13 +46,7 @@ private ImageLoader imageLoader;
                 overridePendingTransition(R.anim.open_next,R.anim.open_main);
             }
         });
-        findViewById(R.id.event).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(homeActivity.this,teamEvent.class));
-                overridePendingTransition(R.anim.open_next,R.anim.open_main);
-            }
-        });
+
     }
 
     @Override
