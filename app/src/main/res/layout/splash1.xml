@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent">
+<TextView
+    android:textColor="#7D7D7D"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/nimbus2k16"
+    android:layout_marginTop="74dp"
+    android:textSize="38sp"
+    android:id="@+id/textView2"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:src="@drawable/ic_settings_bluetooth_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/dqqefdf"
+        android:layout_marginBottom="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="42dp"
+      />
+
+    <ImageView
+        android:src="@drawable/ic_backup_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageView2"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="74dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+    <ImageView
+        android:src="@drawable/ic_speaker_notes_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/imageView3"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="71dp"
+         />
+
+    <ImageView
+        android:src="@drawable/ic_settings_remote_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imageView4"
+        android:layout_below="@+id/textView2"
+        android:layout_toLeftOf="@+id/textView2"
+        android:layout_toStartOf="@+id/textView2" />
+
+    <ImageView
+        android:src="@drawable/ic_extension_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageView5"
+        android:layout_marginLeft="28dp"
+        android:layout_above="@id/dqqefdf"
+        android:layout_marginBottom="70dp"
+        />
+
+    <ImageView
+        android:src="@drawable/ic_explore_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:id="@+id/imageView12"
+        android:layout_marginLeft="10dp"
+        android:layout_above="@+id/imageView2"
+        android:layout_toRightOf="@+id/dqqefdf"
+        android:layout_toEndOf="@+id/dqqefdf"
+        />
+
+    <ImageView
+        android:src="@drawable/ic_swap_vertical_circle_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/imageView6"
+        android:layout_below="@+id/imageView4"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="66dp"/>
+
+    <ImageView
+        android:src="@drawable/ic_assignment_ind_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/imageView7"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"/>
+
+    <ImageView
+        android:src="@drawable/ic_camera_enhance_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:id="@+id/imageView8"
+        android:layout_marginTop="34dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_alignStart="@+id/imageView2"
+         />
+
+    <ImageView
+        android:src="@drawable/ic_autorenew_white_48dp"
+        android:scaleType="centerCrop"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/imageView10"
+        android:layout_alignBottom="@+id/imageView5"
+        android:layout_alignLeft="@+id/imageView3"
+        android:layout_alignStart="@+id/imageView3" />
+</RelativeLayout>

@@ -4,7 +4,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">#000</item>
+
     </style>
 
     <style name="AppTheme.Login" parent="AppTheme.NoActionBar">
