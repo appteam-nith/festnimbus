@@ -16,7 +16,7 @@
     android:padding="5dp">
     <include
         android:layout_marginTop="5dp"
-        layout="@layout/teamdetail"
+        layout="@layout/team_detail"
         android:id="@+id/team_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -24,7 +24,7 @@
     <include
         android:layout_marginTop="5dp"
         android:layout_below="@+id/team_detail"
-        layout="@layout/contactdetail"
+        layout="@layout/contact_detail"
         android:id="@+id/contact_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
