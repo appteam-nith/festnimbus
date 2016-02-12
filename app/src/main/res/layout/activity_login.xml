@@ -36,20 +36,31 @@
            android:layout_height="wrap_content"
            android:orientation="vertical"
            >
-          <EditText
-              android:id="@+id/user_login"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:hint="Username"
-              android:textColorHint="#50707070"
-              />
-           <EditText
-               android:id="@+id/password_login"
+           <android.support.design.widget.TextInputLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:hint="Password"
-               android:textColorHint="#50707070"
-               />
+               >
+               <EditText
+                   android:id="@+id/user_login"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Username"
+                   android:textColorHint="#50707070"
+                   />
+           </android.support.design.widget.TextInputLayout>
+          <android.support.design.widget.TextInputLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              >
+              <EditText
+                  android:id="@+id/password_login"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="Password"
+                  android:textColorHint="#50707070"
+                  />
+          </android.support.design.widget.TextInputLayout>
+
            <android.support.v7.widget.CardView
                xmlns:card_view="http://schemas.android.com/tools"
                card_view:cardCornerRadius="20dp"

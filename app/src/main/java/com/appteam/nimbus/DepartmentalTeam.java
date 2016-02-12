@@ -24,6 +24,7 @@ MyAdapter adapter;
         adapter=new MyAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.setPageTransformer(false,new ReaderViewPageTransformer(ReaderViewPageTransformer.TransformType.FLOW));
 
     }
 

@@ -8,6 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -18,7 +20,7 @@ private ImageLoader imageLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     /*personalData=new PersonalData(this);
+     personalData=new PersonalData(this);
         if(personalData.getStatus()==false){
             Intent i=new Intent(homeActivity.this,Login.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -26,7 +28,7 @@ private ImageLoader imageLoader;
             startActivity(i);
             finish();
         }
-        */
+
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,7 +60,7 @@ private ImageLoader imageLoader;
             super.onBackPressed();
         }
     }
-/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -74,13 +76,15 @@ private ImageLoader imageLoader;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            personalData.SaveData(false);
+            startActivity(new Intent(homeActivity.this,Login.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
+/*
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

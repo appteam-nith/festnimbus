@@ -1,13 +1,41 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.appteam.nimbus.DepartmentFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        >
+        <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:id="@+id/image_department"
+            app:siShape="@drawable/star"
+            android:src="@drawable/back_login"
+            app:siSquare="true"/>
 
-</FrameLayout>
+        <TextView
+            android:padding="10dp"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:layout_alignBottom="@+id/image_department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/DEPARTMENT"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fake_text"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>
