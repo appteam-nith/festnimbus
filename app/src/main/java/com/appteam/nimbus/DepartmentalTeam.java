@@ -1,21 +1,17 @@
 package com.appteam.nimbus;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-
-import java.util.ArrayList;
 
 public class DepartmentalTeam extends AppCompatActivity {
-    private static final String KEY_NAME_TEAM = "Detail";
-    private RecyclerView recyclerView;
-    private adapter_department adapter;
-    private ArrayList<Item_department> list;
 
+MyAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,35 +19,41 @@ public class DepartmentalTeam extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        list = setData();
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_department);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new adapter_department(this, list);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent i=new Intent(DepartmentalTeam.this, Team.class);
-                i.putExtra(KEY_NAME_TEAM,list.get(position).name);
-                startActivity(i);
-            }
-        }));
+        ViewPager viewPager= (ViewPager) findViewById(R.id.viewpager_team);
+        TabLayout tabLayout= (TabLayout) findViewById(R.id.tabs);
+        adapter=new MyAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+        viewPager.setPageTransformer(false,new ReaderViewPageTransformer(ReaderViewPageTransformer.TransformType.FLOW));
+
     }
 
-    private ArrayList<Item_department> setData() {
-        ArrayList<Item_department> itemlist = new ArrayList<>();
-        itemlist.add(new Item_department("ECE", R.drawable.placeholder_image));
-        itemlist.add(new Item_department("ELECTRICAL", R.drawable.placeholder_image));
-        itemlist.add(new Item_department("CIVIL", R.drawable.placeholder_image));
-        itemlist.add(new Item_department("MECHANICAL", R.drawable.placeholder_image));
-        itemlist.add(new Item_department("CSE", R.drawable.placeholder_image));
-        itemlist.add(new Item_department("CHEMICAL", R.drawable.placeholder_image));
-        return itemlist;
-    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.close_main, R.anim.close_next);
     }
+
+    public static class MyAdapter extends FragmentStatePagerAdapter{
+        public MyAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return DepartmentFragment.newInstance("","",0);
+        }
+
+        @Override
+        public int getCount() {
+            return 6;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "ok";
+        }
+    }
+
 }

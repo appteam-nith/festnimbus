@@ -17,13 +17,11 @@
             android:layout_height="0dp"
             android:layout_weight="1">
             <ImageView
-                android:id="@+id/image_department"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:src="@drawable/back_login"
+                android:src="@drawable/placeholder_image"
                 android:scaleType="centerCrop"/>
             <TextView
-                android:id="@+id/name_department"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/DEPARTMENT"

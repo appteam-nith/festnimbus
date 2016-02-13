@@ -41,7 +41,11 @@ public class AboutNimbusSplash extends AppCompatActivity{
         showByDefault.setSelected(isDefaultChecked);
 
         if(isDefaultChecked==false){
-            Intent i = new Intent(AboutNimbusSplash.this, Login.class);
+            Intent i;
+            if(new PersonalData(AboutNimbusSplash.this).getStatus())
+                i=new Intent(AboutNimbusSplash.this,homeActivity.class);
+            else
+             i = new Intent(AboutNimbusSplash.this, Login.class);
             startActivity(i);
             finish();
 
@@ -54,7 +58,11 @@ public class AboutNimbusSplash extends AppCompatActivity{
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AboutNimbusSplash.this, Login.class);
+                Intent i;
+                if(new PersonalData(AboutNimbusSplash.this).getStatus())
+                    i=new Intent(AboutNimbusSplash.this,homeActivity.class);
+                else
+                    i = new Intent(AboutNimbusSplash.this, Login.class);
                 startActivity(i);
                 finish();
 

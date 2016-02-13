@@ -12,4 +12,7 @@ public class Utils {
         float px = dp * (metrics.densityDpi / 160f);
         return px;
     }
+    public static boolean checkData(String string){
+        return  !string.isEmpty()&&string.trim().length()!=0;
+    }
 }

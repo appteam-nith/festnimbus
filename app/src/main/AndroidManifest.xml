@@ -59,21 +59,14 @@
             android:name=".Event"
             android:label="@string/title_activity_event"
             android:parentActivityName=".Team"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EventDetail"
             android:label="@string/title_activity_event_detail"
             android:parentActivityName=".Event"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".teamEvent"
-            android:label="@string/title_activity_team_event"
-            android:parentActivityName=".homeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appteam.nimbus.homeActivity" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Registar"
+            android:theme="@style/AppTheme.Login"  ></activity>
     </application>
 
 </manifest>
