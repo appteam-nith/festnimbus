@@ -20,6 +20,7 @@
 
         <TextView
             android:padding="10dp"
+            android:id="@+id/team_name_department"
             android:textAppearance="@android:style/TextAppearance.Large"
             android:layout_alignBottom="@+id/image_department"
             android:layout_width="match_parent"
@@ -29,6 +30,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/team_detail_department"
         android:textAppearance="@android:style/TextAppearance.Medium"
         android:padding="5dp"
         android:layout_marginTop="10dp"
