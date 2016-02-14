@@ -78,7 +78,9 @@ private ImageLoader imageLoader;
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             personalData.SaveData(false);
+            personalData.SaveToken("");
             startActivity(new Intent(homeActivity.this,Login.class));
+            finish();
             return true;
         }
 

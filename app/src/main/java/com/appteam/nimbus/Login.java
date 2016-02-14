@@ -73,10 +73,10 @@ public class Login extends AppCompatActivity {
                 Log.d("response_login",""+response.toString());
                 try {
                     if(response.getString("status").equals("Login successful!")){
-                    startActivity(new Intent(Login.this,homeActivity.class));
                         personalData.SaveData(true);
+                        personalData.SaveToken(response.getString("data"));
                         loadToast.success();
-
+                    startActivity(new Intent(Login.this,homeActivity.class));
                     finish();}
                 } catch (JSONException e) {
                     e.printStackTrace();
