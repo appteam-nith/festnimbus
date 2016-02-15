@@ -20,6 +20,7 @@
 
         <TextView
             android:padding="10dp"
+            android:paddingLeft="10dp"
             android:id="@+id/team_name_department"
             android:textAppearance="@android:style/TextAppearance.Large"
             android:layout_alignBottom="@+id/image_department"
@@ -33,11 +34,26 @@
         android:id="@+id/team_detail_department"
         android:textAppearance="@android:style/TextAppearance.Medium"
         android:padding="5dp"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/fake_text"
-        android:layout_weight="1"
         />
-
+    <android.support.v7.widget.CardView
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="200dp"
+        xmlns:card_view="http://schemas.android.com/tools"
+        card_view:cardCornerRadius="20dp"
+        card_view:cardElevation="8dp"
+        card_view:cardUseCompatPadding="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="More Details"
+            android:id="@+id/more_detail_department"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"/>
+    </android.support.v7.widget.CardView>
 </LinearLayout>
