@@ -74,6 +74,8 @@ public class Login extends AppCompatActivity {
                 try {
                     if(response.getString("status").equals("Login successful!")){
                     startActivity(new Intent(Login.this,homeActivity.class));
+                        String token=response.getString("data");
+                        personalData.SaveToken(token);
                         personalData.SaveData(true);
                         loadToast.success();
 
