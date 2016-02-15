@@ -20,4 +20,5 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <color name="BackgroundtWhiteColor">#e6f7ff</color>
 </resources>
