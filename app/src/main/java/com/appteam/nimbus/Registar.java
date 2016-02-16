@@ -34,7 +34,7 @@ import java.util.Map;
 public class Registar extends AppCompatActivity {
 PersonalData personalData;
     private LoadToast loadToast;
-    boolean isemail=true,ispassword=true,isphone=true,isnitian=false;
+    boolean isemail=true,ispassword=true,isphone=true,isnitian=false,okLengthPassword=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,15 +69,20 @@ PersonalData personalData;
         findViewById(R.id.registar_Btn_registar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isemail&&ispassword&&isphone){
-                    loadToast.setText("LOADING");
-                    loadToast.show();
-                    sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString(),isnitian);
+                if (new Connection(Registar.this).isInternet()) {
+                    if (isemail && ispassword && isphone && okLengthPassword) {
+                        loadToast.setText("LOADING");
+                        loadToast.show();
+                        sendRequest(email.getText().toString(), password.getText().toString(), phoneno.getText().toString(), rollno.getText().toString(), isnitian);
+                    } else {
+                        Toast.makeText(Registar.this, "ENTER DATA REQUIRED", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else {
-                    Toast.makeText(Registar.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registar.this, "NO INTERNET CONNECTION", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
         email.addTextChangedListener(new TextWatcher() {
             @Override
@@ -117,9 +122,10 @@ PersonalData personalData;
             public void afterTextChanged(Editable editable) {
 if(Utils.checkData(password.getText().toString())&&password.getText().toString().length()>8){
     passwordTextInputLayout.setErrorEnabled(false);
+    okLengthPassword=true;
 }
                 else {
-
+okLengthPassword=false;
     passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
 }
             }

@@ -45,6 +45,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:hint="Username"
+                   android:textColor="@android:color/white"
                    android:textColorHint="#50707070"
                    />
            </android.support.design.widget.TextInputLayout>
@@ -53,10 +54,12 @@
               android:layout_height="wrap_content"
               >
               <EditText
+                  android:inputType="textPassword"
                   android:id="@+id/password_login"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:hint="Password"
+                  android:textColor="@android:color/white"
                   android:textColorHint="#50707070"
                   />
           </android.support.design.widget.TextInputLayout>

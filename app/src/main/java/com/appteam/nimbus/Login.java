@@ -50,9 +50,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Utils.checkData(username.getText().toString()) && Utils.checkData(password.getText().toString())) {
+                    if(new Connection(Login.this).isInternet()){
                     sendRequest(username.getText().toString(),password.getText().toString());
                     loadToast.setText("LOADING");
-                    loadToast.show();
+                    loadToast.show();}
+                    else {
+                        Toast.makeText(Login.this,"NO INTERNET CONNECTION",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else {
                     Toast.makeText(Login.this,"PLEASE ENTER THE REQUIRED DATA",Toast.LENGTH_SHORT).show();
@@ -73,10 +77,10 @@ public class Login extends AppCompatActivity {
                 Log.d("response_login",""+response.toString());
                 try {
                     if(response.getString("status").equals("Login successful!")){
-                    startActivity(new Intent(Login.this,homeActivity.class));
                         personalData.SaveData(true);
+                        personalData.SaveToken(response.getString("data"));
                         loadToast.success();
-
+                    startActivity(new Intent(Login.this,homeActivity.class));
                     finish();}
                 } catch (JSONException e) {
                     e.printStackTrace();
