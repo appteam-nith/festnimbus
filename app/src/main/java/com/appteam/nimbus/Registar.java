@@ -34,7 +34,7 @@ import java.util.Map;
 public class Registar extends AppCompatActivity {
 PersonalData personalData;
     private LoadToast loadToast;
-    boolean isemail=true,ispassword=true,isphone=true,isnitian=false,okLengthPassword=false;
+    boolean isemail=true,ispassword=true,isphone=true,isnitian=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,10 @@ PersonalData personalData;
             public void onClick(View view) {
                 if(checkBox.isChecked()){
                 findViewById(R.id.body_roll_registar).setVisibility(View.VISIBLE);
-                isnitian=true;}
+                isnitian=true;
+                // added focus on roll number field
+                // findViewById(R.id.rollno_registar).set
+                }
                 else{
                     findViewById(R.id.body_roll_registar).setVisibility(View.GONE);
                 isnitian=false;}
@@ -69,20 +72,15 @@ PersonalData personalData;
         findViewById(R.id.registar_Btn_registar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (new Connection(Registar.this).isInternet()) {
-                    if (isemail && ispassword && isphone && okLengthPassword) {
-                        loadToast.setText("LOADING");
-                        loadToast.show();
-                        sendRequest(email.getText().toString(), password.getText().toString(), phoneno.getText().toString(), rollno.getText().toString(), isnitian);
-                    } else {
-                        Toast.makeText(Registar.this, "ENTER DATA REQUIRED", Toast.LENGTH_SHORT).show();
-                    }
+                if(isemail&&ispassword&&isphone){
+                    loadToast.setText("LOADING");
+                    loadToast.show();
+                    sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString(),isnitian);
                 }
                 else {
-                    Toast.makeText(Registar.this, "NO INTERNET CONNECTION", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registar.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
                 }
             }
-
         });
         email.addTextChangedListener(new TextWatcher() {
             @Override
@@ -97,14 +95,13 @@ PersonalData personalData;
 
             @Override
             public void afterTextChanged(Editable editable) {
-              if(Utils.checkData(email.getText().toString())&& Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
-                  emailTextInputLayout.setErrorEnabled(false);
-                  isemail=true;
-              }
-                else {
-                  emailTextInputLayout.setError("PLEASE ENTER THE EMAIL");
-                  isemail=false;
-              }
+                if (Utils.checkData(email.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+                    emailTextInputLayout.setErrorEnabled(false);
+                    isemail = true;
+                } else {
+                    emailTextInputLayout.setError("PLEASE ENTER THE EMAIL");
+                    isemail = false;
+                }
             }
         });
         password.addTextChangedListener(new TextWatcher() {
@@ -122,10 +119,9 @@ PersonalData personalData;
             public void afterTextChanged(Editable editable) {
 if(Utils.checkData(password.getText().toString())&&password.getText().toString().length()>8){
     passwordTextInputLayout.setErrorEnabled(false);
-    okLengthPassword=true;
 }
                 else {
-okLengthPassword=false;
+
     passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
 }
             }
@@ -176,8 +172,8 @@ if(!Patterns.PHONE.matcher(phoneno.getText().toString()).matches()){
 }
             }
         });
-
     }
+
     private void sendRequest(String string, String string1,String string2,String string3,boolean nitian) {
         Map<String,String> params=new HashMap<String, String>();
         params.put("mobile",string2);
@@ -186,19 +182,28 @@ if(!Patterns.PHONE.matcher(phoneno.getText().toString()).matches()){
         params.put("rollno",string3);
         params.put("nitian",""+isnitian);
         Log.d("json",new JSONObject(params).toString());
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,getURL(), new JSONObject(params), new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,getURL(), new JSONObject(params),
+                new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("qw",""+response.toString());
-                try {
-                    if(response.getString("status").equals("user created!")){
-                    String token=response.getString("data");
-                    personalData.SaveToken(token);
-                        personalData.SaveData(true);
-                    Log.d("token",""+personalData.getToken());
-                        loadToast.success();
-                    startActivity(new Intent(Registar.this,homeActivity.class));
-                    finish();}
+                try {Log.v("if block","checking");
+                    if(response.has("message")){
+                      String message=response.getString("message");
+                        Toast.makeText(Registar.this,message,Toast.LENGTH_SHORT).show();
+                        loadToast.error();
+                    }else{
+                        Log.v("else block","checking");
+                        if(response.getString("status").equals("user created!")){
+                            String token=response.getString("data");
+                            personalData.SaveToken(token);
+                            personalData.SaveData(true);
+                            Log.d("token",""+personalData.getToken());
+                            loadToast.success();
+                            startActivity(new Intent(Registar.this,homeActivity.class));
+                            finish();}
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     loadToast.error();
@@ -237,5 +242,7 @@ if(!Patterns.PHONE.matcher(phoneno.getText().toString()).matches()){
     private String getURL() {
         return "https://festnimbus.herokuapp.com/api/user/register";
     }
+
+
 
 }

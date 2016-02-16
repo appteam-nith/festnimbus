@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/title_login"
         android:text="Nimbus 2k16"
+        android:textSize="25dp"
         android:textColor="@android:color/white"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/logo_login"
@@ -41,26 +42,27 @@
                android:layout_height="wrap_content"
                >
                <EditText
+                   android:textColor="#fff"
+                   android:singleLine="true"
                    android:id="@+id/user_login"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:hint="Username"
-                   android:textColor="@android:color/white"
                    android:textColorHint="#50707070"
                    />
            </android.support.design.widget.TextInputLayout>
           <android.support.design.widget.TextInputLayout
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              >
+              android:layout_height="wrap_content" >
               <EditText
                   android:inputType="textPassword"
+                  android:textColor="#fff"
                   android:id="@+id/password_login"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:hint="Password"
-                  android:textColor="@android:color/white"
                   android:textColorHint="#50707070"
+                  android:layout_marginBottom="10dp"
                   />
           </android.support.design.widget.TextInputLayout>
 
