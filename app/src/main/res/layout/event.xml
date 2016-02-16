@@ -26,10 +26,10 @@
                 android:id="@+id/name_department"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="EVENT"
+                android:text="Events"
                 android:background="#80000000"
                 android:textColor="@android:color/white"
-                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textAppearance="@android:style/TextAppearance.Medium"
                 android:layout_marginTop="130dp"
                 android:paddingLeft="20dp"
 

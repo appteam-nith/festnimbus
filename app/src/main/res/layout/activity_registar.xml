@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:textColor="#fff"
-                android:textColorHint="#50707070"
+                android:textColorHint="#fff"
                 android:id="@+id/email_registar" />
         </android.support.design.widget.TextInputLayout>
 
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColorHint="#50707070"
+            android:textColorHint="#fff"
             android:id="@+id/password_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
-            android:textColorHint="#50707070"
+            android:textColorHint="#fff"
             android:id="@+id/confirmPassword_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -106,11 +106,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone Number"
-            android:textColorHint="#50707070"
+            android:textColorHint="#fff"
             android:id="@+id/phoneno_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
     <CheckBox
+        android:backgroundTint="#fff"
         android:buttonTint="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -144,8 +145,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Roll Number"
+<<<<<<< HEAD
+            android:textColorHint="#fff"/>
+=======
             android:singleLine="true"
             android:textColorHint="#50707070"/>
+>>>>>>> 4612d0b6ba1e4a04327f9ae5fa5e818b9a565f37
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 </LinearLayout>
