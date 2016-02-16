@@ -98,8 +98,7 @@
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/phone_registar_textinputLayout"
-            >
+            android:id="@+id/phone_registar_textinputLayout" >
         <EditText
             android:textColor="#fff"
             android:inputType="phone"
@@ -145,12 +144,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Roll Number"
-<<<<<<< HEAD
-            android:textColorHint="#fff"/>
-=======
             android:singleLine="true"
-            android:textColorHint="#50707070"/>
->>>>>>> 4612d0b6ba1e4a04327f9ae5fa5e818b9a565f37
+            android:textColorHint="#fff"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 </LinearLayout>
