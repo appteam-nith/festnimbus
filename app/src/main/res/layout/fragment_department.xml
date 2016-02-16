@@ -31,7 +31,6 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/team_detail_department"
         android:textAppearance="@android:style/TextAppearance.Medium"
         android:padding="5dp"
         android:layout_width="match_parent"

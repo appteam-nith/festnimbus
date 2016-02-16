@@ -38,6 +38,14 @@
             android:name=".Login"
             android:theme="@style/AppTheme.Login" />
         <activity
+            android:name=".Profile"
+            android:parentActivityName=".homeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.homeActivity" />
+            </activity>
+        <activity
             android:name=".DepartmentalTeam"
             android:label="@string/title_activity_departmental_team"
             android:parentActivityName=".homeActivity"
