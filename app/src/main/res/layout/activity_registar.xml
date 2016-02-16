@@ -111,10 +111,11 @@
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
     <CheckBox
+        android:buttonTint="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="NITian"
-        android:textColor="#fff"
+        android:textColor="@color/colorAccent"
         android:layout_marginLeft="50dp"
         android:id="@+id/choice_register"
         android:layout_marginTop="5dp"/>
@@ -131,6 +132,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_action_person"/>
         <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,6 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Roll Number"
+            android:singleLine="true"
             android:textColorHint="#50707070"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>

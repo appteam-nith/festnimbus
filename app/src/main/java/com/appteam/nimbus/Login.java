@@ -1,11 +1,15 @@
 package com.appteam.nimbus;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,12 +40,19 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         personalData = new PersonalData(this);
         loadToast=new LoadToast(this);
+
+        Resources res = getResources();
+        final ImageView logoimage = (ImageView) findViewById(R.id.logo_login);
+        final int newColor = res.getColor(R.color.new_color);
+        logoimage.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+
         findViewById(R.id.registar_Btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, Registar.class));
             }
         });
+
         final EditText username = (EditText) findViewById(R.id.user_login);
         final EditText password = (EditText) findViewById(R.id.password_login);
 
@@ -50,37 +61,35 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Utils.checkData(username.getText().toString()) && Utils.checkData(password.getText().toString())) {
-                    if(new Connection(Login.this).isInternet()){
-                    sendRequest(username.getText().toString(),password.getText().toString());
+                    sendRequest(username.getText().toString(), password.getText().toString());
                     loadToast.setText("LOADING");
-                    loadToast.show();}
-                    else {
-                        Toast.makeText(Login.this,"NO INTERNET CONNECTION",Toast.LENGTH_LONG).show();
-                    }
-                }
-                else {
-                    Toast.makeText(Login.this,"PLEASE ENTER THE REQUIRED DATA",Toast.LENGTH_SHORT).show();
+                    loadToast.show();
+                } else {
+                    Toast.makeText(Login.this, "PLEASE ENTER THE REQUIRED DATA", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
     }
+
     private void sendRequest(String string2,String string1) {
         Map<String,String> params=new HashMap<String, String>();
         params.put("email",string2);
-        params.put("password",string1);
-        Log.d("json",new JSONObject(params).toString());
+        params.put("password", string1);
+        Log.d("json", new JSONObject(params).toString());
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,getURL(), new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("response_login",""+response.toString());
                 try {
                     if(response.getString("status").equals("Login successful!")){
-                        personalData.SaveData(true);
-                        personalData.SaveToken(response.getString("data"));
-                        loadToast.success();
                     startActivity(new Intent(Login.this,homeActivity.class));
+                        String token=response.getString("data");
+                        personalData.SaveToken(token);
+                        personalData.SaveData(true);
+                        loadToast.success();
+
                     finish();}
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -112,10 +121,19 @@ public class Login extends AppCompatActivity {
                 return headerMap;
             }
         };
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000,5,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(jsonObjectRequest);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     private String getURL() {
         return "https://festnimbus.herokuapp.com/auth/local";

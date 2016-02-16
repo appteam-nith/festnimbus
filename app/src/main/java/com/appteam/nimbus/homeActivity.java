@@ -8,13 +8,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.android.volley.toolbox.ImageLoader;
 
-public class homeActivity extends AppCompatActivity {
+public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private PersonalData personalData;
 private ImageLoader imageLoader;
     @Override
@@ -35,12 +36,14 @@ private ImageLoader imageLoader;
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        //navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
+
         findViewById(R.id.department).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,32 +81,33 @@ private ImageLoader imageLoader;
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             personalData.SaveData(false);
-            personalData.SaveToken("");
-            startActivity(new Intent(homeActivity.this,Login.class));
+
+            Intent launch_logout=new Intent(homeActivity.this,Login.class);
+            launch_logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            launch_logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            launch_logout.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+            startActivity(launch_logout);
             finish();
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-/*
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.navigation_to_profile) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            Intent i=new Intent(homeActivity.this,Profile.class);
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            Log.v("gdsga","gfgrrrr");
+            startActivity(i);
 
         }
 
@@ -111,5 +115,6 @@ private ImageLoader imageLoader;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    */
+
 }
+
