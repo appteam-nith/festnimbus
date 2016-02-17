@@ -57,7 +57,7 @@ MyAdapter adapter;
         }
     }
 private String getDetail(String Clubname){
-    int id = getResources().getIdentifier(Clubname, "string",MyApplication.getAppContext().getPackageName());
+    int id = getResources().getIdentifier(Clubname, "string", MyApplication.getAppContext().getPackageName());
     String content = getResources().getString(id);
     return content;
 }

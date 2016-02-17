@@ -6,6 +6,24 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
+    <!--
+ needed for older devices -
+ used to check app background / foreground status
+    -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- START Added for GCM -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission
+        android:name="com.appteam.nimbus.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.appteam.nimbus.permission.C2D_MESSAGE" />
+
+    <!-- END Added for GCM -->
+
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -38,14 +56,6 @@
             android:name=".Login"
             android:theme="@style/AppTheme.Login" />
         <activity
-            android:name=".Profile"
-            android:parentActivityName=".homeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.appteam.nimbus.homeActivity" />
-            </activity>
-        <activity
             android:name=".DepartmentalTeam"
             android:label="@string/title_activity_departmental_team"
             android:parentActivityName=".homeActivity"
@@ -54,8 +64,63 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appteam.nimbus.homeActivity" />
         </activity>
+        <activity
+            android:name=".Team"
+            android:label="@string/title_activity_team"
+            android:parentActivityName=".DepartmentalTeam"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.DepartmentalTeam" />
+        </activity>
+        <activity
+            android:name=".Event"
+            android:label="@string/title_activity_event"
+            android:parentActivityName=".Team"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EventDetail"
+            android:label="@string/title_activity_event_detail"
+            android:parentActivityName=".Event"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Registar"
             android:theme="@style/AppTheme.Login"  ></activity>
+        <activity
+            android:name=".Profile"
+            android:parentActivityName=".homeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.homeActivity" />
+        </activity>
+                <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.appteam.nimbus" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".gcm.MyGcmPushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".gcm.GcmIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <!-- END Added for GCM -->
+
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
  */
 public class PersonalData {
     private static final String TOKEN ="token" ;
+    private static final String TOKEN_GCM ="token gcm";
     private  final String STATUS="STATUS";
     private Context context;
     private SharedPreferences.Editor editor = null;
@@ -39,4 +40,11 @@ public class PersonalData {
 
     }
     public String getToken(){return  getSharedPreferences().getString(TOKEN,"no token");}
+    public void  SaveGCMToken(String token){
+        editor.putString(TOKEN_GCM,token);
+        editor.commit();
+    }
+    public String getGCCMtoken(){
+        return getSharedPreferences().getString(TOKEN_GCM,"no token");
+    }
 }
