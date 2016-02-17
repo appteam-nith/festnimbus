@@ -35,25 +35,30 @@ MyAdapter adapter;
         overridePendingTransition(R.anim.close_main, R.anim.close_next);
     }
 
-    public static class MyAdapter extends FragmentStatePagerAdapter{
+    public  class MyAdapter extends FragmentStatePagerAdapter{
+        String ClubName[]={"CHelix","Ojas","Medextrous","Vibhav",".eXe","DesignOCrats","Hermetica"};
         public MyAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            return DepartmentFragment.newInstance("","",0);
+            return DepartmentFragment.newInstance(ClubName[position],getDetail(ClubName[position]),0);
         }
 
         @Override
         public int getCount() {
-            return 6;
+            return ClubName.length;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return "ok";
+            return ClubName[position];
         }
     }
-
+private String getDetail(String Clubname){
+    int id = getResources().getIdentifier(Clubname, "string",MyApplication.getAppContext().getPackageName());
+    String content = getResources().getString(id);
+    return content;
+}
 }

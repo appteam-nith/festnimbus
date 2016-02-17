@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:textColor="#fff"
-                android:textColorHint="#50707070"
+                android:textColorHint="#fff"
                 android:id="@+id/email_registar" />
         </android.support.design.widget.TextInputLayout>
 
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColorHint="#50707070"
+            android:textColorHint="#fff"
             android:id="@+id/password_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
-            android:textColorHint="#50707070"
+            android:textColorHint="#fff"
             android:id="@+id/confirmPassword_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -98,23 +98,24 @@
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/phone_registar_textinputLayout"
-            >
+            android:id="@+id/phone_registar_textinputLayout" >
         <EditText
             android:textColor="#fff"
             android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone Number"
-            android:textColorHint="#50707070"
+            android:textColorHint="#fff"
             android:id="@+id/phoneno_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
     <CheckBox
+        android:backgroundTint="#fff"
+        android:buttonTint="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="NITian"
-        android:textColor="#fff"
+        android:textColor="@color/colorAccent"
         android:layout_marginLeft="50dp"
         android:id="@+id/choice_register"
         android:layout_marginTop="5dp"/>
@@ -131,6 +132,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_action_person"/>
         <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,7 +144,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Roll Number"
-            android:textColorHint="#50707070"/>
+            android:singleLine="true"
+            android:textColorHint="#fff"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 </LinearLayout>
