@@ -102,16 +102,21 @@ public class Login extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 loadToast.error();
                 NetworkResponse networkResponse=error.networkResponse;
-                if(networkResponse.statusCode==401){
-                    Toast.makeText(Login.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+
+                if(networkResponse!=null){
+                    if(networkResponse.statusCode==401){
+                        Toast.makeText(Login.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                    }
+                    if(error instanceof TimeoutError){
+                        Toast.makeText(Login.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    else if(error instanceof ServerError){
+                        Toast.makeText(Login.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    error.printStackTrace();
                 }
-                if(error instanceof TimeoutError){
-                    Toast.makeText(Login.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
-                }
-                else if(error instanceof ServerError){
-                    Toast.makeText(Login.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
-                }
-                error.printStackTrace();
+
+
             }
         }){
             @Override
