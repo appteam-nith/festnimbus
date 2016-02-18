@@ -48,7 +48,7 @@ private ImageLoader imageLoader;
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(homeActivity.this,DepartmentalTeam.class));
-                overridePendingTransition(R.anim.open_next,R.anim.open_main);
+                overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
 

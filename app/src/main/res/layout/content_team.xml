@@ -1,0 +1,36 @@
+<android.support.v4.widget.NestedScrollView
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+    <include
+        android:layout_marginTop="5dp"
+        layout="@layout/team_detail"
+        android:id="@+id/team_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <include
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/team_detail"
+        layout="@layout/contact_detail"
+        android:id="@+id/contact_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
+
+
+    </FrameLayout>
+
+</android.support.v4.widget.NestedScrollView>

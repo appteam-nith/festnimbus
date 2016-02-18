@@ -18,7 +18,7 @@
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:src="@drawable/l"/>
     <TextView
         android:id="@+id/name_profile"

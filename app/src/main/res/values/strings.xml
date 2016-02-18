@@ -3,7 +3,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="senderid">1051488041273</string>
     <string name="action_settings">Settings</string>
     <string name="ABOUT_NIMBUS">ABOUT NIMBUS</string>
     <string name="EVENT_NOTE" translatable="false">CAR EXPO:\nJan 19,2016\n9-12am</string>
