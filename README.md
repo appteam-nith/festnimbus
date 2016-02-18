@@ -2,11 +2,11 @@
 
 ##This is the official Android Application of Technical Festival of NIT Hamirpur Made By Team App.
 
-###How to setup this project in android studio :-
+###How to setup this project in Android Studio :-
 
 1. Firstly, **fork** this repo from **appteam-nith/festnimbus** by clicking on fork button
 
-2. Now **clone** the forked repo in your pc. For this first copy the url of your forked rep (use termainal or git bash):
+2. Now **clone** the forked repo in your pc. For this first copy the url of your forked repo (use terminal or git bash):
    
    	`git clone https://github.com/[username]/festnumbus.git`
    
@@ -16,3 +16,10 @@
 
 4. Happing Hacking :wink:
 
+###How to contribute in this project :-
+
+1. Go through the entire project after building it, find bugs and report them.
+
+2. View the issues put up in the repo and try to fix them.
+
+3. **IMPORTANT** :- Before sending a **Pull Request** make sure that your forked repo is in sync with the base repo.
