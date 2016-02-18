@@ -26,14 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/email_registar_textinputLayout"
-            >
-            <EditText
+            android:theme="@style/TextLabel">
+            <android.support.v7.widget.AppCompatEditText
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:textColor="#fff"
-                android:textColorHint="#fff"
+
                 android:id="@+id/email_registar" />
         </android.support.design.widget.TextInputLayout>
 
@@ -53,14 +53,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/password_registar_textinputLayout"
-            >
-        <EditText
+            android:theme="@style/TextLabel">
+            <android.support.v7.widget.AppCompatEditText
             android:textColor="#fff"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColorHint="#fff"
+
             android:id="@+id/password_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -73,14 +73,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/confirmPassword_registar_textinputLayout"
-            >
-        <EditText
+            android:theme="@style/TextLabel">
+            <android.support.v7.widget.AppCompatEditText
             android:textColor="#fff"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
-            android:textColorHint="#fff"
+
             android:id="@+id/confirmPassword_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -98,14 +98,15 @@
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/phone_registar_textinputLayout" >
-        <EditText
+            android:id="@+id/phone_registar_textinputLayout"
+            android:theme="@style/TextLabel">
+            <android.support.v7.widget.AppCompatEditText
             android:textColor="#fff"
             android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Phone Number"
-            android:textColorHint="#fff"
+
             android:id="@+id/phoneno_registar" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -114,9 +115,10 @@
         android:buttonTint="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NITian"
+        android:text="Student Of NIT Hamirpur"
+        android:textSize="20sp"
         android:textColor="@color/colorAccent"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="40dp"
         android:id="@+id/choice_register"
         android:layout_marginTop="5dp"/>
     <LinearLayout
@@ -132,13 +134,13 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_action_person"/>
         <android.support.design.widget.TextInputLayout
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rollno_registar_textinputLayout"
-            >
-        <EditText
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rollno_registar_textinputLayout"
+            android:theme="@style/TextLabel">
+            <android.support.v7.widget.AppCompatEditText
             android:textColor="#fff"
             android:id="@+id/rollno_registar"
             android:layout_width="match_parent"
@@ -166,6 +168,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign up"
+            android:textStyle="bold"
             android:id="@+id/registar_Btn_registar"
             android:textColor="#01478C"
             android:textAppearance="@android:style/TextAppearance.Large"

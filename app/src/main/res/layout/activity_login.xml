@@ -19,7 +19,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/title_login"
         android:text="Nimbus 2k16"
+        android:textStyle="bold"
         android:textSize="25dp"
+        android:fontFamily="Roboto"
         android:textColor="@android:color/white"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/logo_login"
@@ -40,30 +42,37 @@
            <android.support.design.widget.TextInputLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
+               android:theme="@style/TextLabel"
                >
-               <EditText
+               <android.support.v7.widget.AppCompatEditText
                    android:textColor="#fff"
                    android:singleLine="true"
                    android:id="@+id/user_login"
+
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:hint="Username"
-                   android:textColorHint="#50707070"
-                   />
+                   android:hint="Username"/>
+
+
+
            </android.support.design.widget.TextInputLayout>
+
           <android.support.design.widget.TextInputLayout
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" >
-              <EditText
-                  android:inputType="textPassword"
+              android:layout_height="wrap_content"
+              android:theme="@style/TextLabel"
+              >
+              <android.support.v7.widget.AppCompatEditText
                   android:textColor="#fff"
-                  android:id="@+id/password_login"
+                  android:singleLine="true"
+
+
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:hint="Password"
-                  android:textColorHint="#50707070"
-                  android:layout_marginBottom="10dp"
-                  />
+                  android:inputType="textPassword"
+                  android:id="@+id/password_login"
+                  android:layout_marginBottom="10dp"/>
           </android.support.design.widget.TextInputLayout>
 
            <android.support.v7.widget.CardView
@@ -82,6 +91,7 @@
                    android:id="@+id/Login_Btn_login"
                    android:textColor="#01478C"
                    android:textAppearance="@android:style/TextAppearance.Large"
+                   android:textStyle="bold"
                    android:background="#81C3D7"/>
            </android.support.v7.widget.CardView>
 
@@ -103,6 +113,7 @@
             android:text="Sign up"
             android:id="@+id/registar_Btn_login"
             android:textColor="#01478C"
+            android:textStyle="bold"
             android:textAppearance="@android:style/TextAppearance.Large"
             android:background="#81C3D7"/>
     </android.support.v7.widget.CardView>
