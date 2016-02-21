@@ -13,6 +13,13 @@
     <string name="title_activity_departmental_team">Departmental Team</string>
     <string name="title_activity_team">Team</string>
 
+    <string name="club_cse">.EXE</string>
+    <string name="club_civil">C-HELIX</string>
+    <string name="club_eee">OJAS</string>
+    <string name="club_ece">VIBHAV</string>
+    <string name="club_mechanical">MEDESTROUS</string>
+    <string name="club_architecture">DESIGN-O-CRATS</string>
+    <string name="club_chemical">HERMETICA</string>
 
     <string name="CHelix">CHelix is the official club of Civil department for fest nimbus.</string>
     <string name="Ojas">Ojas is the official club of EEE department for fest nimbus.</string>
