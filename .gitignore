@@ -12,6 +12,7 @@ captures/
 festnimbus.iml
 patches/
 *.patch
+gradle.properties
 
 # Ignore Gradle GUI config
 gradle-app.setting

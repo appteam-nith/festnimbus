@@ -14,7 +14,7 @@
    
 3. Finally, open this project in android studio.
 
-4. Happing Hacking :wink:
+4. Happy Hacking :wink:
 
 ###How to contribute in this project :-
 

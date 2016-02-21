@@ -6,4 +6,6 @@
     <color name="new_color">#7D7D7D</color>
     <color name="textColorPrimary">#7D7D7D</color>
 
+    <color name="secondary_text">#64b5ce</color>
+
 </resources>
