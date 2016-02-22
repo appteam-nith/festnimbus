@@ -161,17 +161,17 @@ PersonalData personalData;
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!Patterns.PHONE.matcher(phoneno.getText().toString()).matches()){
-                    phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
-                    isphone=false;
-                }
-                else {
-    phonenoTextInputLayout.setErrorEnabled(false);
-    isphone=true;
+        if(phoneno.getText().toString().length()==10){
+        phonenoTextInputLayout.setErrorEnabled(false);
+        isphone=true;
+        } else {
+        phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
+        isphone=false;
 }
             }
         });
     }
+
 
     private void sendRequest(String string, String string1,String string2,String string3,boolean nitian) {
         Map<String,String> params=new HashMap<String, String>();
