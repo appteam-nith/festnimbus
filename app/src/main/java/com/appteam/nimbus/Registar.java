@@ -117,13 +117,12 @@ PersonalData personalData;
 
             @Override
             public void afterTextChanged(Editable editable) {
-if(Utils.checkData(password.getText().toString())&&password.getText().toString().length()>8){
-    passwordTextInputLayout.setErrorEnabled(false);
-}
+                if(Utils.checkData(password.getText().toString())&& password.getText().toString().length()>8){
+                    passwordTextInputLayout.setErrorEnabled(false);
+                }
                 else {
-
-    passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
-}
+                    passwordTextInputLayout.setError("PLEASE ENTER MORE THAN 8 CHARACTER");
+                }
             }
         });
         confirmPassword.addTextChangedListener(new TextWatcher() {
@@ -139,14 +138,14 @@ if(Utils.checkData(password.getText().toString())&&password.getText().toString()
 
             @Override
             public void afterTextChanged(Editable editable) {
-if(Utils.checkData(confirmPassword.getText().toString())&&confirmPassword.getText().toString().equals(password.getText().toString())){
-    confirmTextInputLayout.setErrorEnabled(false);
-    ispassword=true;
-}
-                else {
-    confirmTextInputLayout.setError("PASSWORD DOES NOT MATCH");
-    ispassword=false;
-}
+                if(Utils.checkData(confirmPassword.getText().toString())&&confirmPassword.getText().toString().equals(password.getText().toString())){
+                    confirmTextInputLayout.setErrorEnabled(false);
+                    ispassword=true;
+                }
+                                else {
+                    confirmTextInputLayout.setError("PASSWORD DOES NOT MATCH");
+                    ispassword=false;
+                }
             }
         });
         phoneno.addTextChangedListener(new TextWatcher() {
@@ -162,11 +161,10 @@ if(Utils.checkData(confirmPassword.getText().toString())&&confirmPassword.getTex
 
             @Override
             public void afterTextChanged(Editable editable) {
-        if(phoneno.getText().toString().length()>9){
+        if(phoneno.getText().toString().length()==10){
         phonenoTextInputLayout.setErrorEnabled(false);
         isphone=true;
-        }
-                else {
+        } else {
         phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
         isphone=false;
 }
