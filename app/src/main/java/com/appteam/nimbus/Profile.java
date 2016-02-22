@@ -28,8 +28,10 @@ public class Profile extends AppCompatActivity {
     TextView name_textview,username_textview,phone_textview,silverCoins_textview,goldCoins_textview,
             collegeRank_textview,eventsWithRank_textview;
 
+    private static final String KEY_INDEX = "profileSaveOnRotation";
     private LoadToast loadToast;
     private Button logout_profile;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,10 @@ public class Profile extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_profile);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (savedInstanceState != null) {
+            user = (User) savedInstanceState.getSerializable(KEY_INDEX);
+        }
 
         name_textview=(TextView)findViewById(R.id.name_profile);
         username_textview=(TextView)findViewById(R.id.username_profile);
@@ -65,7 +71,41 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        if(user==null){
         getRequest();
+        }else{
+
+            Log.v("Note","user retrieved from saveInstance");
+
+            if(user.getEmail()!=null){
+                name_textview.setText(user.getEmail());
+            }
+
+            if(user.getRoll()!=null){
+                username_textview.setText(user.getRoll());
+            }
+
+            if(user.getCollegeRank()!=0){
+               collegeRank_textview.setText(user.getCollegeRank());
+            }
+
+            if(user.getEventRank()!=null){
+                eventsWithRank_textview.setText(user.getEventRank());
+            }
+
+            if(user.getGoldCoins()!=0){
+                goldCoins_textview.setText(user.getGoldCoins());
+            }
+
+            if(user.getSilverCoins()!=0){
+                silverCoins_textview.setText(user.getSilverCoins());
+            }
+
+            if(user.getPhone()!=null){
+                phone_textview.setText(user.getPhone());
+            }
+
+        }
     }
 
     private void getRequest() {
@@ -87,6 +127,8 @@ public class Profile extends AppCompatActivity {
 
                   if(status.equals("OK")){
                       String email=data.getString("email");
+                      user=new User();
+                      user.setEmail(email);
 
                       String roll=null;
 
@@ -94,6 +136,7 @@ public class Profile extends AppCompatActivity {
                           if(!data.isNull("rollno")){
                               roll=data.getString("rollno");
                               username_textview.setText(roll);
+                              user.setRoll(roll);
                           }
                       }
 
@@ -122,6 +165,17 @@ public class Profile extends AppCompatActivity {
         MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(jsonObjectRequest);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putSerializable(KEY_INDEX, user);
+    }
 
     private String getURL() {
         return "https://festnimbus.herokuapp.com/api/user/me";

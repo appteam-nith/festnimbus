@@ -14,6 +14,7 @@ public class Event extends AppCompatActivity {
     private static final String TITLE ="asdf" ;
     private String team_name;
     private  event_adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +26,7 @@ public class Event extends AppCompatActivity {
             if (intent != null) {
                 if (intent.hasExtra(KEY_NAME_TEAM))
                     team_name = intent.getStringExtra(KEY_NAME_TEAM).toLowerCase();
-                doWork(team_name);
-
+                    doWork(team_name);
             }
         }
         else {
@@ -35,6 +35,7 @@ public class Event extends AppCompatActivity {
         }
 
     }
+
 private  void doWork(final String team_name){
     getSupportActionBar().setTitle(team_name.toUpperCase());
     View view=findViewById(R.id.content_event);
