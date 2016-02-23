@@ -62,7 +62,9 @@ PersonalData personalData;
         final EditText confirmPassword= (EditText) findViewById(R.id.confirmPassword_registar);
         final EditText phoneno= (EditText) findViewById(R.id.phoneno_registar);
         final EditText rollno= (EditText) findViewById(R.id.rollno_registar);
-
+        isemail=Utils.checkData(email.getText().toString());
+        ispassword=Utils.checkData(password.getText().toString());
+        isphone=Utils.checkData(phoneno.getText().toString());
         final TextInputLayout emailTextInputLayout= (TextInputLayout) findViewById(R.id.email_registar_textinputLayout);
         final TextInputLayout passwordTextInputLayout= (TextInputLayout) findViewById(R.id.password_registar_textinputLayout);
         final TextInputLayout confirmTextInputLayout= (TextInputLayout) findViewById(R.id.confirmPassword_registar_textinputLayout);
@@ -73,9 +75,18 @@ PersonalData personalData;
             @Override
             public void onClick(View view) {
                 if(isemail&&ispassword&&isphone){
+
+                    Connection cd = new Connection(getApplicationContext());
+
+                    Boolean isInternetPresent = cd.isInternet();
+                    if(isInternetPresent)
+                    {
                     loadToast.setText("LOADING");
                     loadToast.show();
                     sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString(),isnitian);
+                }else{
+                        Toast.makeText(Registar.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else {
                     Toast.makeText(Registar.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
