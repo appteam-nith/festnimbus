@@ -18,4 +18,10 @@ public class EventActivity extends AppCompatActivity{
         getSupportActionBar().setTitle("Events");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.close_main, R.anim.close_next);
+    }
 }
