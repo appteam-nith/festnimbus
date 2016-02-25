@@ -61,10 +61,20 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Utils.checkData(username.getText().toString()) && Utils.checkData(password.getText().toString())) {
+                    Connection cd = new Connection(getApplicationContext());
+
+                    Boolean isInternetPresent = cd.isInternet();
+                    if(isInternetPresent)
+                    {
                     sendRequest(username.getText().toString(), password.getText().toString());
                     loadToast.setText("LOADING");
-                    loadToast.show();
-                } else {
+                    loadToast.show();}
+                    else
+                    {
+                        Toast.makeText(Login.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
                     Toast.makeText(Login.this, "PLEASE ENTER THE REQUIRED DATA", Toast.LENGTH_SHORT).show();
                 }
 

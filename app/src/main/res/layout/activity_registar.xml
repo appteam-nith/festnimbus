@@ -114,9 +114,10 @@
         android:buttonTint="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NITian"
+        android:textSize="25sp"
+        android:text="Student of NIT Hamirpur"
         android:textColor="@color/colorAccent"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="30dp"
         android:id="@+id/choice_register"
         android:layout_marginTop="5dp"/>
     <LinearLayout
