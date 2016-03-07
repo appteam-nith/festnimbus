@@ -30,12 +30,10 @@
                 android:background="#80000000"
                 android:textColor="@android:color/white"
                 android:textAppearance="@android:style/TextAppearance.Medium"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="115dp"
                 android:paddingLeft="20dp"
-
-                />
+                android:padding="7dp" />
         </RelativeLayout>
     </LinearLayout>
-
 
 </android.support.v7.widget.CardView>
