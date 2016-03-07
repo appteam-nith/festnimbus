@@ -21,6 +21,7 @@ import com.android.volley.toolbox.ImageLoader;
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private PersonalData personalData;
 private ImageLoader imageLoader;
+    private  static final String SHOW_OPTION="show";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +71,15 @@ private ImageLoader imageLoader;
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
-
+        findViewById(R.id.welcome).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(homeActivity.this,AboutNimbusSplash.class);
+                intent.putExtra(SHOW_OPTION,true);
+                startActivity(intent);
+                overridePendingTransition(R.anim.open_next, R.anim.open_main);
+            }
+        });
     }
 
     @Override
