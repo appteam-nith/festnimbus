@@ -12,11 +12,12 @@ import android.widget.ImageButton;
 public class AboutNimbusSplash extends AppCompatActivity{
 
     private static final String DEFAULT_CHECK="show-on-startup";
+    private  static final String SHOW_OPTION="show";
 
     private ImageButton next;
     private CheckBox showByDefault;
     private SharedPreferences preferences;
-
+ private  boolean result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +25,20 @@ public class AboutNimbusSplash extends AppCompatActivity{
         setContentView(R.layout.splash2);
 
         preferences=getPreferences(MODE_PRIVATE);
-
+        showByDefault=(CheckBox)findViewById(R.id.show_by_default);
+        next=(ImageButton)findViewById(R.id.splash_next_imagebutton);
+         Intent intent=getIntent();
+        if(intent!=null){
+         if(intent.hasExtra(SHOW_OPTION))  {
+                result=intent.getBooleanExtra(SHOW_OPTION,false);
+             if(result){
+                 showByDefault.setVisibility(View.GONE);
+                 next.setVisibility(View.GONE);
+             }
+            }
+        }
         Boolean isDefaultChecked=preferences.getBoolean(DEFAULT_CHECK,true);
 
-        showByDefault=(CheckBox)findViewById(R.id.show_by_default);
         showByDefault.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -52,7 +63,7 @@ public class AboutNimbusSplash extends AppCompatActivity{
             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         }
 
-        next=(ImageButton)findViewById(R.id.splash_next_imagebutton);
+
         next.setRotation(-90);
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -72,4 +83,10 @@ public class AboutNimbusSplash extends AppCompatActivity{
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(result)
+        overridePendingTransition(R.anim.close_main, R.anim.close_next);
+    }
 }
