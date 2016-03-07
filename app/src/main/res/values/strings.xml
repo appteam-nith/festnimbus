@@ -35,8 +35,9 @@
         prototypes, knowledge channels, taken to the most premier levels.
         Nimbus has become the biggest technical festival of Northern India.</string>
 <string name="home_about_nimbus">NIMBUS is the annual technical festival of NIT Hamirpur, Himachal Pradesh, India.
-        \nNimbus has become the biggest technical festival of Northern India.</string>
+        Nimbus has become the biggest technical festival of Northern India.</string>
     <string name="title_activity_event">Event</string>
+    <string name="title_core_team">Core Team</string>
     <string name="title_activity_event_detail">Event Detail</string>
     <string name="title_activity_team_event">Event</string>
 
@@ -45,4 +46,7 @@
     <string name="nimbus2k16">NIMBUS 2K16</string>
     <string name="splash_check_box_content">Show on startup</string>
     <string name="logout">Logout</string>
+    <string name="aboutus_text">A Open Source Project by <a href="https://github.com/appteam-nith/">AppTeam NITH</a> for TechFest Nimbus2k16.\n\nSource code available at
+        <a href="https://github.com/appteam-nith/festnimbus.git">GitHub</a>.
+    </string>
 </resources>

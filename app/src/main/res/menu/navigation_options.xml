@@ -5,7 +5,15 @@
         android:id="@+id/navigation_to_profile"
         android:orderInCategory="100"/>
     <item
-        android:title="#hackathron"
+        android:title="Open Source Licenses"
+        android:id="@+id/opensourcelicenses_nav"
+        android:orderInCategory="100"/>
+    <item
+        android:title="About Us"
+        android:id="@+id/aboutus_nav"
+        android:orderInCategory="100"/>
+    <item
+        android:title="#hackathon"
         android:id="@+id/option1"
         android:orderInCategory="100"/>
     <item
@@ -15,10 +23,6 @@
     <item
         android:title="#robotics"
         android:id="@+id/option3"
-        android:orderInCategory="100"/>
-    <item
-        android:title="#exams"
-        android:id="@+id/option4"
         android:orderInCategory="100"/>
     <item
         android:title="#nith"
