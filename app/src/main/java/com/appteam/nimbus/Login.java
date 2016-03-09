@@ -41,11 +41,6 @@ public class Login extends AppCompatActivity {
         personalData = new PersonalData(this);
         loadToast=new LoadToast(this);
 
-        Resources res = getResources();
-        final ImageView logoimage = (ImageView) findViewById(R.id.logo_login);
-        final int newColor = res.getColor(R.color.new_color);
-        logoimage.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
-
         findViewById(R.id.registar_Btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

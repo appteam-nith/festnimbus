@@ -6,18 +6,22 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private PersonalData personalData;
 private ImageLoader imageLoader;
+    private  static final String SHOW_OPTION="show";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +56,14 @@ private ImageLoader imageLoader;
             }
         });
 
+        findViewById(R.id.coreteam).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homeActivity.this,CoreTeamActivity.class));
+                overridePendingTransition(R.anim.open_next, R.anim.open_main);
+            }
+        });
+
         findViewById(R.id.event).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +71,15 @@ private ImageLoader imageLoader;
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
-
+        findViewById(R.id.welcome).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(homeActivity.this,AboutNimbusSplash.class);
+                intent.putExtra(SHOW_OPTION,true);
+                startActivity(intent);
+                overridePendingTransition(R.anim.open_next, R.anim.open_main);
+            }
+        });
     }
 
     @Override
@@ -117,6 +137,15 @@ private ImageLoader imageLoader;
             Log.v("gdsga","gfgrrrr");
             startActivity(i);
 
+        }else if(id==R.id.aboutus_nav){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(String.format("%1$s", getString(R.string.app_name)));
+            builder.setMessage(getResources().getText(R.string.aboutus_text));
+            builder.setPositiveButton("OK", null);
+            builder.setIcon(R.mipmap.ic_launcher);
+            AlertDialog welcomeAlert = builder.create();
+            welcomeAlert.show();
+            ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

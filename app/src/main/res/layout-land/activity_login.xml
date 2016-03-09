@@ -7,9 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:paddingBottom="10dp"
-    android:orientation="vertical">
-
+    android:orientation="horizontal">
 
     <LinearLayout
         android:gravity="center"
@@ -19,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
+        <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:id="@+id/logo_login"
@@ -33,23 +31,22 @@
             android:text="Nimbus 2k16"
             android:textSize="25dp"
             android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_below="@+id/logo_login"
             android:layout_centerHorizontal="true"
             android:textAppearance="@android:style/TextAppearance.Large"
             android:textAlignment="center"/>
     </LinearLayout>
-
        <LinearLayout
-           android:gravity="center"
-           android:layout_alignParentBottom="true"
+           android:layout_centerVertical="true"
+           android:layout_weight="1"
            android:paddingLeft="20dp"
            android:paddingRight="20dp"
            android:id="@+id/login_login"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:layout_weight="1"
-           android:orientation="vertical">
+           android:orientation="vertical"
+           android:gravity="center_vertical">
 
            <android.support.design.widget.TextInputLayout
                android:layout_width="match_parent"
