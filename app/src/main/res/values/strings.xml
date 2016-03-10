@@ -49,4 +49,35 @@
     <string name="aboutus_text">A Open Source Project by <a href="https://github.com/appteam-nith/">AppTeam NITH</a> for TechFest Nimbus2k16.\n\nSource code available at
         <a href="https://github.com/appteam-nith/festnimbus.git">GitHub</a>.
     </string>
+    <string name="hackathon_content">by AppTeam\n2nd - 3rd April, 8am - 8pm\nVenue: Auditorium\n\n
+\"A hackathon, a hacker neologism, is an event when programmers meet to do collaborative computer programming.\"
+	-<a href="https://en.wikipedia.org/wiki/Hackathon">Wikipedia</a>\n\n
+This is NITH\'s first Hackathon being organised by the AppTeam NITH. This event aims at unleashing the innovative abilities of students and
+highlighting their creativity. As participants require technical assistance, being not very technically sound, it was decided
+that the participants would be teamed under the Mentors from final year CSE. Teams would be required to build any viable
+application/library/software in stipulated time of 24 hours. The best innovation will be awarded.\n\n
+
+List of Mentors/Team Leaders:-\n\n
+1. Akashit Wal\n
+2. Pradyot \n
+3. Shubham Choudhary\n
+4. Himanshu Singh\n
+5. Sagar Karira\n
+6. Prateek Prasher\n
+7. Akshendra Pratap\n
+8. Prikshit Tekta\n
+9. Sahil Badyal\n
+10. Mayank Bansal\n\n
+
+Rules:\n\n
+1. Participants must register at website or through app.\n
+2. Teams participants must be from NIT.\n
+3. Participants have liberty to list Preference of their Mentors.\n
+4. Participants will be alloted a team Mentor randomly or based upon skills/preferences.\n
+5. List of Mentors are given above.\n
+6. In case of any discrepancy the final decision will be that of Appteam/Judges.\n
+7. Participants must be present at the event site.\n\n
+
+Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual Silver Coins\n\n<b>First Runner Up:</b> 2 Virtual Gold Coins + Additional 25 Virtual Silver Coins\n\n<b>Second Runner Up:</b> 1 Virtual Gold Coins +  Additional 15 Virtual Silver Coins\n\nEvery participants will be awarded 25 Virtual Silver Coins.\n
+</string>
 </resources>

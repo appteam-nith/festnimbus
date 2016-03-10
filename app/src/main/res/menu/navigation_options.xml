@@ -13,19 +13,8 @@
         android:id="@+id/aboutus_nav"
         android:orderInCategory="100"/>
     <item
-        android:title="#hackathon"
-        android:id="@+id/option1"
+        android:title="#Hackathon"
+        android:id="@+id/hackathon_nav"
         android:orderInCategory="100"/>
-    <item
-        android:title="#workshops"
-        android:id="@+id/option2"
-        android:orderInCategory="100"/>
-    <item
-        android:title="#robotics"
-        android:id="@+id/option3"
-        android:orderInCategory="100"/>
-    <item
-        android:title="#nith"
-        android:id="@+id/option5"
-        android:orderInCategory="100"/>
+
 </menu>

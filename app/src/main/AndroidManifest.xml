@@ -93,9 +93,18 @@
             android:parentActivityName=".Event"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Registar"
-            android:theme="@style/AppTheme.Login"  ></activity>
+            android:theme="@style/AppTheme.Login" />
         <activity
             android:name=".Profile"
+            android:parentActivityName=".homeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.homeActivity" />
+        </activity>
+        <activity
+            android:name=".HackathonActivity"
+            android:label="HACKATHON"
             android:parentActivityName=".homeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
