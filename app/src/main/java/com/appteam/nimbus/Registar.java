@@ -30,18 +30,22 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Registar extends AppCompatActivity {
-PersonalData personalData;
+
+    PersonalData personalData;
     private LoadToast loadToast;
-    boolean isemail=true,ispassword=true,isphone=true,isnitian=false;
+    boolean isemail=true,ispassword=true,isphone=true,isnitian=false,isValidRollNo=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registar);
-       personalData=new PersonalData(this);
+        personalData=new PersonalData(this);
         loadToast=new LoadToast(this);
-      final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
+        final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,12 +73,12 @@ PersonalData personalData;
         final TextInputLayout passwordTextInputLayout= (TextInputLayout) findViewById(R.id.password_registar_textinputLayout);
         final TextInputLayout confirmTextInputLayout= (TextInputLayout) findViewById(R.id.confirmPassword_registar_textinputLayout);
         final TextInputLayout phonenoTextInputLayout= (TextInputLayout) findViewById(R.id.phone_registar_textinputLayout);
-        TextInputLayout rollnoTextInputLayout= (TextInputLayout) findViewById(R.id.rollno_registar_textinputLayout);
+        final TextInputLayout rollnoTextInputLayout= (TextInputLayout) findViewById(R.id.rollno_registar_textinputLayout);
 
         findViewById(R.id.registar_Btn_registar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isemail&&ispassword&&isphone){
+                if(isemail&&ispassword&&isphone&&isValidRollNo){
 
                     Connection cd = new Connection(getApplicationContext());
 
@@ -83,7 +87,7 @@ PersonalData personalData;
                     {
                     loadToast.setText("LOADING");
                     loadToast.show();
-                    sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString(),isnitian);
+                    sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString().toUpperCase().trim(),isnitian);
                 }else{
                         Toast.makeText(Registar.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
                     }
@@ -93,6 +97,7 @@ PersonalData personalData;
                 }
             }
         });
+
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -159,6 +164,7 @@ PersonalData personalData;
                 }
             }
         });
+
         phoneno.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -172,15 +178,48 @@ PersonalData personalData;
 
             @Override
             public void afterTextChanged(Editable editable) {
-        if(phoneno.getText().toString().length()==10){
-        phonenoTextInputLayout.setErrorEnabled(false);
-        isphone=true;
-        } else {
-        phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
-        isphone=false;
-}
+                if(phoneno.getText().toString().length()==10){
+                phonenoTextInputLayout.setErrorEnabled(false);
+                isphone=true;}
+                else {
+                phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
+                isphone=false;
+                }
             }
         });
+
+        rollno.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                String input=rollno.getText().toString();
+                String ptr="((1(4|5)MI5((0[1-9])|([1-5][0-9])|60))|(1(4|5)M[1-5]((0[1-9])|([1-5][0-9])|60))|(15MI4((0[1-9])|([1-5][0-9])|60))|(1[1-5][1-6]((0[1-9])|([1-8][0-9])|90))|(IIITU1(4|5)(1|2)((0[1-9])|([1-2][0-9])|30)))";
+
+                Pattern p=Pattern.compile(ptr);
+                Matcher m=p.matcher(input.toUpperCase().trim());
+
+                if(m.matches()){
+                   rollnoTextInputLayout.setErrorEnabled(false);
+                    isValidRollNo=true;
+                }else{
+                    rollnoTextInputLayout.setErrorEnabled(true);
+                    isValidRollNo=false;
+                    rollnoTextInputLayout.setError("Enter Valid RollNo");
+                }
+
+              }
+        });
+
     }
 
 
