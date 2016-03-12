@@ -22,7 +22,6 @@
     <uses-permission android:name="com.appteam.nimbus.permission.C2D_MESSAGE" />
 
     <!-- END Added for GCM -->
-
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -34,11 +33,6 @@
             android:name=".homeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".Splash"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,11 +40,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutNimbusSplash"
+            android:name=".Splash"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
+        <activity
+            android:name=".AboutNimbusSplash"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Login"
             android:theme="@style/AppTheme.Login" />
@@ -92,7 +89,9 @@
             android:label="@string/title_activity_event_detail"
             android:parentActivityName=".Event"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Registar"
+
+        <activity
+            android:name=".Register"
             android:theme="@style/AppTheme.Login" />
         <activity
             android:name=".Profile"
@@ -111,7 +110,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appteam.nimbus.homeActivity" />
         </activity>
-                <receiver
+
+        <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -138,7 +138,10 @@
         </service>
 
         <!-- END Added for GCM -->
-
+        <activity android:name=".RegisterHackathon"
+            android:theme="@style/AppTheme.Login"
+            >
+        </activity>
     </application>
 
 </manifest>

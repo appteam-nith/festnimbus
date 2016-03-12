@@ -33,17 +33,16 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Registar extends AppCompatActivity {
 
-    PersonalData personalData;
+public class Register extends AppCompatActivity {
+PersonalData personalData;
     private LoadToast loadToast;
     boolean isemail=true,ispassword=true,isphone=true,isnitian=false,isValidRollNo=false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registar);
-        personalData=new PersonalData(this);
+        setContentView(R.layout.activity_register);
+       personalData=new PersonalData(this);
         loadToast=new LoadToast(this);
         final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
         checkBox.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +77,7 @@ public class Registar extends AppCompatActivity {
         findViewById(R.id.registar_Btn_registar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isemail&&ispassword&&isphone&&isValidRollNo){
+                if((isemail&&ispassword&&isphone&&(isnitian==false)||(isemail&&ispassword&&isphone&&isnitian&&isValidRollNo))){
 
                     Connection cd = new Connection(getApplicationContext());
 
@@ -89,11 +88,11 @@ public class Registar extends AppCompatActivity {
                     loadToast.show();
                     sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString().toUpperCase().trim(),isnitian);
                 }else{
-                        Toast.makeText(Registar.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(Registar.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -223,7 +222,7 @@ public class Registar extends AppCompatActivity {
     }
 
 
-    private void sendRequest(String string, String string1,String string2,String string3,boolean nitian) {
+    private void sendRequest(final String string, String string1, final String string2, final String string3, boolean nitian) {
         Map<String,String> params=new HashMap<String, String>();
         params.put("mobile",string2);
         params.put("email",string);
@@ -236,20 +235,15 @@ public class Registar extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("qw",""+response.toString());
-                try {Log.v("if block","checking");
+                try {
                     if(response.has("message")){
                       String message=response.getString("message");
-                        Toast.makeText(Registar.this,message,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
                         loadToast.error();
                     }else{
-                        Log.v("else block","checking");
-                        if(response.getString("status").equals("user created!")){
-                            String token=response.getString("data");
-                            personalData.SaveToken(token);
-                            personalData.SaveData(true);
-                            Log.d("token",""+personalData.getToken());
+                        if(response.getString("status").equals("registered successfully")){
                             loadToast.success();
-                            startActivity(new Intent(Registar.this,homeActivity.class));
+                            startActivity(new Intent(Register.this,Login.class));
                             finish();}
                     }
 
@@ -264,16 +258,19 @@ public class Registar extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 loadToast.error();
                 NetworkResponse networkResponse=error.networkResponse;
-                if(networkResponse.statusCode==401){
-                    Toast.makeText(Registar.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                if(networkResponse!=null){
+                    if(networkResponse.statusCode==401){
+                        Toast.makeText(Register.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                    }
+                    if(error instanceof TimeoutError){
+                        Toast.makeText(Register.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    else if(error instanceof ServerError){
+                        Toast.makeText(Register.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    error.printStackTrace();
                 }
-                if(error instanceof TimeoutError){
-                    Toast.makeText(Registar.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
-                }
-                else if(error instanceof ServerError){
-                    Toast.makeText(Registar.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
-                }
-                error.printStackTrace();
+
             }
         }){
             @Override
