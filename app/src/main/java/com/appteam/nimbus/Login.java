@@ -1,15 +1,12 @@
 package com.appteam.nimbus;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -44,7 +41,7 @@ public class Login extends AppCompatActivity {
         findViewById(R.id.registar_Btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Login.this, Registar.class));
+                startActivity(new Intent(Login.this, Register.class));
             }
         });
 

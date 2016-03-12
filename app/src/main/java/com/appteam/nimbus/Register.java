@@ -31,14 +31,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registar extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 PersonalData personalData;
     private LoadToast loadToast;
     boolean isemail=true,ispassword=true,isphone=true,isnitian=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registar);
+        setContentView(R.layout.activity_register);
        personalData=new PersonalData(this);
         loadToast=new LoadToast(this);
       final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
@@ -85,11 +85,11 @@ PersonalData personalData;
                     loadToast.show();
                     sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString(),isnitian);
                 }else{
-                        Toast.makeText(Registar.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(Registar.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -184,7 +184,7 @@ PersonalData personalData;
     }
 
 
-    private void sendRequest(String string, String string1,String string2,String string3,boolean nitian) {
+    private void sendRequest(final String string, String string1, final String string2, final String string3, boolean nitian) {
         Map<String,String> params=new HashMap<String, String>();
         params.put("mobile",string2);
         params.put("email",string);
@@ -200,7 +200,7 @@ PersonalData personalData;
                 try {Log.v("if block","checking");
                     if(response.has("message")){
                       String message=response.getString("message");
-                        Toast.makeText(Registar.this,message,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
                         loadToast.error();
                     }else{
                         Log.v("else block","checking");
@@ -208,9 +208,10 @@ PersonalData personalData;
                             String token=response.getString("data");
                             personalData.SaveToken(token);
                             personalData.SaveData(true);
+                            personalData.SaveDetail(string,string3,string2);
                             Log.d("token",""+personalData.getToken());
                             loadToast.success();
-                            startActivity(new Intent(Registar.this,homeActivity.class));
+                            startActivity(new Intent(Register.this,homeActivity.class));
                             finish();}
                     }
 
@@ -225,16 +226,19 @@ PersonalData personalData;
             public void onErrorResponse(VolleyError error) {
                 loadToast.error();
                 NetworkResponse networkResponse=error.networkResponse;
-                if(networkResponse.statusCode==401){
-                    Toast.makeText(Registar.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                if(networkResponse!=null){
+                    if(networkResponse.statusCode==401){
+                        Toast.makeText(Register.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                    }
+                    if(error instanceof TimeoutError){
+                        Toast.makeText(Register.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    else if(error instanceof ServerError){
+                        Toast.makeText(Register.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    error.printStackTrace();
                 }
-                if(error instanceof TimeoutError){
-                    Toast.makeText(Registar.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
-                }
-                else if(error instanceof ServerError){
-                    Toast.makeText(Registar.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
-                }
-                error.printStackTrace();
+
             }
         }){
             @Override

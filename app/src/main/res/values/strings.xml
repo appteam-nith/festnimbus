@@ -80,4 +80,5 @@ Rules:\n\n
 
 Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual Silver Coins\n\n<b>First Runner Up:</b> 2 Virtual Gold Coins + Additional 25 Virtual Silver Coins\n\n<b>Second Runner Up:</b> 1 Virtual Gold Coins +  Additional 15 Virtual Silver Coins\n\nEvery participants will be awarded 25 Virtual Silver Coins.\n
 </string>
+    <string name="spinner_title">Preference of Mentor</string>
 </resources>
