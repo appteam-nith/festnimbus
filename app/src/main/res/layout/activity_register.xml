@@ -114,7 +114,7 @@
         android:buttonTint="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="15sp"
         android:text="Student of NIT Hamirpur"
         android:textColor="@color/colorAccent"
         android:layout_marginLeft="30dp"
@@ -137,8 +137,7 @@
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rollno_registar_textinputLayout"
-            >
+            android:id="@+id/rollno_registar_textinputLayout">
         <EditText
             android:textColor="#fff"
             android:id="@+id/rollno_registar"
