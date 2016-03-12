@@ -149,7 +149,7 @@ private ImageLoader imageLoader;
         }else if(id==R.id.hackathon_nav){
             Intent i=new Intent(homeActivity.this,HackathonActivity.class);
             startActivity(i);
-            finish();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

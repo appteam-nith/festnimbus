@@ -77,7 +77,7 @@ PersonalData personalData;
         findViewById(R.id.registar_Btn_registar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isemail&&ispassword&&isphone){
+                if((isemail&&ispassword&&isphone&&(isnitian==false)||(isemail&&ispassword&&isphone&&isnitian&&isValidRollNo))){
 
                     Connection cd = new Connection(getApplicationContext());
 

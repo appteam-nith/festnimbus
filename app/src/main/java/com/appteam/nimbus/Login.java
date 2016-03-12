@@ -85,13 +85,21 @@ public class Login extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d("response_login",""+response.toString());
                 try {
-                    if(response.getString("status").equals("loggedin successfully")){
-                    startActivity(new Intent(Login.this,homeActivity.class));
-                        String token=response.getString("data");
-                        personalData.SaveToken(token);
-                        personalData.SaveData(true);
-                        loadToast.success();
-                    finish();}
+                    if(response.has("status")){
+                        if(response.getString("status").equals("loggedin successfully")){
+                            startActivity(new Intent(Login.this,homeActivity.class));
+                            String token=response.getString("data");
+                            personalData.SaveToken(token);
+                            personalData.SaveData(true);
+                            loadToast.success();
+                            finish();}
+                    }
+                    else if(response.has("message")){
+                        loadToast.error();
+                        Toast.makeText(Login.this,""+response.getString("message"),Toast.LENGTH_LONG).show();
+                    }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     loadToast.error();
