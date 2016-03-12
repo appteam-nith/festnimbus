@@ -85,13 +85,12 @@ public class Login extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d("response_login",""+response.toString());
                 try {
-                    if(response.getString("status").equals("Login successful!")){
+                    if(response.getString("status").equals("loggedin successfully")){
                     startActivity(new Intent(Login.this,homeActivity.class));
                         String token=response.getString("data");
                         personalData.SaveToken(token);
                         personalData.SaveData(true);
                         loadToast.success();
-
                     finish();}
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -197,21 +197,15 @@ PersonalData personalData;
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("qw",""+response.toString());
-                try {Log.v("if block","checking");
+                try {
                     if(response.has("message")){
                       String message=response.getString("message");
                         Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
                         loadToast.error();
                     }else{
-                        Log.v("else block","checking");
-                        if(response.getString("status").equals("user created!")){
-                            String token=response.getString("data");
-                            personalData.SaveToken(token);
-                            personalData.SaveData(true);
-                            personalData.SaveDetail(string,string3,string2);
-                            Log.d("token",""+personalData.getToken());
+                        if(response.getString("status").equals("registered successfully")){
                             loadToast.success();
-                            startActivity(new Intent(Register.this,homeActivity.class));
+                            startActivity(new Intent(Register.this,Login.class));
                             finish();}
                     }
 
