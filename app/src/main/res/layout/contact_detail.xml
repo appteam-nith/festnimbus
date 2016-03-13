@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorPrimary">
+       >
 
             <TextView
                 android:paddingTop="5dp"
@@ -20,7 +20,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CONTACT DETAIL"
-                android:textColor="@android:color/white"
                 android:textAppearance="@android:style/TextAppearance.Large"
 />
         <View
@@ -39,7 +38,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 />
         </LinearLayout>

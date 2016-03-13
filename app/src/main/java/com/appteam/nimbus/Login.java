@@ -1,15 +1,12 @@
 package com.appteam.nimbus;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -44,7 +41,7 @@ public class Login extends AppCompatActivity {
         findViewById(R.id.registar_Btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Login.this, Registar.class));
+                startActivity(new Intent(Login.this, Register.class));
             }
         });
 
@@ -88,14 +85,21 @@ public class Login extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d("response_login",""+response.toString());
                 try {
-                    if(response.getString("status").equals("Login successful!")){
-                    startActivity(new Intent(Login.this,homeActivity.class));
-                        String token=response.getString("data");
-                        personalData.SaveToken(token);
-                        personalData.SaveData(true);
-                        loadToast.success();
+                    if(response.has("status")){
+                        if(response.getString("status").equals("loggedin successfully")){
+                            startActivity(new Intent(Login.this,homeActivity.class));
+                            String token=response.getString("data");
+                            personalData.SaveToken(token);
+                            personalData.SaveData(true);
+                            loadToast.success();
+                            finish();}
+                    }
+                    else if(response.has("message")){
+                        loadToast.error();
+                        Toast.makeText(Login.this,""+response.getString("message"),Toast.LENGTH_LONG).show();
+                    }
 
-                    finish();}
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     loadToast.error();
