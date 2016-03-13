@@ -30,18 +30,21 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class Registar extends AppCompatActivity {
+
+public class Register extends AppCompatActivity {
 PersonalData personalData;
     private LoadToast loadToast;
-    boolean isemail=true,ispassword=true,isphone=true,isnitian=false;
+    boolean isemail=true,ispassword=true,isphone=true,isnitian=false,isValidRollNo=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registar);
+        setContentView(R.layout.activity_register);
        personalData=new PersonalData(this);
         loadToast=new LoadToast(this);
-      final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
+        final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,12 +72,12 @@ PersonalData personalData;
         final TextInputLayout passwordTextInputLayout= (TextInputLayout) findViewById(R.id.password_registar_textinputLayout);
         final TextInputLayout confirmTextInputLayout= (TextInputLayout) findViewById(R.id.confirmPassword_registar_textinputLayout);
         final TextInputLayout phonenoTextInputLayout= (TextInputLayout) findViewById(R.id.phone_registar_textinputLayout);
-        TextInputLayout rollnoTextInputLayout= (TextInputLayout) findViewById(R.id.rollno_registar_textinputLayout);
+        final TextInputLayout rollnoTextInputLayout= (TextInputLayout) findViewById(R.id.rollno_registar_textinputLayout);
 
         findViewById(R.id.registar_Btn_registar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isemail&&ispassword&&isphone){
+                if((isemail&&ispassword&&isphone&&(isnitian==false)||(isemail&&ispassword&&isphone&&isnitian&&isValidRollNo))){
 
                     Connection cd = new Connection(getApplicationContext());
 
@@ -83,16 +86,17 @@ PersonalData personalData;
                     {
                     loadToast.setText("LOADING");
                     loadToast.show();
-                    sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString(),isnitian);
+                    sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString().toUpperCase().trim(),isnitian);
                 }else{
-                        Toast.makeText(Registar.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(Registar.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Register.this,"ENTER DATA REQUIRED",Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -159,6 +163,7 @@ PersonalData personalData;
                 }
             }
         });
+
         phoneno.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -172,19 +177,52 @@ PersonalData personalData;
 
             @Override
             public void afterTextChanged(Editable editable) {
-        if(phoneno.getText().toString().length()==10){
-        phonenoTextInputLayout.setErrorEnabled(false);
-        isphone=true;
-        } else {
-        phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
-        isphone=false;
-}
+                if(phoneno.getText().toString().length()==10){
+                phonenoTextInputLayout.setErrorEnabled(false);
+                isphone=true;}
+                else {
+                phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
+                isphone=false;
+                }
             }
         });
+
+        rollno.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                String input=rollno.getText().toString();
+                String ptr="((1(4|5)MI5((0[1-9])|([1-5][0-9])|60))|(1(4|5)M[1-5]((0[1-9])|([1-5][0-9])|60))|(15MI4((0[1-9])|([1-5][0-9])|60))|(1[1-5][1-6]((0[1-9])|([1-8][0-9])|90))|(IIITU1(4|5)(1|2)((0[1-9])|([1-2][0-9])|30)))";
+
+                Pattern p=Pattern.compile(ptr);
+                Matcher m=p.matcher(input.toUpperCase().trim());
+
+                if(m.matches()){
+                   rollnoTextInputLayout.setErrorEnabled(false);
+                    isValidRollNo=true;
+                }else{
+                    rollnoTextInputLayout.setErrorEnabled(true);
+                    isValidRollNo=false;
+                    rollnoTextInputLayout.setError("Enter Valid RollNo");
+                }
+
+              }
+        });
+
     }
 
 
-    private void sendRequest(String string, String string1,String string2,String string3,boolean nitian) {
+    private void sendRequest(final String string, String string1, final String string2, final String string3, boolean nitian) {
         Map<String,String> params=new HashMap<String, String>();
         params.put("mobile",string2);
         params.put("email",string);
@@ -197,20 +235,15 @@ PersonalData personalData;
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("qw",""+response.toString());
-                try {Log.v("if block","checking");
+                try {
                     if(response.has("message")){
                       String message=response.getString("message");
-                        Toast.makeText(Registar.this,message,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
                         loadToast.error();
                     }else{
-                        Log.v("else block","checking");
-                        if(response.getString("status").equals("user created!")){
-                            String token=response.getString("data");
-                            personalData.SaveToken(token);
-                            personalData.SaveData(true);
-                            Log.d("token",""+personalData.getToken());
+                        if(response.getString("status").equals("registered successfully")){
                             loadToast.success();
-                            startActivity(new Intent(Registar.this,homeActivity.class));
+                            startActivity(new Intent(Register.this,Login.class));
                             finish();}
                     }
 
@@ -225,16 +258,19 @@ PersonalData personalData;
             public void onErrorResponse(VolleyError error) {
                 loadToast.error();
                 NetworkResponse networkResponse=error.networkResponse;
-                if(networkResponse.statusCode==401){
-                    Toast.makeText(Registar.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                if(networkResponse!=null){
+                    if(networkResponse.statusCode==401){
+                        Toast.makeText(Register.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                    }
+                    if(error instanceof TimeoutError){
+                        Toast.makeText(Register.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    else if(error instanceof ServerError){
+                        Toast.makeText(Register.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
+                    }
+                    error.printStackTrace();
                 }
-                if(error instanceof TimeoutError){
-                    Toast.makeText(Registar.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
-                }
-                else if(error instanceof ServerError){
-                    Toast.makeText(Registar.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
-                }
-                error.printStackTrace();
+
             }
         }){
             @Override

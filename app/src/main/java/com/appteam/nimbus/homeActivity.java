@@ -146,6 +146,10 @@ private ImageLoader imageLoader;
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+        }else if(id==R.id.hackathon_nav){
+            Intent i=new Intent(homeActivity.this,HackathonActivity.class);
+            startActivity(i);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

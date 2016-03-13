@@ -53,14 +53,15 @@ public class AboutNimbusSplash extends AppCompatActivity{
 
         if(isDefaultChecked==false){
             Intent i;
-            if(new PersonalData(AboutNimbusSplash.this).getStatus())
-                i=new Intent(AboutNimbusSplash.this,homeActivity.class);
-            else
-             i = new Intent(AboutNimbusSplash.this, Login.class);
-            startActivity(i);
-            finish();
-
-            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            if(!result){
+                if(new PersonalData(AboutNimbusSplash.this).getStatus())
+                    i=new Intent(AboutNimbusSplash.this,homeActivity.class);
+                else
+                    i = new Intent(AboutNimbusSplash.this, Login.class);
+                startActivity(i);
+                finish();
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+            }
         }
 
 

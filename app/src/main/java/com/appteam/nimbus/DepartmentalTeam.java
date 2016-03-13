@@ -43,7 +43,7 @@ MyAdapter adapter;
 
         @Override
         public Fragment getItem(int position) {
-            return DepartmentFragment.newInstance(ClubName[position],getDetail(ClubName[position]),0);
+            return DepartmentFragment.newInstance(ClubName[position],getDetail(ClubName[position]),0,getTeamDetail(ClubName[position]),getContactDetail(ClubName[position]));
         }
 
         @Override
@@ -61,4 +61,14 @@ private String getDetail(String Clubname){
     String content = getResources().getString(id);
     return content;
 }
+    private String getTeamDetail(String Clubname){
+        int id = getResources().getIdentifier(Clubname+"_team_detail", "string", MyApplication.getAppContext().getPackageName());
+        String content = getResources().getString(id);
+        return content;
+    }
+    private String getContactDetail(String Clubname){
+        int id = getResources().getIdentifier(Clubname+"_contact_detail", "string", MyApplication.getAppContext().getPackageName());
+        String content = getResources().getString(id);
+        return content;
+    }
 }
