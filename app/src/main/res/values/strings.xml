@@ -17,7 +17,7 @@
     <string name="club_civil">C-HELIX</string>
     <string name="club_eee">OJAS</string>
     <string name="club_ece">VIBHAV</string>
-    <string name="club_mechanical">MEDESTROUS</string>
+    <string name="club_mechanical">MEDEXTROUS</string>
     <string name="club_architecture">DESIGN-O-CRATS</string>
     <string name="club_chemical">HERMETICA</string>
 
@@ -81,4 +81,19 @@ Rules:\n\n
 Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual Silver Coins\n\n<b>First Runner Up:</b> 2 Virtual Gold Coins + Additional 25 Virtual Silver Coins\n\n<b>Second Runner Up:</b> 1 Virtual Gold Coins +  Additional 15 Virtual Silver Coins\n\nEvery participants will be awarded 25 Virtual Silver Coins.\n
 </string>
     <string name="spinner_title">Preference of Mentor</string>
+    <string name="CHelix_team_detail">Team Detail of C-Helix</string>
+    <string name="Ojas_team_detail">Team Detail of Ojas Team</string>
+    <string name="Medextrous_team_detail">Team Detail of Medextrous</string>
+    <string name="Vibhav_team_detail">Team Detail of Vibhav</string>
+    <string name=".eXe_team_detail">Team Detail of .exe</string>
+    <string name="DesignOCrats_team_detail">Team detail of DesignOCrats</string>
+    <string name="Hermetica_team_detail">Team detail of Hermetica</string>
+
+    <string name="CHelix_contact_detail">Contact Detail of C-Helix</string>
+    <string name="Ojas_contact_detail">Contact Detail of Ojas Team</string>
+    <string name="Medextrous_contact_detail">Contact Detail of Medextrous</string>
+    <string name="Vibhav_contact_detail">Contact Detail of Vibhav</string>
+    <string name=".eXe_contact_detail">Contact Detail of .exe</string>
+    <string name="DesignOCrats_contact_detail">Contact detail of DesignOCrats</string>
+    <string name="Hermetica_contact_detail">Contact detail of Hermetica</string>
 </resources>
