@@ -38,7 +38,9 @@ public class CoreTeamActivity extends AppCompatActivity {
         list.add(new ItemCoreTeam("Prakash Haritwal","J-sec",R.drawable.person_icon));
         adapter=new CoreTeamAdapter(list,CoreTeamActivity.this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
     }
 
     @Override
