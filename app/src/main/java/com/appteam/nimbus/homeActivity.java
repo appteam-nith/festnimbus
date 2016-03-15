@@ -168,6 +168,24 @@ private ImageLoader imageLoader;
             Uri uri=Uri.parse(uriText);
             intent.setData(uri);
             startActivity(Intent.createChooser(intent,"Send Email"));
+        }else if(id==R.id.opensourcelicenses_nav){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(String.format("%1$s", getString(R.string.open_source_licenses)));
+            builder.setMessage(getResources().getText(R.string.licenses_text));
+            builder.setPositiveButton("OK", null);
+            //builder.setIcon(R.mipmap.nimbus_icon);
+            AlertDialog welcomeAlert = builder.create();
+            welcomeAlert.show();
+            ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+        }else if(id==R.id.contributors_nav){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(String.format("%1$s", getString(R.string.contributors)));
+            builder.setMessage(getResources().getText(R.string.contributors_text));
+            builder.setPositiveButton("OK", null);
+            //builder.setIcon(R.mipmap.nimbus_icon);
+            AlertDialog welcomeAlert = builder.create();
+            welcomeAlert.show();
+            ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
