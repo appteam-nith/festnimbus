@@ -125,7 +125,7 @@ public class Profile extends AppCompatActivity {
                   JSONObject data=response.getJSONObject("data");
                   String status=response.getString("status");
 
-                  if(status.equals("OK")){
+                  if(status.equals("ok")){
                       String email=data.getString("email");
                       user=new User();
                       user.setEmail(email);
@@ -178,6 +178,6 @@ public class Profile extends AppCompatActivity {
     }
 
     private String getURL() {
-        return "https://festnimbus.herokuapp.com/api/user/me";
+        return  "https://festnimbus.herokuapp.com/api/user/profile";
     }
 }
