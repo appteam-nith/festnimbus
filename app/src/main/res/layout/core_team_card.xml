@@ -12,19 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <com.github.siyamed.shapeimageview.CircularImageView
             android:layout_marginTop="10dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:id="@+id/imageView_core_team"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/person_icon"
+            app:siBorderWidth="1dp"
+            android:scaleType="centerCrop"
+            app:siBorderColor="#000"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="Name"
             android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/text_name" />
@@ -33,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="Designation"
             android:layout_margin="5dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/text_designation" />
