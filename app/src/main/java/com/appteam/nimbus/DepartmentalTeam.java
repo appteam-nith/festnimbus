@@ -28,7 +28,6 @@ MyAdapter adapter;
 
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

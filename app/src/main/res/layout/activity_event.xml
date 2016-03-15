@@ -11,6 +11,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/appbar_toolbar"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -22,6 +23,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/event_page"
+    <include layout="@layout/core_team"
+        android:layout_below="@id/appbar_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="54dp"
         android:id="@+id/content_event"/>
+
 </android.support.design.widget.CoordinatorLayout>

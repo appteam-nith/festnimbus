@@ -5,6 +5,10 @@
         android:id="@+id/navigation_to_profile"
         android:orderInCategory="100"/>
     <item
+        android:title="#Hackathon"
+        android:id="@+id/hackathon_nav"
+        android:orderInCategory="100"/>
+    <item
         android:title="Open Source Licenses"
         android:id="@+id/opensourcelicenses_nav"
         android:orderInCategory="100"/>
@@ -13,8 +17,8 @@
         android:id="@+id/aboutus_nav"
         android:orderInCategory="100"/>
     <item
-        android:title="#Hackathon"
-        android:id="@+id/hackathon_nav"
+        android:title="Report A Bug/Send Us Feedback"
+        android:id="@+id/feedback_nav"
         android:orderInCategory="100"/>
 
 </menu>
