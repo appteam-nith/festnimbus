@@ -121,13 +121,22 @@ public class Profile extends AppCompatActivity {
               Log.d("RESPONSE-PROFILE",response.toString());
               try {
                   loadToast.success();
-                  if(response.has("user")){
-                      JSONObject data=response.getJSONObject("user");
-                      if(data.has("email")){
-                          name_textview.setText(data.getString("email"));
-                      }
-                      if (data.has("rollno")){
-                          username_textview.setText(data.getString("rollno"));
+                  JSONObject data=response.getJSONObject("data");
+                  String status=response.getString("status");
+
+                  if(status.equals("ok")){
+                      String email=data.getString("email");
+                      user=new User();
+                      user.setEmail(email);
+
+                      String roll=null;
+
+                      if(data.has("rollno")){
+                          if(!data.isNull("rollno")){
+                              roll=data.getString("rollno");
+                              username_textview.setText(roll);
+                              user.setRoll(roll);
+                          }
                       }
                   }
               } catch (JSONException e) {
