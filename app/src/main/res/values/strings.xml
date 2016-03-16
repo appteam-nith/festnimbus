@@ -116,4 +116,5 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
     <string name=".eXe_contact_detail">Contact Detail of .exe</string>
     <string name="DesignOCrats_contact_detail">Contact detail of DesignOCrats</string>
     <string name="Hermetica_contact_detail">Contact detail of Hermetica</string>
+    <string name="title_activity_sponser">SponserActivity</string>
 </resources>

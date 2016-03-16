@@ -36,7 +36,7 @@ public class event_adapter extends RecyclerView.Adapter<event_adapter.viewHolder
         TextView textView;
         public viewHolder(View itemView) {
             super(itemView);
-            textView= (TextView) itemView.findViewById(R.id.textView_team_event);
+            textView= (TextView) itemView.findViewById(R.id.event_name_row_event);
         }
     }
 }
