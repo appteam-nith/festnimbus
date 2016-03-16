@@ -10,13 +10,9 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.appteam.nimbus.Login;
-
-import com.appteam.nimbus.Splash;
-import com.appteam.nimbus.gcm.NotificationUtils;
-import com.google.android.gms.gcm.GcmListenerService;
-
 import com.appteam.nimbus.app.Config;
+import com.appteam.nimbus.app.ViewActivity;
+import com.google.android.gms.gcm.GcmListenerService;
 
 public class MyGcmPushReceiver extends GcmListenerService {
 
@@ -56,7 +52,7 @@ public class MyGcmPushReceiver extends GcmListenerService {
             notificationUtils.playNotificationSound();
         } else {
 
-            Intent resultIntent = new Intent(getApplicationContext(), Splash.class);
+            Intent resultIntent = new Intent(getApplicationContext(), ViewActivity.class);
             resultIntent.putExtra("message", message);
 
             if (TextUtils.isEmpty(image)) {

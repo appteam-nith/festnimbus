@@ -20,7 +20,7 @@
             android:id="@+id/imageView_core_team"
             android:src="@drawable/person_icon"
             app:siBorderWidth="1dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             app:siBorderColor="#000"/>
 
         <TextView

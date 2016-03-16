@@ -3,6 +3,7 @@ package com.appteam.nimbus.gcm;
 /**
  * Created by mgr51297 on 13-02-2016.
  */
+
 import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -22,6 +23,11 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import com.appteam.nimbus.MyApplication;
+import com.appteam.nimbus.R;
+import com.appteam.nimbus.app.Config;
+import com.appteam.nimbus.app.MyDbHelper;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -32,16 +38,13 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import com.appteam.nimbus.R;
-import com.appteam.nimbus.app.Config;
-import com.appteam.nimbus.MyApplication;
-
 
 /**
  * Created by Ravi on 01/06/15.
  */
 public class NotificationUtils {
 
+   private MyDbHelper dbHelper;
     private static String TAG = NotificationUtils.class.getSimpleName();
 
     private Context mContext;
@@ -51,6 +54,7 @@ public class NotificationUtils {
 
     public NotificationUtils(Context mContext) {
         this.mContext = mContext;
+        dbHelper=new MyDbHelper(mContext);
     }
 
     public void showNotificationMessage(String title, String message, String timeStamp, Intent intent) {
@@ -64,7 +68,7 @@ public class NotificationUtils {
 
 
         // notification icon
-        final int icon = R.mipmap.ic_launcher;
+        final int icon = R.drawable.nimbus4;
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         final PendingIntent resultPendingIntent =
@@ -107,15 +111,16 @@ public class NotificationUtils {
         if (Config.appendNotificationMessages) {
             // store the notification in shared pref first
             MyApplication.getInstance().getPrefManager().addNotification(message);
-
+            dbHelper.insertData(message);
             // get the notifications from shared preferences
             String oldNotification = MyApplication.getInstance().getPrefManager().getNotifications();
 
             List<String> messages = Arrays.asList(oldNotification.split("\\|"));
 
-            for (int i = messages.size() - 1; i >= 0; i--) {
-                inboxStyle.addLine(messages.get(i));
-            }
+          //  for (int i = messages.size() - 1; i >= 0; i--) {
+
+             //   inboxStyle.addLine(messages.get(i));
+            //}
         } else {
             inboxStyle.addLine(message);
         }
@@ -129,7 +134,7 @@ public class NotificationUtils {
                 .setSound(alarmSound)
                 .setStyle(inboxStyle)
                 .setWhen(getTimeMilliSec(timeStamp))
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.nimbus4)
                 .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), icon))
                 .setContentText(message)
                 .build();
@@ -151,7 +156,7 @@ public class NotificationUtils {
                 .setSound(alarmSound)
                 .setStyle(bigPictureStyle)
                 .setWhen(getTimeMilliSec(timeStamp))
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.nimbus4)
                 .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), icon))
                 .setContentText(message)
                 .build();
@@ -203,7 +208,7 @@ public class NotificationUtils {
                 if (processInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
                     for (String activeProcess : processInfo.pkgList) {
                         if (activeProcess.equals(context.getPackageName())) {
-                            isInBackground = false;
+                            isInBackground = true;
                         }
                     }
                 }
@@ -212,7 +217,7 @@ public class NotificationUtils {
             List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
             ComponentName componentInfo = taskInfo.get(0).topActivity;
             if (componentInfo.getPackageName().equals(context.getPackageName())) {
-                isInBackground = false;
+                isInBackground = true;
             }
         }
 

@@ -24,5 +24,9 @@
         android:title="Open Source Licenses"
         android:id="@+id/opensourcelicenses_nav"
         android:orderInCategory="100"/>
+    <item
+        android:title="Notifications"
+        android:id="@+id/notifications"
+        android:orderInCategory="100"/>
 
 </menu>

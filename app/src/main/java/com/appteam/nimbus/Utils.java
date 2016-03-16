@@ -4,18 +4,15 @@ package com.appteam.nimbus;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Environment;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 public class Utils {
-    private static final String NAME_FOLDER="Nimbus";
     public static float convertDpToPixel(float dp, Context context){
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
@@ -24,73 +21,42 @@ public class Utils {
     }
     public static boolean checkData(String string){
         return  !string.isEmpty()&&string.trim().length()!=0;
-
     }
-    public static void SaveImage(Bitmap bitmap, String filename) {
-        File folder= Environment.getExternalStoragePublicDirectory(NAME_FOLDER);
-        if(!folder.exists()) {
-            Log.d("folder created","folder created");
-            folder.mkdir();
+    public static class CircleTransform extends BitmapTransformation {
+        public CircleTransform(Context context) {
+            super(context);
         }
 
-        File file=new File(folder,filename+".png");
-        if (file.exists()){
-            return;
+        @Override protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
+            return circleCrop(pool, toTransform);
         }
-        try {
-            FileOutputStream fileOutputStream=new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-            Log.d("FileSave","File "+file.getName()+" has saved");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public static Bitmap GetImage(String filename){
 
-        File file=new File(Environment.getExternalStoragePublicDirectory(NAME_FOLDER),filename+".png");
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(file.getAbsolutePath(),options);
+        private static Bitmap circleCrop(BitmapPool pool, Bitmap source) {
+            if (source == null) return null;
 
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options,100,100);
+            int size = Math.min(source.getWidth(), source.getHeight());
+            int x = (source.getWidth() - size) / 2;
+            int y = (source.getHeight() - size) / 2;
 
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        Bitmap bitmap= BitmapFactory.decodeFile(file.getAbsolutePath(),options);
-        Log.d("SuccessFile","Success in getting "+file.getName());
-        return bitmap;
-    }
-    public static boolean check(String filename){
-        File file=new File(Environment.getExternalStoragePublicDirectory(NAME_FOLDER),filename+".png");
-        if(file.exists())
-            return true;
-        return false;
-    }
-    private static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
+            // TODO this could be acquired from the pool too
+            Bitmap squared = Bitmap.createBitmap(source, x, y, size, size);
 
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
+            Bitmap result = pool.get(size, size, Bitmap.Config.ARGB_8888);
+            if (result == null) {
+                result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
             }
+
+            Canvas canvas = new Canvas(result);
+            Paint paint = new Paint();
+            paint.setShader(new BitmapShader(squared, BitmapShader.TileMode.CLAMP, BitmapShader.TileMode.CLAMP));
+            paint.setAntiAlias(true);
+            float r = size / 2f;
+            canvas.drawCircle(r, r, r, paint);
+            return result;
         }
 
-        return inSampleSize;
+        @Override public String getId() {
+            return getClass().getName();
+        }
     }
 }

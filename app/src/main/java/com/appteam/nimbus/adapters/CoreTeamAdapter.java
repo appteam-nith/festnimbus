@@ -1,22 +1,20 @@
 package com.appteam.nimbus.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.appteam.nimbus.MySingleton;
 import com.appteam.nimbus.R;
 import com.appteam.nimbus.Utils;
-import com.appteam.nimbus.Waiting;
 import com.appteam.nimbus.model.ItemCoreTeam;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
@@ -49,40 +47,9 @@ public class CoreTeamAdapter extends RecyclerView.Adapter<CoreTeamAdapter.ViewHo
             viewHolder.designation.setText(list.get(i).designation);
         }
         if(!list.get(i).url.isEmpty()&&list.get(i).url.length()!=0){
-            if (Utils.check(list.get(i).url.substring(61))) {
-                new Waiting.GetImage(list.get(i).url.substring(61), viewHolder.imageView).execute();
-            } else{
-                load_image(list.get(i).url, viewHolder);
-                Log.d("NOT FOUND","NO FILE FOUND "+list.get(i).url);
-            }
-
+            Glide.with(context).load(list.get(i).url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(R.drawable.person_icon).error(R.mipmap.nimbus_icon).transform(new Utils.CircleTransform(context)).into(viewHolder.imageView);
         }
     }
-    private void load_image(  final String url_photo, final ViewHolder viewHolder) {
-        imageLoader.get(url_photo, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
-                Bitmap d = imageContainer.getBitmap();
-                if(d!=null){
-                   // int nh = (int) ( d.getHeight() * (100.0 / d.getWidth()) );
-                    Bitmap scaled = Bitmap.createScaledBitmap(d, 100,100, true);
-                    viewHolder.imageView.setImageBitmap(scaled);
-                    new Waiting.SaveImage(d, url_photo.substring(61)).execute();
-                }
-                else {
-                    Log.d("Error","Error while downloading "+url_photo);
-                }
-
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-               // volleyError.printStackTrace();
-                viewHolder.imageView.setImageResource(R.drawable.person_icon);
-            }
-        });
-    }
-
     @Override
     public int getItemCount() {
         return list.size();

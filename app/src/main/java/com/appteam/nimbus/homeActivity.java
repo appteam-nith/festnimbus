@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.appteam.nimbus.app.ViewActivity;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private PersonalData personalData;
@@ -78,6 +79,13 @@ private ImageLoader imageLoader;
                 Intent intent=new Intent(homeActivity.this,AboutNimbusSplash.class);
                 intent.putExtra(SHOW_OPTION,true);
                 startActivity(intent);
+                overridePendingTransition(R.anim.open_next, R.anim.open_main);
+            }
+        });
+        findViewById(R.id.sponsors).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homeActivity.this,SponserActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
@@ -186,6 +194,9 @@ private ImageLoader imageLoader;
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        else if(id==R.id.notifications){
+            startActivity(new Intent(homeActivity.this, ViewActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
