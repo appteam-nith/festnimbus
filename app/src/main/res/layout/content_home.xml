@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/event"/>
+            android:layout_below="@+id/sponsors"/>
         <include
             android:id="@+id/department"
             layout="@layout/department"

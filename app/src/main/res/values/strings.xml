@@ -31,6 +31,7 @@
     <string name=".eXe">Team .exe is the official club of CSE department for fest nimbus. </string>
     <string name="DesignOCrats">Design-o-crats is the official club of Architecture department for fest nimbus.</string>
     <string name="Hermetica">Hermetica is the official club of Chemical department for fest nimbus.</string>
+    <string name="Vitruvians">Vitruvians is the official club of Robotics for fest nimbus.</string>
     <string name="fake_text"></string>
     <string name="splash_about_nimbus">NIMBUS is the annual technical festival of National Institute of Technology,
         Hamirpur, Himachal Pradesh, India. It is touted to be an amalgamation of ideas, expressions, innovations,
@@ -56,9 +57,9 @@
 \t<a href="https://github.com/RamolaWeb">Sahil Ramola</a>\n\n
 \t<a href="https://github.com/sukhbir-singh">Sukhbir Singh</a>\n\n
 \t<a href="https://github.com/sahilbadyal">Sahil Badyal</a>\n\n
-\t<a href="https://github.com/mgr51297">Gautam Reddy</a>\n\n
+\t<a href="https://github.com/mgr51297">Goutham Reddy</a>\n\n
 \t<a href="https://github.com/saurabh0402">Saurabh Kumar</a>\n\n
-\t<a href="https://github.com/nishant23j">Nishant</a>\n\n
+\t<a href="https://github.com/nishant23j">Nishant Choudhary</a>\n\n
 \t<a href="https://github.com/Narendra-Dodwaria">Narendra Dodwaria</a>\n\n
 \t<a href="https://github.com/jaykay12">Jalaz Choudhary</a>\n\n
 </string>
@@ -108,6 +109,7 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
     <string name=".eXe_team_detail">Team Detail of .exe</string>
     <string name="DesignOCrats_team_detail">Team detail of DesignOCrats</string>
     <string name="Hermetica_team_detail">Team detail of Hermetica</string>
+    <string name="Vitruvians_team_detail">Team detail of Vitruvians</string>
 
     <string name="CHelix_contact_detail">Contact Detail of C-Helix</string>
     <string name="Ojas_contact_detail">Contact Detail of Ojas Team</string>
@@ -116,5 +118,7 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
     <string name=".eXe_contact_detail">Contact Detail of .exe</string>
     <string name="DesignOCrats_contact_detail">Contact detail of DesignOCrats</string>
     <string name="Hermetica_contact_detail">Contact detail of Hermetica</string>
+    <string name="Vitruvians_contact_detail">Contact detail of Vitruvians</string>
+
     <string name="title_activity_sponser">SponserActivity</string>
 </resources>

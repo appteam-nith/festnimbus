@@ -35,9 +35,9 @@ public class EventActivity extends AppCompatActivity{
         recyclerView= (RecyclerView) findViewById(R.id.list_core_team);
         list=new ArrayList<>();
         TeamClass team1=new TeamClass();
-        team1.setTeamname("App Team");
-        EventClass event1=new EventClass("56cb1c03ed77fec80e88ef71","Hackathon","A Nice Event","");
-        EventClass event2=new EventClass("56cb1c03ed77fec80e88ef71","Hackathon","A Nice Event","");
+        team1.setTeamname("Coming Soon");
+        EventClass event1=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
+        EventClass event2=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
 
         ArrayList<EventClass> events=new ArrayList<>();
         events.add(event1);
