@@ -128,7 +128,7 @@ public class Profile extends AppCompatActivity {
                       String email=data.getString("email");
                       user=new User();
                       user.setEmail(email);
-
+                      name_textview.setText(email);
                       String roll=null;
 
                       if(data.has("rollno")){

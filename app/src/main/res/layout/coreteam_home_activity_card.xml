@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nimbus Core Team"
+                android:text="Core Team"
                 android:background="#80000000"
                 android:textColor="@android:color/white"
                 android:textAppearance="@android:style/TextAppearance.Medium"
