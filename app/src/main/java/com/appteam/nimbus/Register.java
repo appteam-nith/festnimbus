@@ -241,7 +241,7 @@ PersonalData personalData;
                         Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
                         loadToast.error();
                     }else{
-                        if(response.getString("data").toLowerCase().equals("registered successfully")){
+                        if(response.getString("data").toLowerCase().equals("Registered Successfully")){
                             loadToast.success();
                             startActivity(new Intent(Register.this, Login.class));
                             finish();}
