@@ -17,7 +17,7 @@ public class SponserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sponser);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ViewPager viewPager= (ViewPager) findViewById(R.id.viewpager_sponser);
         TabLayout tabLayout= (TabLayout) findViewById(R.id.tabs);
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
