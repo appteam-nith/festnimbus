@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
+    android:background="@color/lightbackground"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="8dp"
     android:layout_margin="8dp"
@@ -36,6 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:padding="10dp"
+            android:textColor="@color/darktextcolor"
             android:text="@string/home_about_nimbus"
             />
         <View

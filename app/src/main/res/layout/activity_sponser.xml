@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/background"
     tools:context="com.appteam.nimbus.SponserActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -17,7 +18,7 @@
             app:layout_collapseMode="parallax"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/appbarcolor"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -25,7 +26,8 @@
             android:layout_height="wrap_content"
             app:tabMode="scrollable"
             app:layout_collapseMode="pin"
-            app:tabGravity="fill"/>
+            app:tabGravity="fill"
+            android:background="@color/appbarcolor"/>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager

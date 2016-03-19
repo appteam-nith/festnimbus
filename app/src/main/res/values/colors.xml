@@ -8,5 +8,6 @@
 <color name="lightbackground">#E4F1FE</color>
     <color name="darktextcolor">#22312F</color>
     <color name="secondary_text">#64b5ce</color>
+    <color name="appbarcolor">#003180</color>
 
 </resources>
