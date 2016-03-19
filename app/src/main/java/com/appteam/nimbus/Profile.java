@@ -137,7 +137,11 @@ public class Profile extends AppCompatActivity {
                               username_textview.setText(roll);
                               user.setRoll(roll);
                           }
+                          else{
+                              username_textview.setVisibility(View.GONE);
+                          }
                       }
+
                   }
               } catch (JSONException e) {
                   e.printStackTrace();
