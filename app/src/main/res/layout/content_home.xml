@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
-
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,26 +23,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <include
+            android:layout_below="@+id/welcome"
+            android:id="@+id/event"
+            layout="@layout/event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+        <include
             android:id="@+id/coreteam"
             layout="@layout/coreteam_home_activity_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/department"/>
+            android:layout_below="@+id/sponsors"/>
         <include
             android:id="@+id/department"
             layout="@layout/department"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/welcome"/>
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/coreteam"/>
         <include
-            android:id="@+id/event"
-            layout="@layout/event"
+            android:id="@+id/sponsors"
+            layout="@layout/sponsors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/coreteam"/>
+            android:layout_below="@+id/event"/>
     </RelativeLayout>
 </ScrollView>
 

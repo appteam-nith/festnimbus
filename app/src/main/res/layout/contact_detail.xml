@@ -10,33 +10,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-       >
+        android:orientation="vertical">
 
             <TextView
+                android:textColor="@color/darktextcolor"
                 android:paddingTop="5dp"
                 android:paddingLeft="5dp"
                 android:paddingBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CONTACT DETAIL"
-                android:textAppearance="@android:style/TextAppearance.Large"
-/>
+                android:textSize="18sp"
+                android:textAppearance="@android:style/TextAppearance.Large" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"/>
         <LinearLayout
+            android:background="@color/lightbackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:textColor="@color/darktextcolor"
                 android:id="@+id/contact_detail_description"
                 android:paddingTop="5dp"
                 android:paddingLeft="5dp"
                 android:paddingBottom="5dp"
                 android:layout_width="0dp"
                 android:layout_weight="3"
+                android:textSize="18sp"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 />

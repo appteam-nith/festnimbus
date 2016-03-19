@@ -2,6 +2,8 @@
     <string name="app_name">Nimbus</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="open_source_licenses">Open Source Licenses</string>
+    <string name="contributors">Contributors</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="senderid">1051488041273</string>
     <string name="action_settings">Settings</string>
@@ -29,6 +31,7 @@
     <string name=".eXe">Team .exe is the official club of CSE department for fest nimbus. </string>
     <string name="DesignOCrats">Design-o-crats is the official club of Architecture department for fest nimbus.</string>
     <string name="Hermetica">Hermetica is the official club of Chemical department for fest nimbus.</string>
+    <string name="Vitruvians">Vitruvians is the official club of Robotics for fest nimbus.</string>
     <string name="fake_text"></string>
     <string name="splash_about_nimbus">NIMBUS is the annual technical festival of National Institute of Technology,
         Hamirpur, Himachal Pradesh, India. It is touted to be an amalgamation of ideas, expressions, innovations,
@@ -49,6 +52,24 @@
     <string name="aboutus_text">A Open Source Project by <a href="https://github.com/appteam-nith/">AppTeam NITH</a> for TechFest Nimbus2k16.\n\nSource code available at
         <a href="https://github.com/appteam-nith/festnimbus.git">GitHub</a>.
     </string>
+
+    <string name="contributors_text">We thank the open source community for all their contributions.\n\n
+\t<a href="https://github.com/RamolaWeb">Sahil Ramola</a>\n\n
+\t<a href="https://github.com/sukhbir-singh">Sukhbir Singh</a>\n\n
+\t<a href="https://github.com/sahilbadyal">Sahil Badyal</a>\n\n
+\t<a href="https://github.com/mgr51297">Goutham Reddy</a>\n\n
+\t<a href="https://github.com/saurabh0402">Saurabh Kumar</a>\n\n
+\t<a href="https://github.com/nishant23j">Nishant Choudhary</a>\n\n
+\t<a href="https://github.com/Narendra-Dodwaria">Narendra Dodwaria</a>\n\n
+\t<a href="https://github.com/jaykay12">Jalaz Choudhary</a>\n\n
+</string>
+
+    <string name="licenses_text">The following are third party software/api that are used in Nimbus app.\n\n
+\t<a href="https://github.com/siyamed/android-shape-imageview">Android Shape ImageView</a>\n\n
+\t<a href="https://github.com/mcxiaoke/android-volley">Android Volley Library</a>\n\n
+\t<a href="https://github.com/code-mc/loadtoast">Load Toast</a>
+    </string>
+
     <string name="hackathon_content">by AppTeam\n2nd - 3rd April, 8am - 8pm\nVenue: Auditorium\n\n
 \"A hackathon, a hacker neologism, is an event when programmers meet to do collaborative computer programming.\"
 	\n-<a href="https://en.wikipedia.org/wiki/Hackathon">Wikipedia</a>\n\n
@@ -88,6 +109,7 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
     <string name=".eXe_team_detail">Team Detail of .exe</string>
     <string name="DesignOCrats_team_detail">Team detail of DesignOCrats</string>
     <string name="Hermetica_team_detail">Team detail of Hermetica</string>
+    <string name="Vitruvians_team_detail">Team detail of Vitruvians</string>
 
     <string name="CHelix_contact_detail">Contact Detail of C-Helix</string>
     <string name="Ojas_contact_detail">Contact Detail of Ojas Team</string>
@@ -96,4 +118,7 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
     <string name=".eXe_contact_detail">Contact Detail of .exe</string>
     <string name="DesignOCrats_contact_detail">Contact detail of DesignOCrats</string>
     <string name="Hermetica_contact_detail">Contact detail of Hermetica</string>
+    <string name="Vitruvians_contact_detail">Contact detail of Vitruvians</string>
+
+    <string name="title_activity_sponser">SponserActivity</string>
 </resources>

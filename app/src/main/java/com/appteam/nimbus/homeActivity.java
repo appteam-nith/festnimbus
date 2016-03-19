@@ -1,6 +1,7 @@
 package com.appteam.nimbus;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.appteam.nimbus.app.ViewActivity;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 private PersonalData personalData;
@@ -77,6 +79,13 @@ private ImageLoader imageLoader;
                 Intent intent=new Intent(homeActivity.this,AboutNimbusSplash.class);
                 intent.putExtra(SHOW_OPTION,true);
                 startActivity(intent);
+                overridePendingTransition(R.anim.open_next, R.anim.open_main);
+            }
+        });
+        findViewById(R.id.sponsors).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homeActivity.this,SponserActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
@@ -142,7 +151,7 @@ private ImageLoader imageLoader;
             builder.setTitle(String.format("%1$s", getString(R.string.app_name)));
             builder.setMessage(getResources().getText(R.string.aboutus_text));
             builder.setPositiveButton("OK", null);
-            builder.setIcon(R.mipmap.ic_launcher);
+            builder.setIcon(R.mipmap.nimbus_icon);
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
@@ -150,6 +159,44 @@ private ImageLoader imageLoader;
             Intent i=new Intent(homeActivity.this,HackathonActivity.class);
             startActivity(i);
 
+        }else if(id==R.id.feedback_nav){
+            /*Intent intent=new Intent(Intent.ACTION_SEND);
+            intent.setType("text/html");
+            String email_arr[]={"appteam.nith@gmail.com"};
+            intent.putExtra(Intent.EXTRA_EMAIL, email_arr);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Reporting A Bug/Feedback");
+            intent.putExtra(Intent.EXTRA_TEXT, "Hello, Appteam \nI want to report a bug/give feedback corresponding to the app Nimbus 2k16.\n.....\n\n-Your name");
+            startActivity(Intent.createChooser(intent,"Send Email"));*/
+
+
+            Intent intent=new Intent(Intent.ACTION_SENDTO);
+            String uriText="mailto:"+ Uri.encode("appteam.nith@gmail.com")+"?subject="+
+                    Uri.encode("Reporting A Bug/Feedback")  + "&body="+ Uri.encode("Hello, Appteam \nI want to report a bug/give feedback corresponding to the app Nimbus 2k16.\n.....\n\n-Your name");
+
+            Uri uri=Uri.parse(uriText);
+            intent.setData(uri);
+            startActivity(Intent.createChooser(intent,"Send Email"));
+        }else if(id==R.id.opensourcelicenses_nav){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(String.format("%1$s", getString(R.string.open_source_licenses)));
+            builder.setMessage(getResources().getText(R.string.licenses_text));
+            builder.setPositiveButton("OK", null);
+            //builder.setIcon(R.mipmap.nimbus_icon);
+            AlertDialog welcomeAlert = builder.create();
+            welcomeAlert.show();
+            ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+        }else if(id==R.id.contributors_nav){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(String.format("%1$s", getString(R.string.contributors)));
+            builder.setMessage(getResources().getText(R.string.contributors_text));
+            builder.setPositiveButton("OK", null);
+            //builder.setIcon(R.mipmap.nimbus_icon);
+            AlertDialog welcomeAlert = builder.create();
+            welcomeAlert.show();
+            ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        else if(id==R.id.notifications){
+            startActivity(new Intent(homeActivity.this, ViewActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

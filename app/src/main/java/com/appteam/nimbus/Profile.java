@@ -121,15 +121,14 @@ public class Profile extends AppCompatActivity {
               Log.d("RESPONSE-PROFILE",response.toString());
               try {
                   loadToast.success();
-
                   JSONObject data=response.getJSONObject("data");
                   String status=response.getString("status");
 
-                  if(status.equals("OK")){
+                  if(status.equals("ok")){
                       String email=data.getString("email");
                       user=new User();
                       user.setEmail(email);
-
+                      name_textview.setText(email);
                       String roll=null;
 
                       if(data.has("rollno")){
@@ -139,10 +138,7 @@ public class Profile extends AppCompatActivity {
                               user.setRoll(roll);
                           }
                       }
-
-                      name_textview.setText(email);
                   }
-
               } catch (JSONException e) {
                   e.printStackTrace();
               }
@@ -178,6 +174,6 @@ public class Profile extends AppCompatActivity {
     }
 
     private String getURL() {
-        return "https://festnimbus.herokuapp.com/api/user/me";
+        return "https://festnimbus.herokuapp.com/api/user/profile";
     }
 }

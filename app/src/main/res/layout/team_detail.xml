@@ -13,6 +13,8 @@
         android:orientation="vertical">
 
             <TextView
+                android:textSize="18sp"
+                android:textColor="@color/darktextcolor"
                 android:paddingTop="5dp"
                 android:paddingLeft="5dp"
                 android:paddingBottom="5dp"
@@ -26,10 +28,13 @@
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"/>
         <LinearLayout
+            android:background="@color/lightbackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:textSize="18sp"
+                android:textColor="@color/darktextcolor"
                 android:id="@+id/team_detail_description"
                 android:paddingTop="5dp"
                 android:paddingLeft="5dp"

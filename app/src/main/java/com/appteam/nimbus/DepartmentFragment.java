@@ -4,12 +4,16 @@ package com.appteam.nimbus;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 
 /**
@@ -28,14 +32,14 @@ public class DepartmentFragment extends Fragment {
     public DepartmentFragment() {
         // Required empty public constructor
     }
-public  static Fragment newInstance(String departmentname,String detail,int image_id,String teamDetail,String contactDetail ){
+public  static Fragment newInstance(String departmentname,String detail,String url,String teamDetail,String contactDetail ){
     DepartmentFragment fragment=new DepartmentFragment();
     Bundle bundle=new Bundle();
     bundle.putString(NAME,departmentname);
     bundle.putString(DETAIl,detail);
     bundle.putString(TEAM_DETAIl,teamDetail);
     bundle.putString(CONTACT_DETAIl,contactDetail);
-    bundle.putInt(IMAGE_ID,image_id);
+    bundle.putString(IMAGE_ID,url);
     fragment.setArguments(bundle);
     return  fragment;
 }
@@ -45,7 +49,7 @@ public  static Fragment newInstance(String departmentname,String detail,int imag
         super.onCreate(savedInstanceState);
         USER_NAME=getArguments().getString(NAME,"USERNAME");
         USER_DETAIL=getArguments().getString(DETAIl,"USER DETAIl");
-        USER_IMAGE_ID=getArguments().getString(USER_IMAGE_ID);
+        USER_IMAGE_ID=getArguments().getString(IMAGE_ID,"");
         USER_TEAM_DETAIL=getArguments().getString(TEAM_DETAIl,"Team Detail");
         USER_CONTACT_DETAIL=getArguments().getString(CONTACT_DETAIl,"Contact Detail");
 
@@ -76,6 +80,8 @@ public  static Fragment newInstance(String departmentname,String detail,int imag
         });
         textView_contact_detail.setText(USER_CONTACT_DETAIL);
         textView_team_detail.setText(USER_TEAM_DETAIL);
+        Log.d("url",USER_IMAGE_ID);
+        Glide.with(getActivity()).load(USER_IMAGE_ID).diskCacheStrategy(DiskCacheStrategy.SOURCE).error(R.drawable.nimbus4).into(imageView);
         return v;
     }
 

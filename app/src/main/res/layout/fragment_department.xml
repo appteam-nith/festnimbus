@@ -1,4 +1,5 @@
 <ScrollView
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -14,15 +15,17 @@
             android:layout_height="wrap_content"
             >
             <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
                 android:id="@+id/image_department"
                 app:siShape="@drawable/star"
-                android:src="@drawable/back_login"
-                app:siSquare="true"/>
+                app:siSquare="true"
+                />
 
             <TextView
+                android:textColor="#fff"
                 android:padding="10dp"
                 android:paddingLeft="10dp"
                 android:id="@+id/team_name_department"
@@ -35,6 +38,8 @@
         </RelativeLayout>
 
         <TextView
+            android:layout_marginBottom="15dp"
+            android:textColor="#fff"
             android:id="@+id/team_detail_department"
             android:textAppearance="@android:style/TextAppearance.Medium"
             android:padding="5dp"
@@ -51,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
             <Button
-                android:padding="5dp"
+                android:padding="14dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="More Details"

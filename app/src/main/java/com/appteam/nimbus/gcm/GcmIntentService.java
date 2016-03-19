@@ -21,24 +21,25 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.appteam.nimbus.MyApplication;
 import com.appteam.nimbus.MySingleton;
 import com.appteam.nimbus.PersonalData;
+import com.appteam.nimbus.R;
+import com.appteam.nimbus.app.Config;
 import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.appteam.nimbus.R;
-import com.appteam.nimbus.app.Config;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class GcmIntentService extends IntentService {
+
+
 
     PersonalData personalData;
     private LoadToast loadToast;

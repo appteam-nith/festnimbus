@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 public class DepartmentalTeam extends AppCompatActivity {
 
 MyAdapter adapter;
+    private String BASE_URL="https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/teams/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,6 @@ MyAdapter adapter;
 
     }
 
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -36,14 +36,16 @@ MyAdapter adapter;
     }
 
     public  class MyAdapter extends FragmentStatePagerAdapter{
-        String ClubName[]={"CHelix","Ojas","Medextrous","Vibhav",".eXe","DesignOCrats","Hermetica"};
+
+        String ClubName[]={"CHelix","DesignOCrats",".eXe","Hermetica","Medextrous","Ojas","Vibhav","Vitruvians"};
+        String LOGO[]={BASE_URL+"chelix.png",BASE_URL+"designocrats.png",BASE_URL+"exe.png",BASE_URL+"hermatica.png",BASE_URL+"medextrous.png",BASE_URL+"ojas.png",BASE_URL+"vibhav.png",BASE_URL+"vitruvians.png"};
         public MyAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            return DepartmentFragment.newInstance(ClubName[position],getDetail(ClubName[position]),0,getTeamDetail(ClubName[position]),getContactDetail(ClubName[position]));
+            return DepartmentFragment.newInstance(ClubName[position],getDetail(ClubName[position]),LOGO[position],getTeamDetail(ClubName[position]),getContactDetail(ClubName[position]));
         }
 
         @Override
