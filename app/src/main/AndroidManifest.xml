@@ -34,8 +34,7 @@
         <activity
             android:name=".homeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Splash"
             android:label="@string/app_name"
@@ -53,8 +52,9 @@
         <activity
             android:name=".Login"
             android:theme="@style/AppTheme.Login" />
-        <activity android:name=".app.ViewActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".app.ViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DepartmentalTeam"
             android:label="@string/title_activity_departmental_team"
@@ -143,10 +143,18 @@
         <!-- END Added for GCM -->
         <activity
             android:name=".RegisterHackathon"
-            android:theme="@style/AppTheme.Login"></activity>
+            android:theme="@style/AppTheme.Login" />
         <activity
             android:name=".SponserActivity"
             android:label="@string/title_activity_sponser"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.homeActivity" />
+        </activity>
+        <activity
+            android:name=".Leaderboard"
+            android:label="@string/title_activity_leaderboard"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

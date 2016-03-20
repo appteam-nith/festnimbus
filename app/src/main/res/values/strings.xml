@@ -121,4 +121,5 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
     <string name="Vitruvians_contact_detail">Contact detail of Vitruvians</string>
 
     <string name="title_activity_sponser">SponserActivity</string>
+    <string name="title_activity_leaderboard">Leaderboard</string>
 </resources>
