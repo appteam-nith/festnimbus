@@ -129,6 +129,10 @@ private ImageLoader imageLoader;
 
             return true;
         }
+        else if(id==R.id.action_leaderboard){
+            startActivity(new Intent(homeActivity.this,Leaderboard.class));
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
