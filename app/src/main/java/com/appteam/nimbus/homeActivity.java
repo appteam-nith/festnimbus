@@ -11,7 +11,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,10 +75,8 @@ private ImageLoader imageLoader;
         findViewById(R.id.welcome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(homeActivity.this,AboutNimbusSplash.class);
-                intent.putExtra(SHOW_OPTION,true);
-                startActivity(intent);
-                overridePendingTransition(R.anim.open_next, R.anim.open_main);
+                Intent browser=new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.festnimbus.com"));
+                startActivity(browser);
             }
         });
         findViewById(R.id.sponsors).setOnClickListener(new View.OnClickListener() {
@@ -146,8 +143,6 @@ private ImageLoader imageLoader;
         if (id == R.id.navigation_to_profile) {
             // Handle the camera action
             Intent i=new Intent(homeActivity.this,Profile.class);
-
-            Log.v("gdsga","gfgrrrr");
             startActivity(i);
 
         }else if(id==R.id.aboutus_nav){

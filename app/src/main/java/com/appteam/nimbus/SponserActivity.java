@@ -25,6 +25,13 @@ public class SponserActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.close_main, R.anim.close_next);
+    }
+
 public  class MyAdapter extends FragmentStatePagerAdapter{
 private String sponser_type[]={"Educational Partner","Electronics Partner","Food Partner","Sponsors"};
     public MyAdapter(FragmentManager fm) {
