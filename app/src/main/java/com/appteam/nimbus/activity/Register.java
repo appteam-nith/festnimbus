@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,12 +23,12 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.appteam.nimbus.helper.Connection;
-import com.appteam.nimbus.singleton.MySingleton;
-import com.appteam.nimbus.model.PersonalData;
 import com.appteam.nimbus.R;
-import com.appteam.nimbus.helper.Utils;
 import com.appteam.nimbus.app.MyApplication;
+import com.appteam.nimbus.helper.Connection;
+import com.appteam.nimbus.helper.Utils;
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.singleton.MySingleton;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -41,28 +42,33 @@ import java.util.regex.Pattern;
 
 
 public class Register extends AppCompatActivity {
-PersonalData personalData;
+    PersonalData personalData;
     private LoadToast loadToast;
     boolean isemail=true,ispassword=true,isphone=true,isnitian=false,isValidRollNo=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-       personalData=new PersonalData(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Register");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        personalData=new PersonalData(this);
         loadToast=new LoadToast(this);
         final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(checkBox.isChecked()){
-                findViewById(R.id.body_roll_registar).setVisibility(View.VISIBLE);
-                isnitian=true;
-                // added focus on roll number field
-                // findViewById(R.id.rollno_registar).set
+                    findViewById(R.id.body_roll_registar).setVisibility(View.VISIBLE);
+                    isnitian=true;
+                    // added focus on roll number field
+                    // findViewById(R.id.rollno_registar).set
                 }
                 else{
                     findViewById(R.id.body_roll_registar).setVisibility(View.GONE);
-                isnitian=false;}
+                    isnitian=false;}
             }
         });
 
@@ -90,10 +96,10 @@ PersonalData personalData;
                     Boolean isInternetPresent = cd.isInternet();
                     if(isInternetPresent)
                     {
-                    loadToast.setText("LOADING");
-                    loadToast.show();
-                    sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString().toUpperCase().trim(),isnitian);
-                }else{
+                        loadToast.setText("LOADING");
+                        loadToast.show();
+                        sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString().toUpperCase().trim(),isnitian);
+                    }else{
                         Toast.makeText(Register.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -163,7 +169,7 @@ PersonalData personalData;
                     confirmTextInputLayout.setErrorEnabled(false);
                     ispassword=true;
                 }
-                                else {
+                else {
                     confirmTextInputLayout.setError("PASSWORD DOES NOT MATCH");
                     ispassword=false;
                 }
@@ -184,11 +190,11 @@ PersonalData personalData;
             @Override
             public void afterTextChanged(Editable editable) {
                 if(phoneno.getText().toString().length()==10){
-                phonenoTextInputLayout.setErrorEnabled(false);
-                isphone=true;}
+                    phonenoTextInputLayout.setErrorEnabled(false);
+                    isphone=true;}
                 else {
-                phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
-                isphone=false;
+                    phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
+                    isphone=false;
                 }
             }
         });
@@ -214,7 +220,7 @@ PersonalData personalData;
                 Matcher m=p.matcher(input.toUpperCase().trim());
 
                 if(m.matches()){
-                   rollnoTextInputLayout.setErrorEnabled(false);
+                    rollnoTextInputLayout.setErrorEnabled(false);
                     isValidRollNo=true;
                 }else{
                     rollnoTextInputLayout.setErrorEnabled(true);
@@ -222,7 +228,7 @@ PersonalData personalData;
                     rollnoTextInputLayout.setError("Enter Valid RollNo");
                 }
 
-              }
+            }
         });
 
     }
@@ -238,28 +244,28 @@ PersonalData personalData;
         Log.d("json",new JSONObject(params).toString());
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,getURL(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("qw",""+response.toString());
-                try {
-                    if(response.has("message")){
-                      String message=response.getString("message");
-                        Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
-                        loadToast.error();
-                    }else{
-                        if(response.getString("data").equals("Registered Successfully")){
-                            loadToast.success();
-                            startActivity(new Intent(Register.this, Login.class));
-                            finish();}
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("qw",""+response.toString());
+                        try {
+                            if(response.has("message")){
+                                String message=response.getString("message");
+                                Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
+                                loadToast.error();
+                            }else{
+                                if(response.getString("data").equals("Registered Successfully")){
+                                    loadToast.success();
+                                    startActivity(new Intent(Register.this, Login.class));
+                                    finish();}
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            loadToast.error();
+                        }
+
                     }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    loadToast.error();
-                }
-
-            }
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 loadToast.error();

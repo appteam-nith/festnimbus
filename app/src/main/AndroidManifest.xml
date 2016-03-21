@@ -76,7 +76,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.Register"
-            android:theme="@style/AppTheme.Login" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appteam.nimbus.activity.Login" />
+        </activity>
         <activity
             android:name=".activity.Profile"
             android:parentActivityName=".activity.homeActivity"
