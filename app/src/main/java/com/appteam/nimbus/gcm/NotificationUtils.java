@@ -23,7 +23,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.Patterns;
 
-import com.appteam.nimbus.MyApplication;
+import com.appteam.nimbus.app.MyApplication;
 import com.appteam.nimbus.R;
 import com.appteam.nimbus.app.Config;
 import com.appteam.nimbus.app.MyDbHelper;

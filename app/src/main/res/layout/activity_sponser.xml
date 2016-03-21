@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@drawable/background"
-    tools:context="com.appteam.nimbus.SponserActivity">
+    tools:context=".activity.SponserActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
