@@ -39,9 +39,9 @@ import java.util.Map;
 public class RegisterHackathon extends AppCompatActivity {
 private String pref1,pref2,pref3;
     private LoadToast loadToast;
-    private EditText email,skill;
-    private TextInputLayout emailTextInputLayout,skillTextInputLayout;
-    private boolean isemail=false,isskill=false,ispref1=true,ispref2=true,ispref3=true;
+    private EditText email,skill,projectideas,suggestions;
+    private TextInputLayout emailTextInputLayout,skillTextInputLayout,projectideasTextInputLayout,suggestionsTextInputLayout;
+    private boolean isemail=false,isskill=false,ispref1=true,ispref2=true,ispref3=true,isprojectideas=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +52,16 @@ private String pref1,pref2,pref3;
         Spinner preference3= (Spinner) findViewById(R.id.spinner_preference3);
         email= (EditText) findViewById(R.id.email_registar_hackathon);
         skill= (EditText) findViewById(R.id.skill_registar_hackathon);
+        projectideas= (EditText) findViewById(R.id.projectideas_edittext);
+        suggestions= (EditText) findViewById(R.id.suggestions_edittext);
         emailTextInputLayout= (TextInputLayout) findViewById(R.id.email_registar_hackathon_textinputLayout);
         skillTextInputLayout= (TextInputLayout) findViewById(R.id.skill_registar_hackathon_textinputLayout);
+        projectideasTextInputLayout= (TextInputLayout) findViewById(R.id.projectideas_textinputlayout);
+        suggestionsTextInputLayout= (TextInputLayout) findViewById(R.id.suggestions_textinputlayout);
         loadToast=new LoadToast(this);
-        final String mentor_first_name[]={"First Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Sahil Badyal"};
-        final String mentor_second_name[]={"Second Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Sahil Badyal"};
-        final String mentor_third_name[]={"Third Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Sahil Badyal"};
+        final String mentor_first_name[]={"First Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Kunal Sharma","Shubham Rana"};
+        final String mentor_second_name[]={"Second Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Kunal Sharma","Shubham Rana"};
+        final String mentor_third_name[]={"Third Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Kunal Sharma","Shubham Rana"};
         ArrayAdapter<String> adapter_first=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mentor_first_name);
         adapter_first.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ArrayAdapter<String> adapter_second=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mentor_second_name);
@@ -82,7 +86,7 @@ private String pref1,pref2,pref3;
             public void afterTextChanged(Editable editable) {
                 if (Utils.checkData(email.getText().toString())) {
                     emailTextInputLayout.setErrorEnabled(false);
-                    isemail=true;
+                    isemail = true;
                 } else {
                     emailTextInputLayout.setError("PLEASE ENTER THE NAME");
                     isemail = false;
@@ -111,6 +115,48 @@ private String pref1,pref2,pref3;
                 }
                }
         });
+
+        projectideas.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (Utils.checkData(projectideas.getText().toString())) {
+                    projectideasTextInputLayout.setErrorEnabled(false);
+                    isprojectideas=true;
+                } else {
+                    projectideasTextInputLayout.setError("PLEASE ENTER FIELD");
+                    isprojectideas = false;
+                }
+            }
+        });
+
+        suggestions.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
         preference1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -181,10 +227,16 @@ pref3="";
             @Override
             public void onClick(View view) {
                 if(new Connection(RegisterHackathon.this).isInternet()){
-                    if(isskill&&isemail&&ispref1&&ispref2&&ispref3){
+                    if(isskill&&isemail&&ispref1&&ispref2&&ispref3&&isprojectideas){
                         loadToast.setText("Loading");
                         loadToast.show();
-                        sendRegisterRequest(getURL(),email.getText().toString(),skill.getText().toString(),pref1,pref2,pref3);
+                        String ideas=projectideas.getText().toString();
+                        String suggess="";
+                        if(suggestions.getText()!=null){
+                            suggess=suggestions.getText().toString();
+                        }
+
+                        sendRegisterRequest(getURL(),email.getText().toString(),skill.getText().toString(),ideas,suggess,pref1,pref2,pref3);
                     }
                     else {
                         Toast.makeText(RegisterHackathon.this,"PLEASE ENTER THE  REQUIRED DETAIL",Toast.LENGTH_SHORT).show();
@@ -196,7 +248,7 @@ pref3="";
             }
         });
     }
-    private  void sendRegisterRequest(String url,String name,String skill,String pref1,String pref2,String pref3){
+    private  void sendRegisterRequest(String url,String name,String skill,String ideas,String suggess,String pref1,String pref2,String pref3){
         PersonalData personalData=new PersonalData(RegisterHackathon.this);
         Map<String,String> params=new HashMap<String, String>();
         params.put("name",name);
@@ -204,6 +256,8 @@ pref3="";
         params.put("email",personalData.getEMAIL());
         params.put("rollno",personalData.getROLLNO());
         params.put("phoneno",personalData.getPHONENO());
+        params.put("projectideas",ideas);
+        params.put("suggesstions",suggess);
         params.put("preference1",pref1);
         params.put("preference2",pref2);
         params.put("preference3",pref3);
