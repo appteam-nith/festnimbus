@@ -96,15 +96,14 @@ private String pref1,pref2,pref3;
 
             @Override
             public void afterTextChanged(Editable editable) {
-if(Utils.checkData(skill.getText().toString())){
-    skillTextInputLayout.setError("Seprate Skill must be seprated by , ");
-    isskill=true;
-}
+                skillTextInputLayout.setErrorEnabled(false);
+                if(Utils.checkData(skill.getText().toString())){
+                isskill=true;}
                 else {
-    isskill=false;
-    skillTextInputLayout.setError("Please enter ur Skills");
-}
-            }
+                isskill=false;
+                 skillTextInputLayout.setError("Please Enter ur Skills");
+                }
+               }
         });
         preference1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
