@@ -152,7 +152,7 @@ private ImageLoader imageLoader;
             builder.setTitle(String.format("%1$s", getString(R.string.app_name)));
             builder.setMessage(getResources().getText(R.string.aboutus_text));
             builder.setPositiveButton("OK", null);
-            builder.setIcon(R.mipmap.nimbus_icon);
+            builder.setIcon(R.mipmap.nimbus16);
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());

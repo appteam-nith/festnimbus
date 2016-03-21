@@ -47,7 +47,7 @@ public class CoreTeamAdapter extends RecyclerView.Adapter<CoreTeamAdapter.ViewHo
             viewHolder.designation.setText(list.get(i).designation);
         }
         if(!list.get(i).url.isEmpty()&&list.get(i).url.length()!=0){
-            Glide.with(context).load(list.get(i).url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(R.drawable.person_icon).error(R.mipmap.nimbus_icon).transform(new Utils.CircleTransform(context)).into(viewHolder.imageView);
+            Glide.with(context).load(list.get(i).url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(R.drawable.person_icon).error(R.mipmap.nimbus16).transform(new Utils.CircleTransform(context)).into(viewHolder.imageView);
         }
     }
     @Override
