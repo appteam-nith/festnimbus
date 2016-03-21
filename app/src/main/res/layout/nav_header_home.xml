@@ -16,14 +16,14 @@
         android:layout_height="60dp"
         android:padding="5dp"
         android:layout_marginTop="25dp"
-        android:src="@mipmap/nimbus_icon"
+        android:src="@mipmap/nimbus16"
         android:scaleType="centerCrop"
         android:id="@+id/imageView" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="AppTeam NITH"
+        android:text="NIMBUS 2k16"
         android:id="@+id/name_text"
         android:textColor="#505050"
         android:textSize="22sp"

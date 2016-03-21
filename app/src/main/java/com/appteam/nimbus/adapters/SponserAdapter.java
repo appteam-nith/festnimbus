@@ -38,7 +38,7 @@ private Context context;
             holder.name.setText(list.get(position).name);
         }
         if(!list.get(position).name.isEmpty()&&list.get(position).name.length()!=0){
-            Glide.with(context).load(list.get(position).image_url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(R.drawable.person_icon).error(R.mipmap.nimbus_icon).into(holder.imageView);
+            Glide.with(context).load(list.get(position).image_url).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder(R.drawable.person_icon).error(R.mipmap.nimbus16).into(holder.imageView);
         }
     }
 

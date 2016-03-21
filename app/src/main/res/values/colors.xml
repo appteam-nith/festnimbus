@@ -5,7 +5,7 @@
     <color name="colorAccent">#81C3D7</color>
     <color name="new_color">#7D7D7D</color>
     <color name="textColorPrimary">#7D7D7D</color>
-<color name="lightbackground">#E4F1FE</color>
+    <color name="lightbackground">#E4F1FE</color>
     <color name="darktextcolor">#22312F</color>
     <color name="secondary_text">#64b5ce</color>
     <color name="appbarcolor">#003180</color>

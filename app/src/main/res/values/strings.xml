@@ -65,9 +65,11 @@
 </string>
 
     <string name="licenses_text">The following are third party software/api that are used in Nimbus app.\n\n
-\t<a href="https://github.com/siyamed/android-shape-imageview">Android Shape ImageView</a>\n\n
+\t<a href="https://github.com/bumptech/glide">Glide</a>\n\n
 \t<a href="https://github.com/mcxiaoke/android-volley">Android Volley Library</a>\n\n
-\t<a href="https://github.com/code-mc/loadtoast">Load Toast</a>
+\t<a href="https://github.com/code-mc/loadtoast">Load Toast</a>\n\n
+\t<a href="https://github.com/siyamed/android-shape-imageview">Android Shape ImageView</a>
+
     </string>
 
     <string name="hackathon_content">by AppTeam\n2nd - 3rd April, 8am - 8pm\nVenue: Auditorium\n\n
@@ -121,4 +123,5 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
     <string name="Vitruvians_contact_detail">Contact detail of Vitruvians</string>
 
     <string name="title_activity_sponser">SponserActivity</string>
+    <string name="title_activity_leaderboard">Leaderboard</string>
 </resources>

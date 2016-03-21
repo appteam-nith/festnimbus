@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
             <TextView
+
                 android:textColor="@color/darktextcolor"
                 android:paddingTop="5dp"
                 android:paddingLeft="5dp"
