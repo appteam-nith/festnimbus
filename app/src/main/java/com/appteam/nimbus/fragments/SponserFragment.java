@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.fragments;
 
 
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.appteam.nimbus.R;
 import com.appteam.nimbus.adapters.SponserAdapter;
 import com.appteam.nimbus.model.SponsorItem;
 

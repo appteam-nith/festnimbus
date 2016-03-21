@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.fragments;
 
 
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.appteam.nimbus.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 

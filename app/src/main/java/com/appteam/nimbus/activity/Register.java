@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +22,12 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.appteam.nimbus.helper.Connection;
+import com.appteam.nimbus.singleton.MySingleton;
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.R;
+import com.appteam.nimbus.helper.Utils;
+import com.appteam.nimbus.app.MyApplication;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -65,7 +71,7 @@ PersonalData personalData;
         final EditText confirmPassword= (EditText) findViewById(R.id.confirmPassword_registar);
         final EditText phoneno= (EditText) findViewById(R.id.phoneno_registar);
         final EditText rollno= (EditText) findViewById(R.id.rollno_registar);
-        isemail=Utils.checkData(email.getText().toString());
+        isemail= Utils.checkData(email.getText().toString());
         ispassword=Utils.checkData(password.getText().toString());
         isphone=Utils.checkData(phoneno.getText().toString());
         final TextInputLayout emailTextInputLayout= (TextInputLayout) findViewById(R.id.email_registar_textinputLayout);

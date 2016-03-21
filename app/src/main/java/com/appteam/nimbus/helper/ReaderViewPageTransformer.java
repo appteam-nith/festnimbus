@@ -1,11 +1,11 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.helper;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 
 public  class ReaderViewPageTransformer implements ViewPager.PageTransformer {
-    static enum TransformType {
+    public static enum TransformType {
         FLOW,
         DEPTH,
         ZOOM,
@@ -13,7 +13,7 @@ public  class ReaderViewPageTransformer implements ViewPager.PageTransformer {
     }
     private final TransformType mTransformType;
 
-    ReaderViewPageTransformer(TransformType transformType) {
+    public ReaderViewPageTransformer(TransformType transformType) {
         mTransformType = transformType;
     }
 

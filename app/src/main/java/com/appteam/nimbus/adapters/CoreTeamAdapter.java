@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.appteam.nimbus.MySingleton;
+import com.appteam.nimbus.singleton.MySingleton;
 import com.appteam.nimbus.R;
-import com.appteam.nimbus.Utils;
+import com.appteam.nimbus.helper.Utils;
 import com.appteam.nimbus.model.ItemCoreTeam;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

@@ -1,10 +1,11 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.appteam.nimbus.R;
 import com.appteam.nimbus.adapters.CoreTeamAdapter;
 import com.appteam.nimbus.model.ItemCoreTeam;
 

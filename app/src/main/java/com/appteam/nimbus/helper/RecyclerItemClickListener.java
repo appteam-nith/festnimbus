@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.helper;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

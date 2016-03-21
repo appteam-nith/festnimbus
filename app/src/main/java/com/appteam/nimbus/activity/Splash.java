@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,6 +15,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.R;
 import com.appteam.nimbus.app.Config;
 import com.appteam.nimbus.gcm.GcmIntentService;
 import com.google.android.gms.common.ConnectionResult;

@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.singleton;
 
 import android.content.Context;
 import android.graphics.Bitmap;

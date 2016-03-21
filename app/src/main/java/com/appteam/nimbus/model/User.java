@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +17,13 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.appteam.nimbus.helper.Connection;
+import com.appteam.nimbus.singleton.MySingleton;
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.R;
+import com.appteam.nimbus.helper.Utils;
 import com.appteam.nimbus.adapters.LeaderboardAdapter;
+import com.appteam.nimbus.app.MyApplication;
 import com.appteam.nimbus.model.LeaderboardItem;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -55,7 +61,7 @@ public class Leaderboard extends AppCompatActivity {
 
         loadToast = new LoadToast(this);
         loadToast.setText("Loading");
-        loadToast.setTranslationY((int) Utils.convertDpToPixel(70,Leaderboard.this));
+        loadToast.setTranslationY((int) Utils.convertDpToPixel(70, Leaderboard.this));
 
         recyclerView = (RecyclerView) findViewById(R.id.list_leaderboard);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

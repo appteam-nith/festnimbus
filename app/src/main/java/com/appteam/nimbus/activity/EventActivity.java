@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import com.appteam.nimbus.R;
 import com.appteam.nimbus.adapters.EventsAdapter;
 import com.appteam.nimbus.model.EventClass;
 import com.appteam.nimbus.model.TeamClass;

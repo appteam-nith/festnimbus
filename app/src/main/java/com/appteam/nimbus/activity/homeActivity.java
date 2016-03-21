@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.R;
 import com.appteam.nimbus.app.ViewActivity;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

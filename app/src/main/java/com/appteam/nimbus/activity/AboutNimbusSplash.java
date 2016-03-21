@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.R;
 
 public class AboutNimbusSplash extends AppCompatActivity{
 

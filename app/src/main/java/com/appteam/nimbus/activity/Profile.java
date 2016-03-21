@@ -1,4 +1,4 @@
-package com.appteam.nimbus;
+package com.appteam.nimbus.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,12 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.appteam.nimbus.singleton.MySingleton;
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.R;
+import com.appteam.nimbus.model.User;
+import com.appteam.nimbus.helper.Utils;
+import com.appteam.nimbus.app.MyApplication;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -112,7 +118,7 @@ public class Profile extends AppCompatActivity {
 
         loadToast=new LoadToast(Profile.this);
         loadToast.setText("LOADING");
-        loadToast.setTranslationY((int) Utils.convertDpToPixel(20,Profile.this));
+        loadToast.setTranslationY((int) Utils.convertDpToPixel(20, Profile.this));
         loadToast.show();
 
       final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(getURL(), new Response.Listener<JSONObject>() {
