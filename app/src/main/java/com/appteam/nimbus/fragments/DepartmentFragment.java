@@ -82,7 +82,7 @@ public  static Fragment newInstance(String departmentname,String detail,String u
         textView_contact_detail.setText(USER_CONTACT_DETAIL);
         textView_team_detail.setText(USER_TEAM_DETAIL);
         Log.d("url",USER_IMAGE_ID);
-        Glide.with(getActivity()).load(USER_IMAGE_ID).diskCacheStrategy(DiskCacheStrategy.SOURCE).error(R.drawable.nimbus4).into(imageView);
+        Glide.with(getActivity()).load(USER_IMAGE_ID).diskCacheStrategy(DiskCacheStrategy.SOURCE).error(getResources().getColor(R.color.lightbackground)).into(imageView);
         return v;
     }
 
