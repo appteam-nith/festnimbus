@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
                 Log.d("response_login",""+response.toString());
                 try {
                     if(response.has("status")){
-                        if(response.getString("status").equals("Login Successfull")){
+                        if(response.getString("status").equals("Successfully Login!")){
                             startActivity(new Intent(Login.this,homeActivity.class));
                             String token=response.getString("data");
                             personalData.SaveToken(token);

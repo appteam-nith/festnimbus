@@ -298,7 +298,7 @@ public class Register extends AppCompatActivity {
 
 
     private String getURL() {
-        return "https://festnimbus.herokuapp.com/api/user/register";
+        return "https://festnimbus.herokuapp.com/api/user";
     }
 
 
