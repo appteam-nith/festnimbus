@@ -118,7 +118,7 @@ public class Profile extends AppCompatActivity {
 
         loadToast=new LoadToast(Profile.this);
         loadToast.setText("LOADING");
-        loadToast.setTranslationY((int) Utils.convertDpToPixel(70, Profile.this));
+        loadToast.setTranslationY((int) Utils.convertDpToPixel(20, Profile.this));
         loadToast.show();
 
       final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(getURL(), new Response.Listener<JSONObject>() {
@@ -130,7 +130,7 @@ public class Profile extends AppCompatActivity {
                   JSONObject data=response.getJSONObject("data");
                   String status=response.getString("status");
 
-                  if(status.equals("User Profile Info")){
+                  if(status.equals("ok")){
                       String email=data.getString("email");
                       user=new User();
                       user.setEmail(email);

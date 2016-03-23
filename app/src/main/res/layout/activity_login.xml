@@ -60,7 +60,7 @@
                    android:id="@+id/user_login"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:hint="Email"
+                   android:hint="Username"
                    android:textColorHint="#50707070" />
            </android.support.design.widget.TextInputLayout>
           <android.support.design.widget.TextInputLayout
