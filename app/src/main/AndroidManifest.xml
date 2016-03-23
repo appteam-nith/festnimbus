@@ -99,6 +99,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.homeActivity" />
         </activity>
+        <activity
+            android:name=".activity.EventRegisterActivity"
+            android:label="EVENT REGISTER"
+            android:parentActivityName=".activity.EventActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.EventActivity" />
+        </activity>
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"

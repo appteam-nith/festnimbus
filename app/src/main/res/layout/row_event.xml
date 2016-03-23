@@ -5,6 +5,7 @@
     android:layout_margin="5dp"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="8dp"
+    android:id="@+id/root_event_cardview"
     card_view:cardUseCompatPadding="true"
     android:layout_width="120dp"
     android:layout_height="200dp">
