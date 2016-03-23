@@ -43,7 +43,6 @@ public class PersonalData {
         editor.putString(EMAIL, email);
         editor.putString(ROLLNO, rollno);
         editor.putString(PHONENO, phoneno);
-        editor.commit();
     }
 
     public boolean getStatus() {
