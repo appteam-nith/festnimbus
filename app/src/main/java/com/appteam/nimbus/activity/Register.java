@@ -44,7 +44,7 @@ import java.util.regex.Pattern;
 public class Register extends AppCompatActivity {
     PersonalData personalData;
     private LoadToast loadToast;
-    boolean isemail=true,ispassword=true,isphone=true,isnitian=false,isValidRollNo=false;
+    boolean isemail=true,ispassword=true,isname=true,isnitian=false,isValidRollNo=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,21 +75,21 @@ public class Register extends AppCompatActivity {
         final EditText email= (EditText) findViewById(R.id.email_registar);
         final EditText password= (EditText) findViewById(R.id.password_registar);
         final EditText confirmPassword= (EditText) findViewById(R.id.confirmPassword_registar);
-        final EditText phoneno= (EditText) findViewById(R.id.phoneno_registar);
+        final EditText name= (EditText) findViewById(R.id.name_register);
         final EditText rollno= (EditText) findViewById(R.id.rollno_registar);
         isemail= Utils.checkData(email.getText().toString());
         ispassword=Utils.checkData(password.getText().toString());
-        isphone=Utils.checkData(phoneno.getText().toString());
+        isname=Utils.checkData(name.getText().toString());
         final TextInputLayout emailTextInputLayout= (TextInputLayout) findViewById(R.id.email_registar_textinputLayout);
         final TextInputLayout passwordTextInputLayout= (TextInputLayout) findViewById(R.id.password_registar_textinputLayout);
         final TextInputLayout confirmTextInputLayout= (TextInputLayout) findViewById(R.id.confirmPassword_registar_textinputLayout);
-        final TextInputLayout phonenoTextInputLayout= (TextInputLayout) findViewById(R.id.phone_registar_textinputLayout);
+        final TextInputLayout nameTextInputLayout= (TextInputLayout) findViewById(R.id.name_register_textinputLayout);
         final TextInputLayout rollnoTextInputLayout= (TextInputLayout) findViewById(R.id.rollno_registar_textinputLayout);
 
         findViewById(R.id.registar_Btn_registar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if((isemail&&ispassword&&isphone&&(isnitian==false)||(isemail&&ispassword&&isphone&&isnitian&&isValidRollNo))){
+                if((isemail&&ispassword&&isname&&(isnitian==false)||(isemail&&ispassword&&isname&&isnitian&&isValidRollNo))){
 
                     Connection cd = new Connection(getApplicationContext());
 
@@ -98,7 +98,7 @@ public class Register extends AppCompatActivity {
                     {
                         loadToast.setText("LOADING");
                         loadToast.show();
-                        sendRequest(email.getText().toString(),password.getText().toString(),phoneno.getText().toString(),rollno.getText().toString().toUpperCase().trim(),isnitian);
+                        sendRequest(email.getText().toString(),password.getText().toString(),name.getText().toString(),rollno.getText().toString().toUpperCase().trim(),isnitian);
                     }else{
                         Toast.makeText(Register.this,"Internet Connection Not Available!!",Toast.LENGTH_SHORT).show();
                     }
@@ -176,7 +176,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        phoneno.addTextChangedListener(new TextWatcher() {
+        name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -189,12 +189,12 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(phoneno.getText().toString().length()==10){
-                    phonenoTextInputLayout.setErrorEnabled(false);
-                    isphone=true;}
-                else {
-                    phonenoTextInputLayout.setError("NOT VALID PHONE NUMBER");
-                    isphone=false;
+                if (Utils.checkData(name.getText().toString())) {
+                    nameTextInputLayout.setErrorEnabled(false);
+                    isname = true;
+                } else {
+                    nameTextInputLayout.setError("Enter a valid name");
+                    isname = false;
                 }
             }
         });
@@ -236,7 +236,7 @@ public class Register extends AppCompatActivity {
 
     private void sendRequest(final String string, String string1, final String string2, final String string3, boolean nitian) {
         Map<String,String> params=new HashMap<String, String>();
-        params.put("mobile",string2);
+        params.put("name",string2);
         params.put("email",string);
         params.put("password",string1);
         params.put("rollno",string3);

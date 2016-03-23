@@ -119,20 +119,20 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_action_call"/>
+                        android:src="@drawable/ic_action_person"/>
                     <android.support.design.widget.TextInputLayout
                         android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/phone_registar_textinputLayout" >
+                        android:id="@+id/name_register_textinputLayout" >
                         <EditText
                             android:textColor="#fff"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Phone Number"
+                            android:hint="Name"
                             android:textColorHint="#fff"
-                            android:id="@+id/phoneno_registar" />
+                            android:id="@+id/name_register" />
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
                 <CheckBox
