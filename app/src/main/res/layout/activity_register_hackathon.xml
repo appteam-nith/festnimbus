@@ -13,15 +13,57 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/email_registar_hackathon_textinputLayout">
+            android:id="@+id/name_registar_hackathon_textinputLayout">
             <EditText
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
+                android:id="@+id/name_registar_hackathon" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_registar_hackathon_textinputLayout">
+            <EditText
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
                 android:id="@+id/email_registar_hackathon" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rollno_registar_hackathon_textinputLayout">
+            <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Roll Number"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:id="@+id/rollno_registar_hackathon" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneno_registar_hackathon_textinputLayout">
+            <EditText
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:id="@+id/phoneno_registar_hackathon" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_marginTop="20dp"
