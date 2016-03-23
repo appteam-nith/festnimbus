@@ -56,6 +56,7 @@ public class Register extends AppCompatActivity {
 
         personalData=new PersonalData(this);
         loadToast=new LoadToast(this);
+        loadToast.setTranslationY((int) Utils.convertDpToPixel(70, Register.this));
         final CheckBox checkBox= (CheckBox) findViewById(R.id.choice_register);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,6 +256,7 @@ public class Register extends AppCompatActivity {
                             }else{
                                 if(response.getString("data").equals("Registered Successfully")){
                                     loadToast.success();
+                                    personalData.SaveDetail(string,string3,string2);
                                     startActivity(new Intent(Register.this, Login.class));
                                     finish();}
                             }
