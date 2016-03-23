@@ -3,7 +3,6 @@ package com.appteam.nimbus.adapters;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +40,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 
             ArrayList<EventClass> event_list=list.get(i).getEvents();
 
-            Log.v("Events list item",event_list.get(0).getName());
+         //   Log.v("Events list item", event_list.get(0).getName());
 
-            // list.add(new ItemCoreTeam("Prof.Rajnish Srivastava","Director",R.drawable.person_icon));
             NestedEventListAdapter adapter1=new NestedEventListAdapter(event_list,context);
             viewHolder.horizontal_recycler.setAdapter(adapter1);
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(context);

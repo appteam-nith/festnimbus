@@ -1,9 +1,11 @@
 package com.appteam.nimbus.model;
 
+import java.io.Serializable;
+
 /**
  * Created by sukhbir on 7/3/16.
  */
-public class EventClass {
+public class EventClass implements Serializable{
     private String id;
     private String name;
     private String short_des;
