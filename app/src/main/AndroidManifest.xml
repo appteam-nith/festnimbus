@@ -138,7 +138,7 @@
         <!-- END Added for GCM -->
         <activity
             android:name=".activity.RegisterHackathon"
-            android:theme="@style/AppTheme.Login" />
+            android:theme="@style/AppTheme.Login"/>
         <activity
             android:name=".activity.SponserActivity"
             android:label="@string/title_activity_sponser"

@@ -1,16 +1,14 @@
 package com.appteam.nimbus.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,56 +19,72 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.appteam.nimbus.helper.Connection;
-import com.appteam.nimbus.singleton.MySingleton;
-import com.appteam.nimbus.model.PersonalData;
+import com.android.volley.toolbox.StringRequest;
 import com.appteam.nimbus.R;
-import com.appteam.nimbus.helper.Utils;
 import com.appteam.nimbus.app.MyApplication;
+import com.appteam.nimbus.helper.Connection;
+import com.appteam.nimbus.helper.Utils;
+import com.appteam.nimbus.singleton.MySingleton;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
-import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterHackathon extends AppCompatActivity {
-private String pref1,pref2,pref3;
     private LoadToast loadToast;
-    private EditText email,skill,projectideas,suggestions;
-    private TextInputLayout emailTextInputLayout,skillTextInputLayout,projectideasTextInputLayout,suggestionsTextInputLayout;
-    private boolean isemail=false,isskill=false,ispref1=true,ispref2=true,ispref3=true,isprojectideas=false;
+    private EditText email, skill, projectideas, suggestions,name,rollno,phoneno;
+    private TextInputLayout emailTextInputLayout, skillTextInputLayout, projectideasTextInputLayout,nameTextInputLayout,roolnoTextInputLayout,phonenoTextInputLayout;
+    private boolean isemail = false, isskill = false, isprojectideas = false,isname=false;
+    private boolean isphone=false;
+    private boolean isValidRollNo=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_hackathon);
-        Spinner preference1= (Spinner) findViewById(R.id.spinner_preference1);
-        Spinner preference2= (Spinner) findViewById(R.id.spinner_preference2);
-        Spinner preference3= (Spinner) findViewById(R.id.spinner_preference3);
-        email= (EditText) findViewById(R.id.email_registar_hackathon);
-        skill= (EditText) findViewById(R.id.skill_registar_hackathon);
-        projectideas= (EditText) findViewById(R.id.projectideas_edittext);
-        suggestions= (EditText) findViewById(R.id.suggestions_edittext);
-        emailTextInputLayout= (TextInputLayout) findViewById(R.id.email_registar_hackathon_textinputLayout);
-        skillTextInputLayout= (TextInputLayout) findViewById(R.id.skill_registar_hackathon_textinputLayout);
-        projectideasTextInputLayout= (TextInputLayout) findViewById(R.id.projectideas_textinputlayout);
-        suggestionsTextInputLayout= (TextInputLayout) findViewById(R.id.suggestions_textinputlayout);
-        loadToast=new LoadToast(this);
-        final String mentor_first_name[]={"First Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Kunal Sharma","Shubham Rana"};
-        final String mentor_second_name[]={"Second Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Kunal Sharma","Shubham Rana"};
-        final String mentor_third_name[]={"Third Preference As Mentor","Akarshit Wal","Pradyot","Shubham Choudhary","Himanshu Singh","Sagar Karira","Prateek Prasher","Akshendra Pratap","Prikshit Tekta","Mayank Bansal","Kunal Sharma","Shubham Rana"};
-        ArrayAdapter<String> adapter_first=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mentor_first_name);
-        adapter_first.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ArrayAdapter<String> adapter_second=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mentor_second_name);
-        adapter_second.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        ArrayAdapter<String> adapter_third=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mentor_third_name);
-        adapter_third.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        preference1.setAdapter(adapter_first);
-        preference2.setAdapter(adapter_second);
-        preference3.setAdapter(adapter_third);
+        name= (EditText) findViewById(R.id.name_registar_hackathon);
+        rollno= (EditText) findViewById(R.id.rollno_registar_hackathon);
+        phoneno= (EditText) findViewById(R.id.phoneno_registar_hackathon);
+        email = (EditText) findViewById(R.id.email_registar_hackathon);
+        skill = (EditText) findViewById(R.id.skill_registar_hackathon);
+        projectideas = (EditText) findViewById(R.id.projectideas_edittext);
+        suggestions = (EditText) findViewById(R.id.suggestions_edittext);
+        emailTextInputLayout = (TextInputLayout) findViewById(R.id.email_registar_hackathon_textinputLayout);
+        skillTextInputLayout = (TextInputLayout) findViewById(R.id.skill_registar_hackathon_textinputLayout);
+        projectideasTextInputLayout = (TextInputLayout) findViewById(R.id.projectideas_textinputlayout);
+        nameTextInputLayout= (TextInputLayout) findViewById(R.id.name_registar_hackathon_textinputLayout);
+        roolnoTextInputLayout= (TextInputLayout) findViewById(R.id.rollno_registar_hackathon_textinputLayout);
+        phonenoTextInputLayout= (TextInputLayout) findViewById(R.id.phoneno_registar_hackathon_textinputLayout);
+        loadToast = new LoadToast(this);
+
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (Utils.checkData(name.getText().toString())) {
+                    nameTextInputLayout.setErrorEnabled(false);
+                    isname = true;
+                } else {
+                    nameTextInputLayout.setError("PLEASE ENTER THE NAME");
+                    isname= false;
+                }
+            }
+        });
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -84,11 +98,11 @@ private String pref1,pref2,pref3;
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (Utils.checkData(email.getText().toString())) {
+                if (Utils.checkData(email.getText().toString())&& Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
                     emailTextInputLayout.setErrorEnabled(false);
                     isemail = true;
                 } else {
-                    emailTextInputLayout.setError("PLEASE ENTER THE NAME");
+                    emailTextInputLayout.setError("PLEASE ENTER THE VALID EMAIL");
                     isemail = false;
                 }
             }
@@ -107,13 +121,13 @@ private String pref1,pref2,pref3;
             @Override
             public void afterTextChanged(Editable editable) {
                 skillTextInputLayout.setErrorEnabled(false);
-                if(Utils.checkData(skill.getText().toString())){
-                isskill=true;}
-                else {
-                isskill=false;
-                 skillTextInputLayout.setError("Please Enter ur Skills");
+                if (Utils.checkData(skill.getText().toString())) {
+                    isskill = true;
+                } else {
+                    isskill = false;
+                    skillTextInputLayout.setError("Please Enter ur Skills");
                 }
-               }
+            }
         });
 
         projectideas.addTextChangedListener(new TextWatcher() {
@@ -131,15 +145,14 @@ private String pref1,pref2,pref3;
             public void afterTextChanged(Editable editable) {
                 if (Utils.checkData(projectideas.getText().toString())) {
                     projectideasTextInputLayout.setErrorEnabled(false);
-                    isprojectideas=true;
+                    isprojectideas = true;
                 } else {
-                    projectideasTextInputLayout.setError("PLEASE ENTER FIELD");
+                    projectideasTextInputLayout.setError("PLEASE ENTER THE PROJECT IDEAS");
                     isprojectideas = false;
                 }
             }
         });
-
-        suggestions.addTextChangedListener(new TextWatcher() {
+        phoneno.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -152,153 +165,127 @@ private String pref1,pref2,pref3;
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                if (Utils.checkData(phoneno.getText().toString())&&phoneno.getText().toString().length()==10) {
+                    phonenoTextInputLayout.setErrorEnabled(false);
+                    isphone = true;
+                } else {
+                    phonenoTextInputLayout.setError("PLEASE ENTER THE PHONE NUMBER");
+                    isphone= false;
+                }
             }
         });
-
-
-        preference1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        rollno.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                pref1=mentor_first_name[i];
-                if(pref1!=null&&pref2!=null&&pref3!=null){
-                    if(!(pref1.equals("First Preference As Mentor")&&pref2.equals("Second Preference As mentor")&&pref3.equals("Third Preference As Mentor")))
-                    if(pref1.equals("First Preference As Mentor")||pref1.equals(pref2)||pref1.equals(pref3)){
-                        Toast.makeText(RegisterHackathon.this,"PLEASE SELECT ANY OTHER MENTOR AS FIRST PREFERENCE ",Toast.LENGTH_SHORT).show();
-                        ispref1=false;
-                    }
-                    else {
-                        ispref1=true;
-                    }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                String input=rollno.getText().toString();
+                String ptr="((1(4|5)MI5((0[1-9])|([1-5][0-9])|60))|(1(4|5)M[1-5]((0[1-9])|([1-5][0-9])|60))|(15MI4((0[1-9])|([1-5][0-9])|60))|(1[1-5][1-6]((0[1-9])|([1-8][0-9])|90))|(IIITU1(4|5)(1|2)((0[1-9])|([1-2][0-9])|30)))";
+
+                Pattern p=Pattern.compile(ptr);
+                Matcher m=p.matcher(input.toUpperCase().trim());
+
+                if(m.matches()){
+                    roolnoTextInputLayout.setErrorEnabled(false);
+                    isValidRollNo=true;
+                }else{
+                    roolnoTextInputLayout.setErrorEnabled(true);
+                    isValidRollNo=false;
+                    roolnoTextInputLayout.setError("Enter Valid RollNo");
                 }
 
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-pref1="";
-            }
         });
-        preference2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                pref2=mentor_second_name[i];
-                if(pref1!=null&&pref2!=null&&pref3!=null){
-                    if(!(pref1.equals("First Preference As Mentor")&&pref2.equals("Second Preference As mentor")&&pref3.equals("Third Preference As Mentor")))
-                    if(pref2.equals("Second Preference As Mentor")||pref2.equals(pref1)||pref2.equals(pref3)){
-                        Toast.makeText(RegisterHackathon.this,"PLEASE SELECT ANY OTHER MENTOR AS SECOND PREFERENCE",Toast.LENGTH_SHORT).show();
-                        ispref2=false;
-                    }
-                    else {
-                        ispref2=true;
-                    }
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-pref2="";
-            }
-        });
-preference3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        pref3=mentor_third_name[i];
-        if(pref1!=null&&pref2!=null&&pref3!=null){
-            if(!(pref1.equals("First Preference As Mentor")&&pref2.equals("Second Preference As Mentor")&&pref3.equals("Third Preference As Mentor")))
-            if(pref3.equals("Third Preference As Mentor")||pref3.equals(pref2)||pref3.equals(pref1)){
-                Toast.makeText(RegisterHackathon.this,"PLEASE SELECT ANY OTHER MENTOR AS THIRD PREFERENCE",Toast.LENGTH_SHORT).show();
-                ispref3=false;
-            }
-            else {
-                ispref3=true;
-            }
-        }
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-pref3="";
-    }
-});
-         findViewById(R.id.button_register_hackathon).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_register_hackathon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(new Connection(RegisterHackathon.this).isInternet()){
-                    if(isskill&&isemail&&ispref1&&ispref2&&ispref3&&isprojectideas){
+                if (new Connection(RegisterHackathon.this).isInternet()) {
+                    if (isskill && isemail && isprojectideas&&isname&&isphone&&isValidRollNo) {
                         loadToast.setText("Loading");
                         loadToast.show();
-                        String ideas=projectideas.getText().toString();
-                        String suggess="";
-                        if(suggestions.getText()!=null){
-                            suggess=suggestions.getText().toString();
+                        String ideas = projectideas.getText().toString();
+                        String suggess = "";
+                        if (suggestions.getText() != null) {
+                            suggess = suggestions.getText().toString();
                         }
 
-                        sendRegisterRequest(getURL(),email.getText().toString(),skill.getText().toString(),ideas,suggess,pref1,pref2,pref3);
+                        sendRegisterRequest(getURL(),name.getText().toString(), skill.getText().toString(), ideas, suggess,email.getText().toString(),phoneno.getText().toString(),rollno.getText().toString());
+                    } else {
+                        Toast.makeText(RegisterHackathon.this, "PLEASE ENTER THE  REQUIRED DETAIL", Toast.LENGTH_SHORT).show();
                     }
-                    else {
-                        Toast.makeText(RegisterHackathon.this,"PLEASE ENTER THE  REQUIRED DETAIL",Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(RegisterHackathon.this,"PLEASE CONNECT TO INTERNET",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegisterHackathon.this, "PLEASE CONNECT TO INTERNET", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    private  void sendRegisterRequest(String url,String name,String skill,String ideas,String suggess,String pref1,String pref2,String pref3){
-        PersonalData personalData=new PersonalData(RegisterHackathon.this);
-        Map<String,String> params=new HashMap<String, String>();
-        params.put("name",name);
-        params.put("skill",skill);
-        params.put("email",personalData.getEMAIL());
-        params.put("rollno",personalData.getROLLNO());
-        params.put("phoneno",personalData.getPHONENO());
-        params.put("projectideas",ideas);
-        params.put("suggesstions",suggess);
-        params.put("preference1",pref1);
-        params.put("preference2",pref2);
-        params.put("preference3",pref3);
-        Log.d("json",new JSONObject(params).toString());
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,url, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        loadToast.success();
-                    }
-                }, new Response.ErrorListener() {
+
+    private void sendRegisterRequest(String url, final String name, final String skill, final String ideas, final String suggess, final String email, final String phoneno, final String rollno) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String result=getResponse(response);
+                              if(!result.equals("Already Registered !")){
+                                    Toast.makeText(RegisterHackathon.this,result,Toast.LENGTH_SHORT).show();
+                                       loadToast.success();
+                                       startActivity(new Intent(RegisterHackathon.this,homeActivity.class));
+                                      finish();
+                                   }
+                              else {
+                                       Toast.makeText(RegisterHackathon.this,result,Toast.LENGTH_LONG).show();
+                                      loadToast.error();
+                                  }
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 loadToast.error();
-                error.printStackTrace();
-                NetworkResponse networkResponse=error.networkResponse;
-                if(networkResponse!=null){
-                    if(networkResponse.statusCode==401){
-                        Toast.makeText(RegisterHackathon.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
-                    }
-                    if(error instanceof TimeoutError){
-                        Toast.makeText(RegisterHackathon.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
-                    }
-                    else if(error instanceof ServerError){
-                        Toast.makeText(RegisterHackathon.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
-                    }
-                }
-
+                              error.printStackTrace();
+                              NetworkResponse networkResponse=error.networkResponse;
+                              if(networkResponse!=null){
+                                     if(networkResponse.statusCode==401){
+                                               Toast.makeText(RegisterHackathon.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
+                                     }
+                                      if(error instanceof TimeoutError){
+                                               Toast.makeText(RegisterHackathon.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
+                                           }
+                                       else if(error instanceof ServerError){
+                                               Toast.makeText(RegisterHackathon.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
+                                           }
+                                  }
             }
-        }){
+        }) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String,String> headerMap=new HashMap<>();
-                headerMap.put("Content-type","application/json");
-                return headerMap;
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<>();
+                map.put("emailid",email);
+                map.put("name", name);
+                map.put("rollno",rollno);
+                map.put("phoneno",phoneno);
+                map.put("languageinterested", skill);
+                map.put("projectidea", ideas);
+                map.put("suggestions", suggess);
+                return map;
             }
         };
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000,5,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(jsonObjectRequest);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(10000,5,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(stringRequest);
     }
+    private  String getResponse(String response ) {
+           Document document= Jsoup.parse(response);
+           String string=document.getElementsByTag("p").text();
+            return string;
+        }
     private String getURL() {
-        return "https://festnimbus.herokuapp.com/api/user/register";
+        return "http://hackathonnith.herokuapp.com/newentry";
     }
 }

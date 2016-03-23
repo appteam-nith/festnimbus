@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.appteam.nimbus.homeActivity">
+    tools:context="com.appteam.nimbus.activity.Register">
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-    <RelativeLayout
+    <ScrollView
         android:layout_marginTop="55dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background"
         tools:context=".Register">
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
@@ -41,6 +41,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginTop="19dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_action_person"/>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/name_register_textinputLayout" >
+                        <EditText
+                            android:textColor="#fff"
+                            android:inputType="text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Name"
+                            android:textColorHint="#fff"
+                            android:id="@+id/name_register" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -110,31 +135,6 @@
                             android:id="@+id/confirmPassword_registar" />
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_marginTop="19dp"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_action_person"/>
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/name_register_textinputLayout" >
-                        <EditText
-                            android:textColor="#fff"
-                            android:inputType="text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Name"
-                            android:textColorHint="#fff"
-                            android:id="@+id/name_register" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
                 <CheckBox
                     android:backgroundTint="#fff"
                     android:buttonTint="@color/colorAccent"
@@ -196,7 +196,7 @@
                         android:background="#81C3D7"/>
                 </android.support.v7.widget.CardView>
             </LinearLayout>
-        </ScrollView>
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

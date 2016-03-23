@@ -31,9 +31,10 @@
             android:textSize="15sp"/>
     </LinearLayout>
     <ImageView
+        android:id="@+id/video_img"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/linear_list"
-        android:src="@drawable/placeholder_1"
+        android:src="@drawable/placeholder_2"
         android:layout_width="250dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"

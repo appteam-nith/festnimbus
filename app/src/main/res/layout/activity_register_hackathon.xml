@@ -13,15 +13,57 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/email_registar_hackathon_textinputLayout">
+            android:id="@+id/name_registar_hackathon_textinputLayout">
             <EditText
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
+                android:id="@+id/name_registar_hackathon" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_registar_hackathon_textinputLayout">
+            <EditText
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
                 android:id="@+id/email_registar_hackathon" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rollno_registar_hackathon_textinputLayout">
+            <EditText
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Roll Number"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:id="@+id/rollno_registar_hackathon" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneno_registar_hackathon_textinputLayout">
+            <EditText
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:id="@+id/phoneno_registar_hackathon" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_marginTop="20dp"
@@ -32,7 +74,7 @@
                 android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Skills (Related to CSE/IT)"
+                android:hint="Language Interested"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:id="@+id/skill_registar_hackathon" />
@@ -68,34 +110,7 @@
                 android:textColorHint="#fff"
                 android:id="@+id/suggestions_edittext" />
         </android.support.design.widget.TextInputLayout>
-        <TextView
-            android:textAppearance="@android:style/TextAppearance.Large"
-            android:textColor="@color/colorAccent"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Preferences for the Mentor"/>
-        <Spinner
-            android:background="#81C3D7"
-            android:layout_marginTop="20dp"
-            android:id="@+id/spinner_preference1"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            />
-        <Spinner
-            android:background="#81C3D7"
-            android:layout_marginTop="20dp"
-            android:id="@+id/spinner_preference2"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            />
-        <Spinner
-            android:background="#81C3D7"
-            android:layout_marginTop="20dp"
-            android:id="@+id/spinner_preference3"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            />
+
         <Button
             android:textColor="#01478C"
             android:textAppearance="@android:style/TextAppearance.Large"
