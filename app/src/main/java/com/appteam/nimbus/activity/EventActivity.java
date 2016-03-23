@@ -72,7 +72,7 @@ public class EventActivity extends AppCompatActivity{
             loadToast=new LoadToast(EventActivity.this);
 
             loadToast.setText("LOADING");
-            loadToast.setTranslationY((int) Utils.convertDpToPixel(20, EventActivity.this));
+            loadToast.setTranslationY((int) Utils.convertDpToPixel(70, EventActivity.this));
 
             loadToast.show();
 
@@ -85,7 +85,7 @@ public class EventActivity extends AppCompatActivity{
             loadToast=new LoadToast(EventActivity.this);
 
             loadToast.setText("LOADING");
-            loadToast.setTranslationY((int) Utils.convertDpToPixel(20, EventActivity.this));
+            loadToast.setTranslationY((int) Utils.convertDpToPixel(70, EventActivity.this));
 
             loadToast.show();
 

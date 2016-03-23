@@ -67,7 +67,7 @@ public class NestedEventListAdapter extends RecyclerView.Adapter<NestedEventList
                 loadToast=new LoadToast(context);
 
                 loadToast.setText("LOADING");
-                loadToast.setTranslationY((int) Utils.convertDpToPixel(20, context));
+                loadToast.setTranslationY((int) Utils.convertDpToPixel(70, context));
 
                 if(!current_event.getName().equals("Coming Soon")){
                     loadToast.show();
