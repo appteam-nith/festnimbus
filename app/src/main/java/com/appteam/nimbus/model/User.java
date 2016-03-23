@@ -9,7 +9,7 @@ public class User implements Serializable{
 
     private String email;
     private String roll;
-    private String phone;
+    private String name;
     private int silverCoins,goldCoins;
     private int collegeRank;
     private String eventRank;
@@ -30,12 +30,12 @@ public class User implements Serializable{
         this.roll = roll;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getName() {
+        return name;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSilverCoins() {

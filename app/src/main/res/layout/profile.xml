@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/name_profile"
         android:textColor="@color/textColorPrimary"
-        android:text="YOUR NAME"
+        android:text="Name"
         android:textSize="20sp"
         android:layout_marginLeft="24dp"
         android:layout_width="wrap_content"
@@ -33,16 +33,16 @@
         android:id="@+id/username_profile"
         android:layout_marginBottom="10dp"
         android:textColor="@color/textColorPrimary"
-        android:text="YOUR USERNAME"
+        android:text="Rollno."
         android:textSize="20sp"
         android:layout_marginLeft="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/phone_profile"
+        android:id="@+id/email_profile"
         android:layout_marginBottom="10dp"
         android:textColor="@color/textColorPrimary"
-        android:text="+91 9880000000"
+        android:text="E-mail"
         android:textSize="20sp"
         android:layout_marginLeft="24dp"
         android:layout_width="wrap_content"

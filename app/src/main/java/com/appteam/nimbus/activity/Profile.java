@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class Profile extends AppCompatActivity {
 
-    TextView name_textview,username_textview,phone_textview,silverCoins_textview,goldCoins_textview,
+    TextView name_textview,email_textview,username_textview,silverCoins_textview,goldCoins_textview,
             collegeRank_textview,eventsWithRank_textview;
 
     private static final String KEY_INDEX = "profileSaveOnRotation";
@@ -53,8 +53,8 @@ public class Profile extends AppCompatActivity {
         }
 
         name_textview=(TextView)findViewById(R.id.name_profile);
+        email_textview=(TextView)findViewById(R.id.email_profile);
         username_textview=(TextView)findViewById(R.id.username_profile);
-        phone_textview=(TextView)findViewById(R.id.phone_profile);
         silverCoins_textview=(TextView)findViewById(R.id.silverCoins_profile);
         goldCoins_textview=(TextView)findViewById(R.id.goldCoins_profile);
         collegeRank_textview=(TextView)findViewById(R.id.collegeRank_profile);
@@ -84,7 +84,7 @@ public class Profile extends AppCompatActivity {
             Log.v("Note","user retrieved from saveInstance");
 
             if(user.getEmail()!=null){
-                name_textview.setText(user.getEmail());
+                email_textview.setText(user.getEmail());
             }
 
             if(user.getRoll()!=null){
@@ -100,15 +100,15 @@ public class Profile extends AppCompatActivity {
             }
 
             if(user.getGoldCoins()!=0){
-                goldCoins_textview.setText(user.getGoldCoins());
+                goldCoins_textview.setText(Integer.toString(user.getGoldCoins()));
             }
 
             if(user.getSilverCoins()!=0){
-                silverCoins_textview.setText(user.getSilverCoins());
+                silverCoins_textview.setText(Integer.toString(user.getSilverCoins()));
             }
 
-            if(user.getPhone()!=null){
-                phone_textview.setText(user.getPhone());
+            if(user.getName()!=null){
+                name_textview.setText(user.getName());
             }
 
         }
@@ -130,11 +130,20 @@ public class Profile extends AppCompatActivity {
                   JSONObject data=response.getJSONObject("data");
                   String status=response.getString("status");
 
-                  if(status.equals("ok")){
+                  if(status.equals("User Profile Info")){
                       String email=data.getString("email");
+                      String name=data.getString("name");
+                      int silver_coins=Integer.parseInt(data.getString("silver_coins"));
+                      int gold_coins=Integer.parseInt(data.getString("gold_coins"));
                       user=new User();
                       user.setEmail(email);
-                      name_textview.setText(email);
+                      user.setName(name);
+                      user.setGoldCoins(gold_coins);
+                      user.setSilverCoins(silver_coins);
+                      email_textview.setText(email);
+                      name_textview.setText(name);
+                      silverCoins_textview.setText(Integer.toString(silver_coins));
+                      goldCoins_textview.setText(Integer.toString(gold_coins));
                       String roll=null;
 
                       if(data.has("rollno")){
