@@ -2,6 +2,7 @@ package com.appteam.nimbus.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -67,6 +68,13 @@ public class AboutNimbusSplash extends AppCompatActivity{
             }
         }
 
+        findViewById(R.id.video_img).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browser=new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.youtube.com/watch?v=I7lKXzRwcV0"));
+                startActivity(browser);
+            }
+        });
 
         next.setRotation(-90);
 
