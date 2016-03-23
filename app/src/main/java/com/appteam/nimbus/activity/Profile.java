@@ -118,7 +118,7 @@ public class Profile extends AppCompatActivity {
 
         loadToast=new LoadToast(Profile.this);
         loadToast.setText("LOADING");
-        loadToast.setTranslationY((int) Utils.convertDpToPixel(20, Profile.this));
+        loadToast.setTranslationY((int) Utils.convertDpToPixel(70, Profile.this));
         loadToast.show();
 
       final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(getURL(), new Response.Listener<JSONObject>() {
