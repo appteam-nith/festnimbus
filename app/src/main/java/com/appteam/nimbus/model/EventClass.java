@@ -1,6 +1,7 @@
 package com.appteam.nimbus.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by sukhbir on 7/3/16.
@@ -9,7 +10,70 @@ public class EventClass implements Serializable{
     private String id;
     private String name;
     private String short_des;
+    private String long_des;
+    private String contact;
+    private String timeline;
+    private String __v;
+    private ArrayList<String> rules;
     private String url;
+    private String Dname;
+    private String teamname;
+
+    public String getLong_des() {
+        return long_des;
+    }
+
+    public void setLong_des(String long_des) {
+        this.long_des = long_des;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(String timeline) {
+        this.timeline = timeline;
+    }
+
+    public String get__v() {
+        return __v;
+    }
+
+    public void set__v(String __v) {
+        this.__v = __v;
+    }
+
+    public ArrayList getRules() {
+        return rules;
+    }
+
+    public void setRules(ArrayList<String> rules) {
+        this.rules = rules;
+    }
+
+    public String getDname() {
+        return Dname;
+    }
+
+    public void setDname(String dname) {
+        Dname = dname;
+    }
+
+    public String getTeamname() {
+        return teamname;
+    }
+
+    public void setTeamname(String teamname) {
+        this.teamname = teamname;
+    }
 
     public EventClass(){
     }

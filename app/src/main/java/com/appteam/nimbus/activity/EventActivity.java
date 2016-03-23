@@ -35,7 +35,9 @@ public class EventActivity extends AppCompatActivity{
     RecyclerView recyclerView;
     EventsAdapter adapter;
     LoadToast loadToast;
-    String teamNameArray[]={"EXE","EXE","APPTEAM"};
+
+    String teamNameArray[]={"EXE","EXE","APPTEAM"};  //jUST cHANGE tHE ARRAY VALUES FOR MORE REQUESTS
+
     private ArrayList<TeamClass> list;
     int globalResponseCount=0;
     public static String KEY_EVENTS_ARRAY="events array";
@@ -142,6 +144,7 @@ public class EventActivity extends AppCompatActivity{
 
                             for(int k=0;k<eventsArray.length();k++){
                                 EventClass e1=new EventClass();
+                                e1.setTeamname(teamName);
                                 e1.setName(eventsArray.get(k).toString());
                                 Log.v("respose", "event found: "+eventsArray.get(k).toString());
                                 events1.add(e1);
@@ -150,6 +153,12 @@ public class EventActivity extends AppCompatActivity{
                             if(eventsArray.length()==0){
                                 EventClass event1=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
                                 EventClass event2=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
+                                event1.setTeamname("None");
+                                event2.setTeamname("None");
+                                events1.add(event1);
+                                events1.add(event2);
+                                events1.add(event1);
+                                events1.add(event2);
                                 events1.add(event1);
                                 events1.add(event2);
                             }
@@ -162,6 +171,12 @@ public class EventActivity extends AppCompatActivity{
                         ArrayList <EventClass> events1=new ArrayList<>();
                             EventClass event1=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
                             EventClass event2=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
+                            event1.setTeamname("None");
+                            event2.setTeamname("None");
+                            events1.add(event1);
+                            events1.add(event2);
+                            events1.add(event1);
+                            events1.add(event2);
                             events1.add(event1);
                             events1.add(event2);
                         team1.setEvents(events1);
@@ -194,6 +209,8 @@ public class EventActivity extends AppCompatActivity{
                 team1.setTeamname("Coming Soon");
                 EventClass event1=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
                 EventClass event2=new EventClass("56cb1c03ed77fec80e88ef71","Coming Soon","A Nice Event","");
+                event1.setTeamname("None");
+                event2.setTeamname("None");
 
                 ArrayList<EventClass> events=new ArrayList<>();
                 events.add(event1);
