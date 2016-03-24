@@ -1,11 +1,13 @@
 package com.appteam.nimbus.activity;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,9 +26,11 @@ import com.appteam.nimbus.singleton.MySingleton;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +42,7 @@ public class EventRegisterActivity extends AppCompatActivity {
     EventClass event;
     LoadToast loadToast;
     TextView text;
+    ImageView error_image;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,33 +62,34 @@ public class EventRegisterActivity extends AppCompatActivity {
         loadToast.setText("LOADING");
         loadToast.setTranslationY((int) Utils.convertDpToPixel(20, EventRegisterActivity.this));
         text=(TextView)findViewById(R.id.description);
+        error_image=(ImageView)findViewById(R.id.error_image);
+        error_image.setVisibility(View.GONE);
+        final int newColor = getResources().getColor(R.color.new_color);
+        error_image.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+
         String toshow="";
-        toshow="by "+event.getTeamname()+" ( "+event.getDname()+" )\n\n"+event.getTimeline()+"\n\n";
-        toshow+=event.getShort_des()+"\n\nRules:-\n\n";
 
-        for(int i=0;i<event.getRules().size();i++){
-            toshow+=""+(i+1)+". "+event.getRules().get(i)+"\n\n";
-        }
-
-        toshow+="Contact Number: "+event.getContact();
-
+        toshow+="Please wait...\n\n\n";
         text.setText(toshow);
+
+        findViewById(R.id.hackathon_register_button).setVisibility(View.GONE);
 
         findViewById(R.id.hackathon_register_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getRequest(event);
+                getRegistrationRequest(event);
                 loadToast.show();
             }
         });
 
+        loadToast.show();
+        getRequest();
+
     }
 
-    private void getRequest(final EventClass current_event) {
+    private void getRegistrationRequest(final EventClass current_event) {
 
-        Log.v("Sending registration Req", "for event " + current_event.getName());
-
-        final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.PUT,getURL(current_event.getName()), new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.PUT,getURLForRegistration(current_event.getName()), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("RESPONSE-Registration", response.toString());
@@ -122,9 +128,162 @@ public class EventRegisterActivity extends AppCompatActivity {
         MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(jsonObjectRequest);
     }
 
-    private String getURL(String eventName) {
+    private String getURLForRegistration(String eventName) {
         return "https://festnimbus.herokuapp.com/api/user/"+eventName;
     }
 
+    private void getRequest() {
+
+        Log.v("Sending request", "for team " + event.getTeamname()+"/"+event.getName());
+
+        final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(getURL(event.getTeamname(),event.getName()), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("RESPONSE", response.toString());
+
+                loadToast.success();
+
+                try {
+                    String status=response.getString("status");
+                    if(status.equals("Success!")){
+                        JSONArray data=response.getJSONArray("data");
+
+                        if(data.length()==0){
+                            text.setText("Details about event is currently unavailable.\n\n");
+
+                            error_image.setVisibility(View.VISIBLE);
+                        }else{
+                            for(int j=0;j<data.length();j++) {
+                                JSONObject dataValue = (JSONObject) data.get(j);
+
+                                if(dataValue.has("_id")){
+                                    event.setId(dataValue.getString("_id"));
+                                    Log.v("eventcard-respose", "id found");
+                                }
+
+                                if(dataValue.has("Ename")){
+                                    event.setName(dataValue.getString("Ename"));
+                                    Log.v("eventcard-respose", "ename found");
+                                }
+
+                                if(dataValue.has("Dname")){
+                                    event.setDname(dataValue.getString("Dname"));
+                                    Log.v("eventcard-respose", "dname found");
+                                }else{
+                                    event.setDname("NA");
+                                }
+
+                                if(dataValue.has("Tname")){
+                                    event.setTeamname(dataValue.getString("Tname"));
+                                    Log.v("eventcard-respose", "tname found");
+                                }else{
+                                    event.setTeamname("NA");
+                                }
+
+                                if(dataValue.has("shortD")){
+                                    event.setShort_des(dataValue.getString("shortD"));
+                                    Log.v("eventcard-respose", "shortD found");
+                                }else{
+                                    event.setShort_des("Currently Not Available");
+                                }
+
+                                if(dataValue.has("longD")){
+                                    event.setLong_des(dataValue.getString("longD"));
+                                    Log.v("eventcard-respose", "longD found");
+                                }else{
+                                    event.setLong_des(" ");
+                                }
+
+                                if(dataValue.has("Contact")){
+                                    event.setContact(dataValue.getString("Contact"));
+                                    //Log.v("eventcard-respose", "longD found");
+                                }else{
+                                    event.setContact("NA");
+                                }
+
+                                if(dataValue.has("timeline")){
+                                    event.setTimeline(dataValue.getString("timeline"));
+                                    //Log.v("eventcard-respose", "longD found");
+                                }else{
+                                    event.setTimeline("NA");
+                                }
+
+                                if(dataValue.has("__v")){
+                                    event.set__v(dataValue.getString("__v"));
+                                    //Log.v("eventcard-respose", "longD found");
+                                }
+
+                                if(dataValue.has("rules")){
+                                    JSONArray rulesResponse=dataValue.getJSONArray("rules");
+
+                                    ArrayList<String> ruleslist=new ArrayList<>();
+
+                                    for(int k=0;k<rulesResponse.length();k++){
+                                        ruleslist.add(rulesResponse.get(k).toString());
+                                    }
+
+                                    if(rulesResponse.length()==0){
+                                        ruleslist.add("NA");
+                                    }
+
+                                    event.setRules(ruleslist);
+                                }
+                            }
+
+                            String toshow="by "+event.getTeamname()+" ( "+event.getDname()+" )\n\n"+event.getTimeline()+"\n\n";
+                            toshow+=event.getShort_des()+"\n\nRules:-\n\n";
+
+                            if(event.getRules()!=null)
+                                if(!event.getRules().get(0).equals("NA")){
+                                    for(int i=0;i<event.getRules().size();i++){
+
+                                        toshow+=""+(i+1)+". "+event.getRules().get(i)+"\n\n";
+                                    }
+                                }
+
+                            toshow+="Contact Number: "+event.getContact();
+
+                            text.setText(toshow);
+                            findViewById(R.id.hackathon_register_button).setVisibility(View.VISIBLE);
+                        }
+
+                        loadToast.success();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    loadToast.error();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                loadToast.error();
+                error.printStackTrace();
+
+                text.setText("Details about event is currently unavailable.");
+                error_image.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    private String getURL(String teamName,String eventName) {
+
+        if(teamName.contains(" ")){
+           teamName=teamName.replaceAll("\\s+","");
+        }
+        if(eventName.contains(" ")){
+            eventName=eventName.replaceAll("\\s+","");
+        }
+
+        Log.v("URL: ","https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+eventName);
+        return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+eventName;
+    }
 
 }
