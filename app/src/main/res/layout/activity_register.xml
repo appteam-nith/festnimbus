@@ -107,6 +107,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/password_registar_textinputLayout">
                         <EditText
+                            android:fontFamily="@string/title_core_team"
                             android:textColor="#fff"
                             android:inputType="textPassword"
                             android:layout_width="match_parent"
@@ -126,6 +127,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/confirmPassword_registar_textinputLayout">
                         <EditText
+                            android:fontFamily="@string/title_core_team"
                             android:textColor="#fff"
                             android:inputType="textPassword"
                             android:layout_width="match_parent"
