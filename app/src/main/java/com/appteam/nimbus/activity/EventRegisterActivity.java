@@ -43,22 +43,18 @@ public class EventRegisterActivity extends AppCompatActivity {
     LoadToast loadToast;
     TextView text;
     ImageView error_image;
+    private static String KEY_STRING="key string message";
+    private static String KEY_EVENT="key event";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hackathon);
         CollapsingToolbarLayout collapsingToolbarLayout= (CollapsingToolbarLayout) findViewById(R.id.collapse_toolbar);
-
-        event=(EventClass)getIntent().getSerializableExtra("eventPassed");
-
-        collapsingToolbarLayout.setTitle(event.getName());
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         loadToast=new LoadToast(EventRegisterActivity.this);
-
         loadToast.setText("LOADING");
         loadToast.setTranslationY((int) Utils.convertDpToPixel(20, EventRegisterActivity.this));
         text=(TextView)findViewById(R.id.description);
@@ -69,10 +65,29 @@ public class EventRegisterActivity extends AppCompatActivity {
 
         String toshow="";
 
-        toshow+="Please wait...\n\n\n";
-        text.setText(toshow);
+        if (savedInstanceState != null) {
+            toshow = (String) savedInstanceState.getString(KEY_STRING);
+            event=(EventClass) savedInstanceState.getSerializable(KEY_EVENT);
 
-        findViewById(R.id.hackathon_register_button).setVisibility(View.GONE);
+            if(toshow.contains("Details about event is currently unavailable.")){
+                findViewById(R.id.hackathon_register_button).setVisibility(View.GONE);
+                error_image.setVisibility(View.VISIBLE);
+            }else{
+                findViewById(R.id.hackathon_register_button).setVisibility(View.VISIBLE);
+            }
+        }else{
+            toshow+="Please wait...\n\n\n";
+            event=(EventClass)getIntent().getSerializableExtra("eventPassed");
+            findViewById(R.id.hackathon_register_button).setVisibility(View.GONE);
+
+            loadToast.show();
+            getRequest();
+
+        }
+
+        collapsingToolbarLayout.setTitle(event.getName());
+
+        text.setText(toshow);
 
         findViewById(R.id.hackathon_register_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,10 +96,6 @@ public class EventRegisterActivity extends AppCompatActivity {
                 loadToast.show();
             }
         });
-
-        loadToast.show();
-        getRequest();
-
     }
 
     private void getRegistrationRequest(final EventClass current_event) {
@@ -282,8 +293,15 @@ public class EventRegisterActivity extends AppCompatActivity {
             eventName=eventName.replaceAll("\\s+","");
         }
 
-        Log.v("URL: ","https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+eventName);
+        Log.v("URL: ", "https://festnimbus.herokuapp.com/api/teams/" + teamName + "/" + eventName);
         return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+eventName;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString(KEY_STRING, text.getText().toString());
+        savedInstanceState.putSerializable(KEY_EVENT, event);
     }
 
 }
