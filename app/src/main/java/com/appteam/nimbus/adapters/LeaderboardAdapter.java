@@ -17,7 +17,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
     private ArrayList<LeaderboardItem> list = new ArrayList<>();
     private String Status;
-private  boolean isclick=false;
+    private  boolean isclick=false;
     public void setStatus(String status) {
         Status = status;
     }
@@ -39,11 +39,11 @@ private  boolean isclick=false;
         int Ranking=++pos;
         holder.rank.setText(Ranking+".");
 
+        if (!list.get(position).name.isEmpty() && list.get(position).name.length() != 0) {
+            holder.name.setText(list.get(position).name);
+        }
         if (!list.get(position).email.isEmpty() && list.get(position).email.length() != 0) {
             holder.email.setText(list.get(position).email);
-        }
-        if (list.get(position).mobile != 0) {
-            holder.mobile.setText(""+list.get(position).mobile);
         }
         if (list.get(position).events_register.length != 0) {
             String eventarray[] = list.get(position).events_register;
@@ -106,7 +106,7 @@ private  boolean isclick=false;
     }
 
     public static class viewHolder extends RecyclerView.ViewHolder {
-        TextView rank, email, coin1, coin2, mobile, event,rollno;
+        TextView rank, email, coin1, coin2, mobile, event,rollno,name;
         ImageView gold_image, silver_image;
          ViewGroup linear;
         View border;
@@ -116,10 +116,10 @@ private  boolean isclick=false;
             linear= (ViewGroup) itemView.findViewById(R.id.linear_data);
             rollno= (TextView) itemView.findViewById(R.id.textview_rollno);
             rank = (TextView) itemView.findViewById(R.id.textview_no);
-            email = (TextView) itemView.findViewById(R.id.textview_email);
+            name = (TextView) itemView.findViewById(R.id.textview_name);
             coin1 = (TextView) itemView.findViewById(R.id.textview_coin);
             coin2 = (TextView) itemView.findViewById(R.id.textview_other_coin);
-            mobile = (TextView) itemView.findViewById(R.id.textview_mobile);
+            email = (TextView) itemView.findViewById(R.id.textview_email);
             event = (TextView) itemView.findViewById(R.id.textview_event_register);
             gold_image = (ImageView) itemView.findViewById(R.id.imageView_coin_image);
             silver_image = (ImageView) itemView.findViewById(R.id.imageView_coin_other_image);

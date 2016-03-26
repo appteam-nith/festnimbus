@@ -152,12 +152,15 @@ public class Leaderboard extends AppCompatActivity {
             status = response.getString("status");
             adapter.setStatus(status);
             for (int i = 0; i <=array.length()-1; i++) {
-                String email = "", silver_coin = "", gold_coin = "", rollno = "";
+                String email = "", silver_coin = "", gold_coin = "", rollno = "", name= "";
                 int mobile = 0;
                 String event_register[] = {};
                 JSONObject profile = array.getJSONObject(i);
                 if (contain(profile, "email")) {
                     email = profile.getString("email");
+                }
+                if (contain(profile, "name")) {
+                    name = profile.getString("name");
                 }
                 if (contain(profile, "silver_coins")) {
                     silver_coin = profile.getString("silver_coins");
@@ -173,7 +176,7 @@ public class Leaderboard extends AppCompatActivity {
                 }
                 if (contain(profile, "events_register")) {
                 }
-                list.add(new LeaderboardItem(email, silver_coin, gold_coin, rollno, event_register, mobile));
+                list.add(new LeaderboardItem(email,name, silver_coin, gold_coin, rollno, event_register));
             }
         } catch (JSONException e) {
             e.printStackTrace();

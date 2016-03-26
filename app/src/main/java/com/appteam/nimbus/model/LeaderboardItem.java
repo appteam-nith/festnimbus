@@ -5,26 +5,25 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class LeaderboardItem implements Parcelable {
-    public String email, silver_coins, gold_coins, rollno;
+    public String email, silver_coins, gold_coins, rollno,name;
     public String events_register[];
-    public int mobile;
 
-    public LeaderboardItem(String email, String silver_coins, String gold_coins, String rollno, String[] events_register, int mobile) {
+    public LeaderboardItem(String email, String name,String silver_coins, String gold_coins, String rollno, String[] events_register) {
         this.email = email;
+        this.name= name;
         this.silver_coins = silver_coins;
         this.gold_coins = gold_coins;
         this.rollno = rollno;
         this.events_register = events_register;
-        this.mobile = mobile;
     }
 
     protected LeaderboardItem(Parcel in) {
+        name=in.readString();
         email=in.readString();
         silver_coins=in.readString();
         gold_coins=in.readString();
         rollno=in.readString();
         in.readStringArray(events_register);
-        mobile=in.readInt();
     }
 
     public static final Creator<LeaderboardItem> CREATOR = new Creator<LeaderboardItem>() {
@@ -46,11 +45,11 @@ public class LeaderboardItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
         parcel.writeString(email);
         parcel.writeString(silver_coins);
         parcel.writeString(gold_coins);
         parcel.writeString(rollno);
         parcel.writeStringArray(events_register);
-        parcel.writeInt(mobile);
     }
 }
