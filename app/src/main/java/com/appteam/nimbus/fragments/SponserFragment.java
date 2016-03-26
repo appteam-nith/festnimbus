@@ -62,29 +62,29 @@ public class SponserFragment extends Fragment {
             switch(type){
                 case "Educational Partner":
                     list.add(new SponsorItem("Projectineer Noida",BASE_URL+"11.png"));
-                    list.add(new SponsorItem("All Innovative Technology Mohali",BASE_URL+"13.jpg"));
+                    list.add(new SponsorItem("All Innovative Technology Mohali",BASE_URL+"13.png"));
                     list.add(new SponsorItem("Aptron Sloutions Pvt. Ltd. Noida",BASE_URL+"12.png"));
                     break;
                 case "Electronics Partner":
-                    list.add(new SponsorItem("Zebronics",BASE_URL+"15.jpeg"));
+                    list.add(new SponsorItem("Zebronics",BASE_URL+"15.png"));
                     break;
                 case "Food Partner":
-                    list.add(new SponsorItem("Delhi 6 Zayka",BASE_URL+""));
+                    list.add(new SponsorItem("Delhi 6 Zayka",BASE_URL+"delhi6.png"));
                     break;
                 case "Sponsors":
                     list.add(new SponsorItem("Honda (Maxim Honda)",BASE_URL+"01.jpg"));
                     list.add(new SponsorItem("Renault (Mandi)",BASE_URL+"02.png"));
-                    list.add(new SponsorItem("Tata Motors (Hamirpur)",BASE_URL+"03.jpg"));
-                    list.add(new SponsorItem("Mahindra 2-wheeler (Narendera Motors)",BASE_URL+"04.jpg"));
+                    list.add(new SponsorItem("Tata Motors (Hamirpur)",BASE_URL+"03.png"));
+                    list.add(new SponsorItem("Mahindra 2-wheeler (Narendera Motors)",BASE_URL+"04.png"));
                     list.add(new SponsorItem("Made Easy Delhi",BASE_URL+"05.png"));
                     list.add(new SponsorItem("ACE Engineering Academy",BASE_URL+"06.png"));
                     list.add(new SponsorItem("App4pc",BASE_URL+"07.png"));
                     list.add(new SponsorItem("Ebay",BASE_URL+"08.png"));
-                    list.add(new SponsorItem("Archies",BASE_URL+"14.jpg"));
-                    list.add(new SponsorItem("Antariksh Mall Hamirpur",BASE_URL+""));
-                    list.add(new SponsorItem("AV Pizzas Hamirpur",BASE_URL+""));
+                    list.add(new SponsorItem("Archies",BASE_URL+"14.png"));
+                    list.add(new SponsorItem("Antariksh Mall Hamirpur",BASE_URL+"antariksh.png"));
+                    list.add(new SponsorItem("AV Pizzas Hamirpur",BASE_URL+"avpizza.png"));
                     list.add(new SponsorItem("Tata Sky",BASE_URL+"09.png"));
-                    list.add(new SponsorItem("Cadd Center (Hamirpur)",BASE_URL+"10.jpg"));
+                    list.add(new SponsorItem("Cadd Center (Hamirpur)",BASE_URL+"10.png"));
                     break;
             }
         }
