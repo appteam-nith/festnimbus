@@ -171,9 +171,9 @@ public class Leaderboard extends AppCompatActivity {
                 if (contain(profile, "rollno")) {
                     rollno = profile.getString("rollno");
                 }
-                if (contain(profile, "mobile")) {
-                    mobile = profile.getInt("mobile");
-                }
+                //if (contain(profile, "mobile")) {
+                 //   mobile = profile.getInt("mobile");
+                //}
                 if (contain(profile, "events_register")) {
                 }
                 list.add(new LeaderboardItem(email,name, silver_coin, gold_coin, rollno, event_register));
