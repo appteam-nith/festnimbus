@@ -54,14 +54,20 @@
     </string>
 
     <string name="contributors_text">We thank the open source community for all their contributions.\n\n
+        <b>Developers :</b>\n\n
 \t<a href="https://github.com/RamolaWeb">Sahil Ramola</a>\n\n
 \t<a href="https://github.com/sukhbir-singh">Sukhbir Singh</a>\n\n
 \t<a href="https://github.com/sahilbadyal">Sahil Badyal</a>\n\n
 \t<a href="https://github.com/mgr51297">Goutham Reddy</a>\n\n
 \t<a href="https://github.com/saurabh0402">Saurabh Kumar</a>\n\n
 \t<a href="https://github.com/nishant23j">Nishant Choudhary</a>\n\n
-\t<a href="https://github.com/Narendra-Dodwaria">Narendra Dodwaria</a>\n\n
 \t<a href="https://github.com/jaykay12">Jalaz Choudhary</a>\n\n
+        <b>Designers :</b>\n\n
+        \t<a href="https://www.facebook.com/nrshubham?ref=br_rs">Shubham Naik</a>\n\n
+        \t<a href="https://www.facebook.com/dhuria07?fref=ts">Shivam Dhuria</a>\n\n
+        \t<a href="https://github.com/Narendra-Dodwaria">Narendra Dodwaria</a>\n\n
+        \t<a href="https://www.facebook.com/srashpa?fref=ts">Saurabh Rashpa Zankhrpa</a>\n\n
+        Special Thanks to <a href="https://www.facebook.com/Pixonoids/?fref=ts">Pixonoids</a>
 </string>
 
     <string name="licenses_text">The following are third party software/api that are used in Nimbus app.\n\n
