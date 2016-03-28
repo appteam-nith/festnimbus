@@ -45,15 +45,18 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         if (!list.get(position).email.isEmpty() && list.get(position).email.length() != 0) {
             holder.email.setText(list.get(position).email);
         }
-        if (list.get(position).events_register.length != 0) {
+      /*  if (list.get(position).events_register.length != 0) {
             String eventarray[] = list.get(position).events_register;
             String eventString = "Event Register \n";
             for (int i = 0; i < eventarray.length; i++)
                 eventString += eventarray[i] + "\n";
             holder.event.setText(eventString);
         }
+       */
+            holder.event.setVisibility(View.GONE);
+
         if(Status!=null){
-            if (Status.equals("Sorted according to silver coins")) {
+            if (Status.equals("SILVER")) {
                 if (!list.get(position).gold_coins.isEmpty() && list.get(position).gold_coins.length() != 0) {
                     holder.coin2.setText(list.get(position).gold_coins);
                     holder.gold_image.setImageResource(R.drawable.currency_dollar);
@@ -85,7 +88,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
                     holder.linear.setVisibility(View.VISIBLE);
                     holder.border.setVisibility(View.VISIBLE);
                     holder.rollno.setVisibility(View.VISIBLE);
-                    holder.event.setVisibility(View.VISIBLE);
+                    holder.event.setVisibility(View.GONE);
                     isclick=true;
                 }
                 else {

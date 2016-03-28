@@ -1,5 +1,6 @@
 package com.appteam.nimbus.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.net.Uri;
@@ -158,6 +159,22 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
         else if(id==R.id.action_leaderboard){
             startActivity(new Intent(homeActivity.this,Leaderboard.class));
             return true;
+        }
+        else if(id==R.id.action_important_contact){
+            CharSequence name[]={"Ankush Sharma\n(Discipline Secretary)","Rishabh Kumar\n(Discipline Joint Secretary)","Kumud Jindal\n(Discipline Joint Secretary)",};
+            final CharSequence number[]={"9736688292","8627090570","9882263949"};
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            builder.setIcon(android.R.drawable.ic_menu_call);
+            builder.setTitle("Emergency Contact");
+            builder.setItems(name, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:+91" + number[i]));
+                    startActivity(intent);
+                }
+            });
+            AlertDialog alertDialog=builder.create();
+            alertDialog.show();
         }
 
         return super.onOptionsItemSelected(item);
