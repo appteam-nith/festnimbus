@@ -1,6 +1,7 @@
 package com.appteam.nimbus.activity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -22,9 +24,11 @@ import com.appteam.nimbus.R;
 import com.appteam.nimbus.app.ViewActivity;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-private PersonalData personalData;
-private ImageLoader imageLoader;
+
+    private PersonalData personalData;
+    private ImageLoader imageLoader;
     private  static final String SHOW_OPTION="show";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,29 @@ private ImageLoader imageLoader;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        ImageView icon1 = (ImageView) findViewById(R.id.icon1);
+        ImageView arrow1 = (ImageView) findViewById(R.id.arrow1);
+        ImageView icon2 = (ImageView) findViewById(R.id.icon2);
+        ImageView arrow2 = (ImageView) findViewById(R.id.arrow2);
+        ImageView icon3 = (ImageView) findViewById(R.id.icon3);
+        ImageView arrow3 = (ImageView) findViewById(R.id.arrow3);
+        ImageView icon4 = (ImageView) findViewById(R.id.icon4);
+        ImageView arrow4 = (ImageView) findViewById(R.id.arrow4);
+        ImageView icon5 = (ImageView) findViewById(R.id.icon5);
+        ImageView arrow5 = (ImageView) findViewById(R.id.arrow5);
+
+        final int newColor = getResources().getColor(R.color.new_color);
+        icon1.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        arrow1.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        icon2.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        arrow2.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        icon3.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        arrow3.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        icon4.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        arrow4.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        icon5.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        arrow5.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 

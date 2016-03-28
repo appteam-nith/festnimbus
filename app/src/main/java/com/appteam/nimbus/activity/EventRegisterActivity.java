@@ -30,6 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -286,15 +287,25 @@ public class EventRegisterActivity extends AppCompatActivity {
 
     private String getURL(String teamName,String eventName) {
 
-        if(teamName.contains(" ")){
-           teamName=teamName.replaceAll("\\s+","");
+        /*if(teamName.contains(" ")){
+           teamName=teamName.replaceAll("\\s+","+");
         }
         if(eventName.contains(" ")){
-            eventName=eventName.replaceAll("\\s+","");
+            eventName=eventName.replaceAll("\\s+","+");
+        }*/
+
+        String event_encoded_url="";
+
+        try {
+            event_encoded_url=java.net.URLEncoder.encode(eventName,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
 
-        Log.v("URL: ", "https://festnimbus.herokuapp.com/api/teams/" + teamName + "/" + eventName);
-        return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+eventName;
+        // "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+encoded_url+"/";
+
+        Log.v("url", "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+event_encoded_url+"/" );
+        return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+event_encoded_url+"/";
     }
 
     @Override
