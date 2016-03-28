@@ -215,7 +215,7 @@ public class Register extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
                 String input=rollno.getText().toString();
-                String ptr="((1(4|5)MI5((0[1-9])|([1-5][0-9])|60))|(1(4|5)M[1-5]((0[1-9])|([1-5][0-9])|60))|(15MI4((0[1-9])|([1-5][0-9])|60))|(1[1-5][1-6]((0[1-9])|([1-8][0-9])|90))|(IIITU1(4|5)(1|2)((0[1-9])|([1-2][0-9])|30)))";
+                String ptr="((1(4|5)MI5((0[1-9])|([1-5][0-9])|60))|(1(4|5)M[1-5]((0[1-9])|([1-5][0-9])|60))|(15MI4((0[1-9])|([1-5][0-9])|60))|(1[1-5][1-6]((0[1-9])|([1-8][0-9])|90|91|92|93|94))|(IIITU1(4|5)(1|2)((0[1-9])|([1-2][0-9])|30)))";
 
                 Pattern p=Pattern.compile(ptr);
                 Matcher m=p.matcher(input.toUpperCase().trim());

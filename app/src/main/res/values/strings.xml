@@ -11,7 +11,7 @@
     <string name="EVENT_NOTE" translatable="false">CAR EXPO:\nJan 19,2016\n9-12am</string>
     <string name="ADD_TO_CALENDAR">ADD TO CALENDAR</string>
     <string name="title_activity_login">Login</string>
-    <string name="DEPARTMENT">Departmental Teams</string>
+    <string name="DEPARTMENT">Departmental\nTeams</string>
     <string name="title_activity_departmental_team">Departmental Team</string>
     <string name="title_activity_team">Team</string>
 
