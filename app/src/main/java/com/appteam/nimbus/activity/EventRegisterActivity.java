@@ -113,7 +113,6 @@ public class EventRegisterActivity extends AppCompatActivity {
                         Toast.makeText(EventRegisterActivity.this,status,Toast.LENGTH_LONG).show();
 
 
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                     loadToast.error();
@@ -242,18 +241,39 @@ public class EventRegisterActivity extends AppCompatActivity {
                                 }
                             }
 
-                            String toshow="by "+event.getTeamname()+" ( "+event.getDname()+" )\n\n"+event.getTimeline()+"\n\n";
-                            toshow+=event.getShort_des()+"\n\nRules:-\n\n";
+                            String toshow="";
+                            if(!event.getTeamname().equals("NA")){
+                                toshow+="by "+event.getTeamname();
+                            }
 
-                            if(event.getRules()!=null)
+                            if(!event.getDname().equals("NA")){
+                                toshow+=" ( "+event.getDname()+" )";
+                            }
+                            toshow+="\n\n";
+
+                            if(!event.getTimeline().equals("NA")){
+                                toshow+=event.getTimeline()+"\n\n";
+                            }
+
+                            if(!event.getShort_des().equals("NA")){
+                                toshow+=event.getShort_des()+"\n\n";
+                            }
+
+                            if(event.getRules()!=null){
+
+                                toshow+="Rules:-\n\n";
+
                                 if(!event.getRules().get(0).equals("NA")){
                                     for(int i=0;i<event.getRules().size();i++){
 
                                         toshow+=""+(i+1)+". "+event.getRules().get(i)+"\n\n";
                                     }
                                 }
+                            }
 
-                            toshow+="Contact Number: "+event.getContact();
+                            if(!event.getContact().equals("NA")){
+                                toshow+="Contact Number: "+event.getContact();
+                            }
 
                             text.setText(toshow);
                             findViewById(R.id.hackathon_register_button).setVisibility(View.VISIBLE);
