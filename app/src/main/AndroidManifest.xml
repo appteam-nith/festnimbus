@@ -4,6 +4,7 @@
     android:versionCode="1"
     android:versionName="0.0.1">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
@@ -79,7 +80,7 @@
         <activity
             android:name=".activity.Register"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appteam.nimbus.activity.Login" />
@@ -140,7 +141,7 @@
         <!-- END Added for GCM -->
         <activity
             android:name=".activity.RegisterHackathon"
-            android:theme="@style/AppTheme.Login"/>
+            android:theme="@style/AppTheme.Login" />
         <activity
             android:name=".activity.SponserActivity"
             android:label="@string/title_activity_sponser"

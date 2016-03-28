@@ -78,7 +78,7 @@ public class Leaderboard extends AppCompatActivity {
 
         } else {
             if (connection.isInternet()) {
-                sendRequest(getUrl("Gold"));
+                sendRequest(getUrl("Silver"));
                 loadToast.show();
             } else {
                 Toast.makeText(Leaderboard.this, "No Internet Connection", Toast.LENGTH_LONG).show();
@@ -94,12 +94,12 @@ public class Leaderboard extends AppCompatActivity {
                         sendRequest(getUrl("Silver"));
                         loadToast.show();
                         reverse = true;
-                        fab.setImageResource(R.drawable.currency_dollar_yellow);
+                        fab.setImageResource(R.drawable.currency_dollar);
                     } else {
                         sendRequest(getUrl("Gold"));
                         loadToast.show();
                         reverse = false;
-                        fab.setImageResource(R.drawable.currency_dollar);
+                        fab.setImageResource(R.drawable.currency_dollar_yellow);
                     }
                 } else {
                     Toast.makeText(Leaderboard.this, "No Internet Connection", Toast.LENGTH_LONG).show();
@@ -153,7 +153,6 @@ public class Leaderboard extends AppCompatActivity {
             adapter.setStatus(status);
             for (int i = 0; i <=array.length()-1; i++) {
                 String email = "", silver_coin = "", gold_coin = "", rollno = "", name= "";
-                int mobile = 0;
                 String event_register[] = {};
                 JSONObject profile = array.getJSONObject(i);
                 if (contain(profile, "email")) {
@@ -171,9 +170,6 @@ public class Leaderboard extends AppCompatActivity {
                 if (contain(profile, "rollno")) {
                     rollno = profile.getString("rollno");
                 }
-                //if (contain(profile, "mobile")) {
-                 //   mobile = profile.getInt("mobile");
-                //}
                 if (contain(profile, "events_register")) {
                 }
                 list.add(new LeaderboardItem(email,name, silver_coin, gold_coin, rollno, event_register));

@@ -34,7 +34,7 @@
         android:padding="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="appteam.nith@gmail.com"
+        android:text="www.festnimbus.com"
         android:textColor="#505050"
         android:textSize="13sp"
         android:id="@+id/textView" />
