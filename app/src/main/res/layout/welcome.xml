@@ -9,50 +9,52 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/tools">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:background="@color/lightbackground">
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/ic_web_black_48dp"/>
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:src="@drawable/placeholder_1"
-                android:scaleType="centerCrop"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Welcome"
-                android:textColor="@android:color/white"
-                android:textAppearance="@android:style/TextAppearance.Large"
-                android:layout_marginTop="110dp"
-                android:layout_marginLeft="20dp"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <Button
+                android:clickable="false"
+                android:textSize="12sp"
+                android:background="@color/colorAccent"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/ABOUT_NIMBUS"
+                android:textColor="@color/lightbackground"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
-        <TextView
-            android:background="@color/lightbackground"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:padding="10dp"
-            android:textColor="@color/darktextcolor"
-            android:text="@string/home_about_nimbus"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"/>
-        <TextView
-            android:background="@color/lightbackground"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:padding="7dp"
-            android:textColor="@color/appbarcolor"
-            android:textAppearance="@android:style/TextAppearance.Medium"
-            android:text="@string/ABOUT_NIMBUS" />
+        <ImageView
+            android:id="@+id/arrow1"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_forward_black_48dp"/>
     </LinearLayout>
+    <View
+        android:layout_gravity="bottom|start"
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_height="12dp"/>
 
 </android.support.v7.widget.CardView>

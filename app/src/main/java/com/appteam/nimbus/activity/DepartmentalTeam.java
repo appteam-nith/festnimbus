@@ -42,7 +42,7 @@ MyAdapter adapter;
 
     public  class MyAdapter extends FragmentStatePagerAdapter{
 
-        String ClubName[]={"CHelix","DesignOCrats",".eXe","Hermetica","Medextrous","Ojas","Vibhav","Vitruvians"};
+        String ClubName[]={"CHelix","DesignOCrats",".eXe","Hermetica","Medextrous","Ojas","Vibhav"};
         String LOGO[]={BASE_URL+"chelix.png",BASE_URL+"designocrats.png",BASE_URL+"exe.png",BASE_URL+"hermatica.png",BASE_URL+"medextrous.png",BASE_URL+"ojas.png",BASE_URL+"vibhav.png",BASE_URL+"vitruvians.png"};
         public MyAdapter(FragmentManager fm) {
             super(fm);

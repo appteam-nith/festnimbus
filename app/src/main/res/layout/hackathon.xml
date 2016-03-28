@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="192dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder_sidemenu"
+                android:src="@drawable/drawer_new"
                 app:layout_collapseMode="parallax" />
             <android.support.v7.widget.Toolbar
                 app:expandedTitleMarginStart="48dp"

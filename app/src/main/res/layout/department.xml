@@ -3,36 +3,59 @@
     android:layout_margin="8dp"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="8dp"
+    android:clickable="true"
     card_view:cardUseCompatPadding="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/tools">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
         android:background="@color/lightbackground">
+        <ImageView
+            android:id="@+id/icon5"
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/school"/>
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/DEPARTMENT"
-                android:background="#80000000"
-                android:textColor="@android:color/white"
-                android:textAppearance="@android:style/TextAppearance.Medium"
-                android:layout_marginTop="115dp"
-                android:paddingLeft="20dp"
-                android:padding="7dp"
-                />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <Button
+                android:clickable="false"
+                android:textSize="12sp"
+                android:background="@color/colorAccent"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Departmental Teams"
+                android:textColor="@color/lightbackground"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
+        <ImageView
+            android:id="@+id/arrow5"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_arrow_forward_black_48dp"/>
     </LinearLayout>
+    <View
+        android:layout_gravity="bottom|start"
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_height="12dp"/>
 
 </android.support.v7.widget.CardView>
+

@@ -30,6 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -110,7 +111,6 @@ public class EventRegisterActivity extends AppCompatActivity {
                     loadToast.success();
 
                         Toast.makeText(EventRegisterActivity.this,status,Toast.LENGTH_LONG).show();
-
 
 
                 } catch (JSONException e) {
@@ -241,18 +241,39 @@ public class EventRegisterActivity extends AppCompatActivity {
                                 }
                             }
 
-                            String toshow="by "+event.getTeamname()+" ( "+event.getDname()+" )\n\n"+event.getTimeline()+"\n\n";
-                            toshow+=event.getShort_des()+"\n\nRules:-\n\n";
+                            String toshow="";
+                            if(!event.getTeamname().equals("NA")){
+                                toshow+="by "+event.getTeamname();
+                            }
 
-                            if(event.getRules()!=null)
+                            if(!event.getDname().equals("NA")){
+                                toshow+=" ( "+event.getDname()+" )";
+                            }
+                            toshow+="\n\n";
+
+                            if(!event.getTimeline().equals("NA")){
+                                toshow+=event.getTimeline()+"\n\n";
+                            }
+
+                            if(!event.getShort_des().equals("NA")){
+                                toshow+=event.getShort_des()+"\n\n";
+                            }
+
+                            if(event.getRules()!=null){
+
+                                toshow+="Rules:-\n\n";
+
                                 if(!event.getRules().get(0).equals("NA")){
                                     for(int i=0;i<event.getRules().size();i++){
 
                                         toshow+=""+(i+1)+". "+event.getRules().get(i)+"\n\n";
                                     }
                                 }
+                            }
 
-                            toshow+="Contact Number: "+event.getContact();
+                            if(!event.getContact().equals("NA")){
+                                toshow+="Contact Number: "+event.getContact();
+                            }
 
                             text.setText(toshow);
                             findViewById(R.id.hackathon_register_button).setVisibility(View.VISIBLE);
@@ -286,15 +307,25 @@ public class EventRegisterActivity extends AppCompatActivity {
 
     private String getURL(String teamName,String eventName) {
 
-        if(teamName.contains(" ")){
-           teamName=teamName.replaceAll("\\s+","");
+        /*if(teamName.contains(" ")){
+           teamName=teamName.replaceAll("\\s+","+");
         }
         if(eventName.contains(" ")){
-            eventName=eventName.replaceAll("\\s+","");
+            eventName=eventName.replaceAll("\\s+","+");
+        }*/
+
+        String event_encoded_url="";
+
+        try {
+            event_encoded_url=java.net.URLEncoder.encode(eventName,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
 
-        Log.v("URL: ", "https://festnimbus.herokuapp.com/api/teams/" + teamName + "/" + eventName);
-        return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+eventName;
+        // "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+encoded_url+"/";
+
+        Log.v("url", "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+event_encoded_url+"/" );
+        return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+event_encoded_url+"/";
     }
 
     @Override
