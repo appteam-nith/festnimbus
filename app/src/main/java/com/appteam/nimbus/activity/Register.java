@@ -249,13 +249,15 @@ public class Register extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         Log.d("qw",""+response.toString());
                         try {
-                            if(response.has("message")){
-                                String message=response.getString("message");
+                            if(response.getString("status").equals("Access Denied")){
+                                String message=response.getString("data");
                                 Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
                                 loadToast.error();
                             }else{
-                                if(response.getString("data").equals("Registered Successfully")){
+                                if(response.getString("status").equals("user_created")){
                                     loadToast.success();
+                                    String message=response.getString("data");
+                                    Toast.makeText(Register.this,message,Toast.LENGTH_SHORT).show();
                                     personalData.SaveDetail(string,string3,string2);
                                     startActivity(new Intent(Register.this, Login.class));
                                     finish();}

@@ -91,12 +91,12 @@ public class Leaderboard extends AppCompatActivity {
             public void onClick(View view) {
                 if (connection.isInternet()) {
                     if (!reverse) {
-                        sendRequest(getUrl("Silver"));
+                        sendRequest(getUrl("Gold"));
                         loadToast.show();
                         reverse = true;
                         fab.setImageResource(R.drawable.currency_dollar);
                     } else {
-                        sendRequest(getUrl("Gold"));
+                        sendRequest(getUrl("Silver"));
                         loadToast.show();
                         reverse = false;
                         fab.setImageResource(R.drawable.currency_dollar_yellow);

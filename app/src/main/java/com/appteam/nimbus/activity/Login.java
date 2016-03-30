@@ -119,7 +119,7 @@ public class Login extends AppCompatActivity {
                 NetworkResponse networkResponse=error.networkResponse;
 
                 if(networkResponse!=null){
-                    if(networkResponse.statusCode==401){
+                    if(networkResponse.statusCode==401||networkResponse.statusCode==401){
                         Toast.makeText(Login.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
                     }
                     if(error instanceof TimeoutError){
