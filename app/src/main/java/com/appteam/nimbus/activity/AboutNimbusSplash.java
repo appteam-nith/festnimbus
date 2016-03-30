@@ -45,6 +45,7 @@ public class AboutNimbusSplash extends AppCompatActivity{
                 findViewById(R.id.video_img).setVisibility(View.GONE);
                 showByDefault.setVisibility(View.GONE);
                 next.setVisibility(View.GONE);
+                findViewById(R.id.nimbus_is).setVisibility(View.GONE);
                 findViewById(R.id.rules_textview_aboutnimbus).setVisibility(View.VISIBLE);
             }
         }

@@ -87,21 +87,21 @@ that the participants would be teamed under the Mentors from final year CSE. Tea
 application/library/software in stipulated time of 24 hours. The best innovation will be awarded.\n\n
 
 List of Mentors/Team Leaders:-\n\n
-1. Akashit Wal\n
+1. Aniket Verma\n
 2. Pradyot \n
 3. Shubham Choudhary\n
 4. Himanshu Singh\n
 5. Sagar Karira\n
 6. Prateek Prasher\n
 7. Akshendra Pratap\n
-8. Prikshit Tekta\n
-9. Mayank Bansal\n
+8. Mayank Bansal\n
+9. Rohan Jaswal\n
 10. Kunal Sharma\n
 11. Shubham Rana\n\n
 
 Rules:\n\n
 1. Participants must register at website or through app.\n
-2. Teams participants must be from NIT.\n
+2. Teams participants must be from NITH/IITU.\n
 3. Participants have liberty to list Preference of their Mentors.\n
 4. Participants will be alloted a team Mentor randomly or based upon skills/preferences.\n
 5. List of Mentors are given above.(can be changed)\n
@@ -132,5 +132,18 @@ Linux must be installed in all participant systems.\n
 
     <string name="title_activity_sponser">SponserActivity</string>
     <string name="title_activity_leaderboard">Leaderboard</string>
-    <string name="rules_nimbus">Rules of Nimbus</string>
+    <string name="rules_nimbus">
+
+        \nPlease visit the website by clicking <a href="www.festnimbus.com">here.</a>
+        \n\n<b>Whats new this Nimbus ?</b>\n\n
+        1. This Nimbus, we are committed to provide you ease in registering for the events.
+        Just open any event and click on REGISTER.\n\n
+        2. We have introduced 2 COINS and a learderboard to show you where you stand.\n
+            SILVER COINS -> Denotes your level of participation\n
+            GOLD COINS   -> Denoted your level of performance\n\n
+        3. You will earn 25 SILVER coins for every participation (not registration).\n\n
+        4. 3, 2, 1 Gold Coins will be earned for 1st, 2nd and 3rd position in an event\n\n
+        5. Points will be reflected only after your participation is confirmed my the teams.\n\n
+        6. This coins can be used to redeem coupons at the end of NIMBUS.
+    </string>
 </resources>
