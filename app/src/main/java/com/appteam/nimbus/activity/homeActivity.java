@@ -20,22 +20,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.appteam.nimbus.model.PersonalData;
 import com.appteam.nimbus.R;
 import com.appteam.nimbus.app.ViewActivity;
+import com.appteam.nimbus.model.PersonalData;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String ABOUT_NIMBUS = "Rules";
     private PersonalData personalData;
     private ImageLoader imageLoader;
-    private  static final String SHOW_OPTION="show";
+    private static final String SHOW_OPTION = "show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     personalData=new PersonalData(this);
-        if(personalData.getStatus()==false){
-            Intent i=new Intent(homeActivity.this,Login.class);
+        personalData = new PersonalData(this);
+        if (personalData.getStatus() == false) {
+            Intent i = new Intent(homeActivity.this, Login.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
@@ -90,7 +91,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.coreteam).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homeActivity.this,CoreTeamActivity.class));
+                startActivity(new Intent(homeActivity.this, CoreTeamActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
@@ -98,21 +99,22 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.event).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homeActivity.this,EventActivity.class));
+                startActivity(new Intent(homeActivity.this, EventActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
         findViewById(R.id.welcome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browser=new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.festnimbus.com"));
-                startActivity(browser);
+                Intent intent = new Intent(homeActivity.this, AboutNimbusSplash.class);
+                intent.putExtra(ABOUT_NIMBUS, "rule");
+                startActivity(intent);
             }
         });
         findViewById(R.id.sponsors).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homeActivity.this,SponserActivity.class));
+                startActivity(new Intent(homeActivity.this, SponserActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
@@ -146,7 +148,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.action_logout) {
             personalData.SaveData(false);
 
-            Intent launch_logout=new Intent(homeActivity.this,Login.class);
+            Intent launch_logout = new Intent(homeActivity.this, Login.class);
             launch_logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             launch_logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             launch_logout.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -155,15 +157,13 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
             finish();
 
             return true;
-        }
-        else if(id==R.id.action_leaderboard){
-            startActivity(new Intent(homeActivity.this,Leaderboard.class));
+        } else if (id == R.id.action_leaderboard) {
+            startActivity(new Intent(homeActivity.this, Leaderboard.class));
             return true;
-        }
-        else if(id==R.id.action_important_contact){
-            CharSequence name[]={"Ankush Sharma\n(Discipline Secretary)","Rishabh Kumar\n(Discipline Joint Secretary)","Kumud Jindal\n(Discipline Joint Secretary)",};
-            final CharSequence number[]={"9736688292","8627090570","9882263949"};
-            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        } else if (id == R.id.action_important_contact) {
+            CharSequence name[] = {"Ankush Sharma\n(Discipline Secretary)", "Rishabh Kumar\n(Discipline Joint Secretary)", "Kumud Jindal\n(Discipline Joint Secretary)",};
+            final CharSequence number[] = {"9736688292", "8627090570", "9882263949"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setIcon(android.R.drawable.ic_menu_call);
             builder.setTitle("Emergency Contact");
             builder.setItems(name, new DialogInterface.OnClickListener() {
@@ -173,7 +173,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(intent);
                 }
             });
-            AlertDialog alertDialog=builder.create();
+            AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
 
@@ -188,10 +188,10 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.navigation_to_profile) {
             // Handle the camera action
-            Intent i=new Intent(homeActivity.this,Profile.class);
+            Intent i = new Intent(homeActivity.this, Profile.class);
             startActivity(i);
 
-        }else if(id==R.id.aboutus_nav){
+        } else if (id == R.id.aboutus_nav) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(String.format("%1$s", getString(R.string.app_name)));
             builder.setMessage(getResources().getText(R.string.aboutus_text));
@@ -200,11 +200,11 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-        }else if(id==R.id.hackathon_nav){
-            Intent i=new Intent(homeActivity.this,HackathonActivity.class);
+        } else if (id == R.id.hackathon_nav) {
+            Intent i = new Intent(homeActivity.this, HackathonActivity.class);
             startActivity(i);
 
-        }else if(id==R.id.feedback_nav){
+        } else if (id == R.id.feedback_nav) {
             /*Intent intent=new Intent(Intent.ACTION_SEND);
             intent.setType("text/html");
             String email_arr[]={"appteam.nith@gmail.com"};
@@ -214,14 +214,14 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(Intent.createChooser(intent,"Send Email"));*/
 
 
-            Intent intent=new Intent(Intent.ACTION_SENDTO);
-            String uriText="mailto:"+ Uri.encode("appteam.nith@gmail.com")+"?subject="+
-                    Uri.encode("Reporting A Bug/Feedback")  + "&body="+ Uri.encode("Hello, Appteam \nI want to report a bug/give feedback corresponding to the app Nimbus 2k16.\n.....\n\n-Your name");
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            String uriText = "mailto:" + Uri.encode("appteam.nith@gmail.com") + "?subject=" +
+                    Uri.encode("Reporting A Bug/Feedback") + "&body=" + Uri.encode("Hello, Appteam \nI want to report a bug/give feedback corresponding to the app Nimbus 2k16.\n.....\n\n-Your name");
 
-            Uri uri=Uri.parse(uriText);
+            Uri uri = Uri.parse(uriText);
             intent.setData(uri);
-            startActivity(Intent.createChooser(intent,"Send Email"));
-        }else if(id==R.id.opensourcelicenses_nav){
+            startActivity(Intent.createChooser(intent, "Send Email"));
+        } else if (id == R.id.opensourcelicenses_nav) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(String.format("%1$s", getString(R.string.open_source_licenses)));
             builder.setMessage(getResources().getText(R.string.licenses_text));
@@ -230,7 +230,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-        }else if(id==R.id.contributors_nav){
+        } else if (id == R.id.contributors_nav) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(String.format("%1$s", getString(R.string.contributors)));
             builder.setMessage(getResources().getText(R.string.contributors_text));
@@ -239,8 +239,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-        }
-        else if(id==R.id.notifications){
+        } else if (id == R.id.notifications) {
             startActivity(new Intent(homeActivity.this, ViewActivity.class));
         }
 
