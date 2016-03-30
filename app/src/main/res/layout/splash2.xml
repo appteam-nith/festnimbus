@@ -29,6 +29,19 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:textSize="15sp"/>
+        <TextView
+            android:textColor="#b3b3b3"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rules_nimbus"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:id="@+id/rules_textview_aboutnimbus"
+            android:visibility="gone"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/video_img"

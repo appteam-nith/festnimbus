@@ -30,7 +30,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -140,7 +141,14 @@ public class EventRegisterActivity extends AppCompatActivity {
     }
 
     private String getURLForRegistration(String eventName) {
-        return "https://festnimbus.herokuapp.com/api/user/"+eventName;
+        try {
+            URI uri=new URI("https","festnimbus.herokuapp.com","/api/user/"+eventName,null);
+            Log.d("url",uri.toASCIIString());
+            return uri.toASCIIString();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     private void getRequest() {
@@ -306,26 +314,14 @@ public class EventRegisterActivity extends AppCompatActivity {
     }
 
     private String getURL(String teamName,String eventName) {
-
-        /*if(teamName.contains(" ")){
-           teamName=teamName.replaceAll("\\s+","+");
-        }
-        if(eventName.contains(" ")){
-            eventName=eventName.replaceAll("\\s+","+");
-        }*/
-
-        String event_encoded_url="";
-
         try {
-            event_encoded_url=java.net.URLEncoder.encode(eventName,"UTF-8");
-        } catch (UnsupportedEncodingException e) {
+            URI uri=new URI("https","festnimbus.herokuapp.com","/api/teams/"+teamName+"/"+eventName,null);
+      Log.d("url",uri.toASCIIString());
+            return uri.toASCIIString();
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-
-        // "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+encoded_url+"/";
-
-        Log.v("url", "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+event_encoded_url+"/" );
-        return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+event_encoded_url+"/";
+        return "";
     }
 
     @Override

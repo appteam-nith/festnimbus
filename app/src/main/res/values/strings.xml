@@ -132,4 +132,5 @@ Linux must be installed in all participant systems.\n
 
     <string name="title_activity_sponser">SponserActivity</string>
     <string name="title_activity_leaderboard">Leaderboard</string>
+    <string name="rules_nimbus">Rules of Nimbus</string>
 </resources>
