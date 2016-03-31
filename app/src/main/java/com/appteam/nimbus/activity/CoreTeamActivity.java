@@ -44,7 +44,7 @@ private String BASE_URL="https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimb
         list.add(new ItemCoreTeam("Sachin Patial","Finance & Treasury Secretary",BASE_URL+"sachin_patial.png"));
         list.add(new ItemCoreTeam("Parul Thakur","Public Relations Secretary",BASE_URL+"parul_thakur.png"));
         list.add(new ItemCoreTeam("Vinay Kumar","Hospitality & Accomodation Secretary",BASE_URL+"vinay_kumar.png"));
-        list.add(new ItemCoreTeam("Manish Kandoria","Registration & Transportatioin Secretary",BASE_URL+"manish_kandoria.png"));
+        list.add(new ItemCoreTeam("Manish Kandoria","Registration & Transportation Secretary",BASE_URL+"manish_kandoria.png"));
         list.add(new ItemCoreTeam("Shubhinder Singh","Creative Head",BASE_URL+"shubhinder_singh.png"));
         list.add(new ItemCoreTeam("Prateek Bandhu","Graphics Head",BASE_URL+"praxie.png"));
         list.add(new ItemCoreTeam("Prikshit Tekta","Web Head",BASE_URL+"prikshit_tekta.png"));

@@ -63,7 +63,7 @@ public class SponserFragment extends Fragment {
                 case "Educational Partner":
                     list.add(new SponsorItem("Projectineer Noida",BASE_URL+"11.png"));
                     list.add(new SponsorItem("All Innovative Technology Mohali",BASE_URL+"13.png"));
-                    list.add(new SponsorItem("Aptron Sloutions Pvt. Ltd. Noida",BASE_URL+"12.png"));
+                    list.add(new SponsorItem("Aptron Solutions Pvt. Ltd. Noida",BASE_URL+"12.png"));
                     break;
                 case "Electronics Partner":
                     list.add(new SponsorItem("Zebronics",BASE_URL+"15.png"));
@@ -75,7 +75,7 @@ public class SponserFragment extends Fragment {
                     list.add(new SponsorItem("Honda (Maxim Honda)",BASE_URL+"01.jpg"));
                     list.add(new SponsorItem("Renault (Mandi)",BASE_URL+"02.png"));
                     list.add(new SponsorItem("Tata Motors (Hamirpur)",BASE_URL+"03.png"));
-                    list.add(new SponsorItem("Mahindra 2-wheeler (Narendera Motors)",BASE_URL+"04.png"));
+                    list.add(new SponsorItem("Mahindra 2-wheeler (Narendra Motors)",BASE_URL+"04.png"));
                     list.add(new SponsorItem("Made Easy Delhi",BASE_URL+"05.png"));
                     list.add(new SponsorItem("ACE Engineering Academy",BASE_URL+"06.png"));
                     list.add(new SponsorItem("App4pc",BASE_URL+"07.png"));

@@ -142,7 +142,20 @@ public class EventRegisterActivity extends AppCompatActivity {
     }
 
     private String getURLForRegistration(String eventName) {
-        return "https://festnimbus.herokuapp.com/api/user/"+eventName;
+
+        String event_encoded_url="";
+        try {
+            event_encoded_url=java.net.URLEncoder.encode(eventName,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        // ""https://festnimbus.herokuapp.com/api/user/"+eventName;
+
+        event_encoded_url=event_encoded_url.replaceAll("\\+","%20");
+
+        Log.v("url", "https://festnimbus.herokuapp.com/api/user/"+event_encoded_url);
+        return "https://festnimbus.herokuapp.com/api/user/"+event_encoded_url;
     }
 
     private void getRequest() {
@@ -270,6 +283,8 @@ public class EventRegisterActivity extends AppCompatActivity {
 
                                         toshow+=""+(i+1)+". "+event.getRules().get(i)+"\n\n";
                                     }
+                                }else{
+                                    toshow+="NA\n\n";
                                 }
                             }
 
@@ -309,13 +324,6 @@ public class EventRegisterActivity extends AppCompatActivity {
 
     private String getURL(String teamName,String eventName) {
 
-        /*if(teamName.contains(" ")){
-           teamName=teamName.replaceAll("\\s+","+");
-        }
-        if(eventName.contains(" ")){
-            eventName=eventName.replaceAll("\\s+","+");
-        }*/
-
         String event_encoded_url="";
 
         try {
@@ -325,6 +333,8 @@ public class EventRegisterActivity extends AppCompatActivity {
         }
 
         // "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+encoded_url+"/";
+
+        event_encoded_url=event_encoded_url.replaceAll("\\+","%20");
 
         Log.v("url", "https://festnimbus.herokuapp.com/api/teams/" + teamName + "/" + event_encoded_url + "/");
         return "https://festnimbus.herokuapp.com/api/teams/"+teamName+"/"+event_encoded_url+"/";
