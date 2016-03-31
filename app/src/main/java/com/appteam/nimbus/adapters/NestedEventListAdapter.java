@@ -1,7 +1,10 @@
 package com.appteam.nimbus.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,10 +44,9 @@ public class NestedEventListAdapter extends RecyclerView.Adapter<NestedEventList
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(final ViewHolder viewHolder, int i) {
 
         final EventClass current_event=list.get(i);    //event Under Processing
-
         viewHolder.eventname.setText(current_event.getName());
         viewHolder.event_image.setImageResource(R.drawable.placeholder_sidemenu);
         viewHolder.root.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,16 @@ public class NestedEventListAdapter extends RecyclerView.Adapter<NestedEventList
                 if (!current_event.getName().equals("Coming Soon")) {
                     Intent i = new Intent(context, EventRegisterActivity.class);
                     i.putExtra("eventPassed", current_event);
-                    context.startActivity(i);
+                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+                        viewHolder.root.setTransitionName(context.getString(R.string.transition_name));
+                        ActivityOptionsCompat optionsCompat=ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,viewHolder.root,context.getString(R.string.transition_name));
+                        context.startActivity(i,optionsCompat.toBundle());
+                    }
+                   else {
+                        context.startActivity(i);
+                    }
+
+
                 }else{
                     Toast.makeText(context, current_event.getName(), Toast.LENGTH_SHORT).show();
                 }

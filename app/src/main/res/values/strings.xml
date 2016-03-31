@@ -146,4 +146,5 @@ Linux must be installed in all participant systems.\n
         5. Points will be reflected only after your participation is confirmed my the teams.\n\n
         6. This coins can be used to redeem coupons at the end of NIMBUS.
     </string>
+    <string name="transition_name">Transition</string>
 </resources>
