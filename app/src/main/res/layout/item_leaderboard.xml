@@ -27,6 +27,7 @@
          android:text="1."
          />
      <TextView
+         android:singleLine="true"
          android:layout_marginBottom="5dp"
          android:textAppearance="@android:style/TextAppearance.Medium"
          android:layout_width="wrap_content"
@@ -75,24 +76,27 @@
             android:id="@+id/imageView_coin_other_image"/>
         <TextView
             android:layout_marginTop="5dp"
-            android:padding="5dp"
+            android:padding="2dp"
+            android:layout_marginRight="5dp"
             android:textAppearance="@android:style/TextAppearance.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textview_other_coin"
-            android:text="5"
-            android:layout_weight="1"/>
+            android:text="5" />
         <TextView
+            android:singleLine="true"
             android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:padding="5dp"
             android:textAppearance="@android:style/TextAppearance.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textview_email"
-            android:text="someone@something.com"
+            android:text="someone@something_somthing.com"
             android:layout_weight="1"/>
     </LinearLayout>
     <TextView
+        android:singleLine="true"
         android:visibility="gone"
         android:layout_marginLeft="15dp"
         android:padding="5dp"
