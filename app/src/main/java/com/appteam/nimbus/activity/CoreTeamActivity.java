@@ -1,9 +1,12 @@
 package com.appteam.nimbus.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.appteam.nimbus.R;
 import com.appteam.nimbus.adapters.CoreTeamAdapter;
@@ -24,6 +27,12 @@ private String BASE_URL="https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.core_team);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("Core Team");
+
         recyclerView= (RecyclerView) findViewById(R.id.list_core_team);
         list=new ArrayList<>();
         list.add(new ItemCoreTeam("Dr. Rajnish Shrivastava","Director",BASE_URL+"rajnish.png"));
@@ -64,4 +73,20 @@ private String BASE_URL="https://s3-ap-southeast-1.amazonaws.com/nimbus2k16/nimb
         super.onBackPressed();
         overridePendingTransition(R.anim.close_main, R.anim.close_next);
     }
+
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			if (NavUtils.getParentActivityName(this) != null) {
+
+                finish();
+                overridePendingTransition(R.anim.close_main, R.anim.close_next);
+
+			}
+			return true;
+		default:
+		return super.onOptionsItemSelected(item);
+		}
+	}
 }

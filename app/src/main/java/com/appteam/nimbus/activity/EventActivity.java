@@ -1,11 +1,13 @@
 package com.appteam.nimbus.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Response;
@@ -255,5 +257,21 @@ public class EventActivity extends AppCompatActivity{
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.close_main, R.anim.close_next);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (NavUtils.getParentActivityName(this) != null) {
+
+                    finish();
+                    overridePendingTransition(R.anim.close_main, R.anim.close_next);
+
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -53,11 +53,17 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:label="Login"
             android:name=".activity.Login"
             android:theme="@style/AppTheme.Login" />
         <activity
+            android:label="Notifications"
             android:name=".app.ViewActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.homeActivity" />
+        </activity>
         <activity
             android:name=".activity.DepartmentalTeam"
             android:label="@string/title_activity_departmental_team"
@@ -78,6 +84,7 @@
             android:parentActivityName=".activity.homeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:label="Register"
             android:name=".activity.Register"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -86,6 +93,7 @@
                 android:value="com.appteam.nimbus.activity.Login" />
         </activity>
         <activity
+            android:label="Profile"
             android:name=".activity.Profile"
             android:parentActivityName=".activity.homeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -95,7 +103,7 @@
         </activity>
         <activity
             android:name=".activity.HackathonActivity"
-            android:label="HACKATHON"
+            android:label="Hackathon"
             android:parentActivityName=".activity.homeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -104,7 +112,7 @@
         </activity>
         <activity
             android:name=".activity.EventRegisterActivity"
-            android:label="EVENT REGISTER"
+            android:label="Event Register"
             android:parentActivityName=".activity.EventActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

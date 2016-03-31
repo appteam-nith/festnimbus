@@ -1,11 +1,14 @@
 package com.appteam.nimbus.activity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -28,14 +31,14 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
 
     private PersonalData personalData;
     private ImageLoader imageLoader;
-    private  static final String SHOW_OPTION="show";
+    private static final String SHOW_OPTION = "show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     personalData=new PersonalData(this);
-        if(personalData.getStatus()==false){
-            Intent i=new Intent(homeActivity.this,Login.class);
+        personalData = new PersonalData(this);
+        if (personalData.getStatus() == false) {
+            Intent i = new Intent(homeActivity.this, Login.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
@@ -90,7 +93,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.coreteam).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homeActivity.this,CoreTeamActivity.class));
+                startActivity(new Intent(homeActivity.this, CoreTeamActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
@@ -98,21 +101,21 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.event).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homeActivity.this,EventActivity.class));
+                startActivity(new Intent(homeActivity.this, EventActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
         findViewById(R.id.welcome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browser=new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.festnimbus.com"));
+                Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.festnimbus.com"));
                 startActivity(browser);
             }
         });
         findViewById(R.id.sponsors).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homeActivity.this,SponserActivity.class));
+                startActivity(new Intent(homeActivity.this, SponserActivity.class));
                 overridePendingTransition(R.anim.open_next, R.anim.open_main);
             }
         });
@@ -146,7 +149,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.action_logout) {
             personalData.SaveData(false);
 
-            Intent launch_logout=new Intent(homeActivity.this,Login.class);
+            Intent launch_logout = new Intent(homeActivity.this, Login.class);
             launch_logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             launch_logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             launch_logout.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -155,15 +158,13 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
             finish();
 
             return true;
-        }
-        else if(id==R.id.action_leaderboard){
-            startActivity(new Intent(homeActivity.this,Leaderboard.class));
+        } else if (id == R.id.action_leaderboard) {
+            startActivity(new Intent(homeActivity.this, Leaderboard.class));
             return true;
-        }
-        else if(id==R.id.action_important_contact){
-            CharSequence name[]={"Ankush Sharma\n(Discipline Secretary)","Rishabh Kumar\n(Discipline Joint Secretary)","Kumud Jindal\n(Discipline Joint Secretary)",};
-            final CharSequence number[]={"9736688292","8627090570","9882263949"};
-            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        } else if (id == R.id.action_important_contact) {
+            CharSequence name[] = {"Ankush Sharma\n(Discipline Secretary)", "Rishabh Kumar\n(Discipline Joint Secretary)", "Kumud Jindal\n(Discipline Joint Secretary)",};
+            final CharSequence number[] = {"9736688292", "8627090570", "9882263949"};
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setIcon(android.R.drawable.ic_menu_call);
             builder.setTitle("Emergency Contact");
             builder.setItems(name, new DialogInterface.OnClickListener() {
@@ -171,6 +172,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
                 public void onClick(DialogInterface dialogInterface, int i) {
                     Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:+91" + number[i]));
                     startActivity(intent);
+
                 }
             });
             AlertDialog alertDialog=builder.create();
