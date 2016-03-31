@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.appteam.nimbus"
-    android:versionCode="2"
-    android:versionName="1.1">
+    android:versionCode="4"
+    android:versionName="1.3">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -147,9 +147,6 @@
         </service>
 
         <!-- END Added for GCM -->
-        <activity
-            android:name=".activity.RegisterHackathon"
-            android:theme="@style/AppTheme.Login" />
         <activity
             android:name=".activity.SponserActivity"
             android:label="@string/title_activity_sponser"

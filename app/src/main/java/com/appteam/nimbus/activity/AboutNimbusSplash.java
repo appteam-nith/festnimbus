@@ -22,6 +22,7 @@ public class AboutNimbusSplash extends AppCompatActivity{
     private CheckBox showByDefault;
     private SharedPreferences preferences;
  private  boolean result;
+    private static final String ABOUT_NIMBUS = "Rules";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,13 @@ public class AboutNimbusSplash extends AppCompatActivity{
                  showByDefault.setVisibility(View.GONE);
                  next.setVisibility(View.GONE);
              }
+            }
+            if(intent.hasExtra(ABOUT_NIMBUS)){
+                findViewById(R.id.video_img).setVisibility(View.GONE);
+                showByDefault.setVisibility(View.GONE);
+                next.setVisibility(View.GONE);
+                findViewById(R.id.nimbus_is).setVisibility(View.GONE);
+                findViewById(R.id.rules_textview_aboutnimbus).setVisibility(View.VISIBLE);
             }
         }
         Boolean isDefaultChecked=preferences.getBoolean(DEFAULT_CHECK,true);
