@@ -1,6 +1,7 @@
 package com.appteam.nimbus.activity;
 
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +65,11 @@ public class EventRegisterActivity extends AppCompatActivity {
         error_image.setVisibility(View.GONE);
         final int newColor = getResources().getColor(R.color.new_color);
         error_image.setColorFilter(newColor, PorterDuff.Mode.SRC_ATOP);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+            ImageView logo_image= (ImageView) findViewById(R.id.bgheader);
+            logo_image.setTransitionName(getString(R.string.transition_name));
+        }
+
 
         String toshow="";
 
