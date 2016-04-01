@@ -5,8 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:fitsSystemWindows="true"
     tools:context="com.appteam.nimbus.Event">
+
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -27,7 +29,6 @@
         android:layout_below="@id/appbar_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="54dp"
         android:id="@+id/content_event"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -5,9 +5,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.appteam.nimbus.R;
 import com.appteam.nimbus.helper.ReaderViewPageTransformer;
@@ -63,11 +65,12 @@ MyAdapter adapter;
             return ClubName[position];
         }
     }
-private String getDetail(String Clubname){
-    int id = getResources().getIdentifier(Clubname, "string", MyApplication.getAppContext().getPackageName());
-    String content = getResources().getString(id);
-    return content;
-}
+
+    private String getDetail(String Clubname){
+        int id = getResources().getIdentifier(Clubname, "string", MyApplication.getAppContext().getPackageName());
+        String content = getResources().getString(id);
+        return content;
+    }
     private String getTeamDetail(String Clubname){
         int id = getResources().getIdentifier(Clubname+"_team_detail", "string", MyApplication.getAppContext().getPackageName());
         String content = getResources().getString(id);
@@ -77,5 +80,21 @@ private String getDetail(String Clubname){
         int id = getResources().getIdentifier(Clubname+"_contact_detail", "string", MyApplication.getAppContext().getPackageName());
         String content = getResources().getString(id);
         return content;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (NavUtils.getParentActivityName(this) != null) {
+
+                    finish();
+                    overridePendingTransition(R.anim.close_main, R.anim.close_next);
+
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
