@@ -138,13 +138,13 @@ Linux must be installed in all participant systems.\n
         \n\n<b>Whats new this Nimbus ?</b>\n\n
         1. This Nimbus, we are committed to provide you ease in registering for the events.
         Just open any event and click on REGISTER.\n\n
-        2. We have introduced 2 COINS and a learderboard to show you where you stand.\n
+        2. We have introduced 2 COINS and a leaderboard to show you where you stand.\n
             SILVER COINS -> Denotes your level of participation\n
-            GOLD COINS   -> Denoted your level of performance\n\n
-        3. You will earn 25 SILVER coins for every participation (not registration).\n\n
-        4. 3, 2, 1 Gold Coins will be earned for 1st, 2nd and 3rd position in an event\n\n
-        5. Points will be reflected only after your participation is confirmed my the teams.\n\n
-        6. This coins can be used to redeem coupons at the end of NIMBUS.
+            GOLD COINS   -> Denotes your level of performance\n\n
+        3. You will be rewarded 25 SILVER coins for every participation (not registration).\n\n
+        4. You will be rewarded 3, 2, 1 Gold Coins for 1st, 2nd and 3rd position in an event\n\n
+        5. Points will be reflected only after your participation is confirmed by the team.\n\n
+        6. These coins can be used to redeem coupons at the end of NIMBUS.
     </string>
     <string name="transition_name">Transition</string>
 </resources>
