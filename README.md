@@ -1,8 +1,8 @@
-#Nimbus
+## Nimbus
 
-##This is the official Android Application of Technical Festival of NIT Hamirpur **NIMBUS** made by YOU :smile:.
+#### This is the official Android Application of Technical Festival of NIT Hamirpur **NIMBUS** made by YOU :smile:.
 
-###How to setup this project in Android Studio :-
+## How to setup this project in Android Studio :-
 
 1. Firstly, **fork** this repo from **appteam-nith/festnimbus** by clicking on fork button
 
@@ -16,10 +16,20 @@
 
 4. Happy Hacking :wink:
 
-###How to contribute in this project :-
+## How to contribute in this project :-
 
 1. Go through the entire project after building it, find bugs and report them.
 
 2. View the issues put up in the repo and try to fix them.
 
 3. **IMPORTANT** :- Before sending a **Pull Request** make sure that your forked repository is in sync with the base repository [Click Here](https://github.com/appteam-nith/festnimbus/wiki/Stay-in-Sync-with-Base-Repository) .
+
+## Libraries used
+- [Glide](https://github.com/bumptech/glide)
+- [Android Volley](https://github.com/mcxiaoke/android-volley)
+- [LoadToast](https://github.com/code-mc/loadtoast)
+- [Android Shape ImageView](https://github.com/siyamed/android-shape-imageview)
+
+## License
+This project is currently licensed under the GNU General Public License v3.  
+For more details see [LICENSE.md](https://github.com/appteam-nith/festnimbus/blob/master/LICENSE.md).

@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             />
         <android.support.v7.widget.CardView
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="200dp"
             xmlns:card_view="http://schemas.android.com/tools"

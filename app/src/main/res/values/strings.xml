@@ -112,23 +112,22 @@ Awarding Schemes:\n\n<b>Winner:</b> 3 Virtual Gold Coins + Additional 35 Virtual
 Linux must be installed in all participant systems.\n
 </string>
     <string name="spinner_title">Preference of Mentor</string>
-    <string name="CHelix_team_detail">Team Detail of C-Helix</string>
-    <string name="Ojas_team_detail">Team Detail of Ojas Team</string>
-    <string name="Medextrous_team_detail">Team Detail of Medextrous</string>
-    <string name="Vibhav_team_detail">Team Detail of Vibhav</string>
-    <string name=".eXe_team_detail">Team Detail of .exe</string>
-    <string name="DesignOCrats_team_detail">Team detail of DesignOCrats</string>
-    <string name="Hermetica_team_detail">Team detail of Hermetica</string>
-    <string name="Vitruvians_team_detail">Team detail of Vitruvians</string>
+    <string name="CHelix_team_detail">Victory Begins in the Heart. The Tradition Continues ...\n\nC-Helix is the departmental team representing Civil Engineering department in Annual tech Fest of NIT Hamirpur. Encompassing some of the most brilliant as well as hardworking students of civil engineering, this team is the young face of future constructors who unveil their innovative potentials in field of ideas and skills at the technical fest NIMBUS. This team is Ushered by the expert guidance of Faculty Co-ordinator Dr. Vijay Shankar Dogra, along with Core Co-ordinators Anurag Sharma And Mohit Rattan, to materialize it’s imaginary goals into three dimensional prototypes. \n</string>
+    <string name="Ojas_team_detail">Team OJAS is the departmental team Electrical Engineering Dept. and has a very prestigous reputation in NIMBUS for its amazing and innovative Events and Demonstrations which tackle real life problems. The Team is led by the ever Vibrant and Energetic Dr. Veena Sharma.\n</string>
+    <string name="Medextrous_team_detail">We are the “DEXTERS” of Mechanical Engineering. We represent the Mechanical Engineering Department in NIMBUS - Technical Fest of NIT Hamirpur. We organize several events and fabricate mechanical models and prototypes for exhibition during NIMBUS.\n</string>
+    <string name="Vibhav_team_detail">The departmental team of ECE, Vibhav works for beneficial of society via innovating and inculcating in Electronics. Team Vibhav is coming with a socio-techno exhibition TECHNOVATION exhibiting different real time application based models, along with many technical as well as fun events, this Nimbus.\n</string>
+    <string name=".eXe_team_detail">Not always you can see past the veil of refined outputs. Sometimes everything has to be put into a package and delivered as the ultimate result.\n\nWe do that.\nWe are .eXe\n\nWith this year\'s logical and cryptic events and innovative projects you\'ll not only have to wonder, but you\'ll also have fun and learn a lot at the same time.\nThis Nimbus, we execute it all.\n</string>
+    <string name="DesignOCrats_team_detail">Design-O-Crats, the official team of architecture department Nit Hamirpur has been an integral part of the technical fest nimbus of the college pouring creativity and aesthetics every time in a whole new way. We at Design-O-Crats think beyond imagination and try to bring the fantasy into reality. Our motto is to enhance the aesthetical and user friendly characteristics of space because relationship between technology and human can only be achieved by design.Even in this Era.</string>
+    <string name="Hermetica_team_detail">TEAM HERMETICA is for the first time a full fledged team with a strength of 3 years equalling all other departmental teams.
+This year we have a plethora of events covering various aspects of humans pursuit to understand nature and to direct it towards benefitting mankind through the versatile field of study that is CHEMICAL ENGINEERING.\n</string>
 
-    <string name="CHelix_contact_detail">Contact Detail of C-Helix</string>
-    <string name="Ojas_contact_detail">Contact Detail of Ojas Team</string>
-    <string name="Medextrous_contact_detail">Contact Detail of Medextrous</string>
-    <string name="Vibhav_contact_detail">Contact Detail of Vibhav</string>
-    <string name=".eXe_contact_detail">Contact Detail of .exe</string>
-    <string name="DesignOCrats_contact_detail">Contact detail of DesignOCrats</string>
-    <string name="Hermetica_contact_detail">Contact detail of Hermetica</string>
-    <string name="Vitruvians_contact_detail">Contact detail of Vitruvians</string>
+    <string name="CHelix_contact_detail">Core Coordinator: \n\nMohit Rattan \n(9816499010)\n\nAnurag Sharma \n(9459815178)\n</string>
+    <string name="Ojas_contact_detail">Faculty Coordinator: \n\nDr. Veena Sharma\n(9428025184)\n</string>
+    <string name="Medextrous_contact_detail">Faculty Coordinator: \n\nDr. Prashant Kumar\n(9418285288)\n\nCore Coordinator: \n\nAnkur Kumar\n(9882546457)\n\nSatyabh Kumar\n(9882210419)\n</string>
+    <string name="Vibhav_contact_detail">Core Coordinators: \n\nChirag Tyagi\n(8894849169)\n\nSayali Mahadik\n(9881436797)\n</string>
+    <string name=".eXe_contact_detail">Faculty Coordinator: \n\nDr. Naveen Chauhan\n\nCore Coordinators: \n\nArun Kumar and Ajay Negi\n(8091261118)\n</string>
+    <string name="DesignOCrats_contact_detail">Faculty Coordinator: \n\nAniket Sharma (Assistant Professor)\n(9418016996)\n\nCore Coordinators: \n\nAjay Kumar\n(9882298982)\n\nDeepak Sahu\n(9882809941)\n</string>
+    <string name="Hermetica_contact_detail">Faculty Coordinator: \n\nDr. Leela manohar Aeshala\n(8351988928)\n\nCore Coordinators: \n\nShubhendra Vatsa\n(9882443031)\n\nNeeraj\n(9625268849)\n</string>
 
     <string name="title_activity_sponser">SponserActivity</string>
     <string name="title_activity_leaderboard">Leaderboard</string>

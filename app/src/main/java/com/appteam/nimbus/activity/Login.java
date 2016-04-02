@@ -18,18 +18,19 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.appteam.nimbus.helper.Connection;
-import com.appteam.nimbus.singleton.MySingleton;
-import com.appteam.nimbus.model.PersonalData;
 import com.appteam.nimbus.R;
-import com.appteam.nimbus.helper.Utils;
 import com.appteam.nimbus.app.MyApplication;
+import com.appteam.nimbus.helper.Connection;
+import com.appteam.nimbus.helper.Utils;
+import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.singleton.MySingleton;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -117,21 +118,45 @@ public class Login extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 loadToast.error();
                 NetworkResponse networkResponse=error.networkResponse;
+                String responseBody="";
+                try {
+                    responseBody=new String(networkResponse.data,"utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
 
-                if(networkResponse!=null){
-                    if(networkResponse.statusCode==401||networkResponse.statusCode==401){
-                        Toast.makeText(Login.this,"INVALID PASSWORD OR USERNAME",Toast.LENGTH_SHORT).show();
-                    }
-                    if(error instanceof TimeoutError){
-                        Toast.makeText(Login.this,"TIME OUT ERROR",Toast.LENGTH_SHORT).show();
-                    }
-                    else if(error instanceof ServerError){
-                        Toast.makeText(Login.this,"SERVICE ERROR",Toast.LENGTH_SHORT).show();
+                Log.v("body",responseBody);
+
+                JSONObject error_jsonObject=new JSONObject();
+
+                if(networkResponse!=null) {
+                    if (networkResponse.statusCode == 404) {
+                        try {
+                            error_jsonObject = new JSONObject(responseBody);
+                            String data = "";
+                            if (error_jsonObject.has("data")) {
+                                data = error_jsonObject.get("data").toString();
+                            }
+                            if (data.equals("unable_to_login")) {
+                                if (error_jsonObject.has("status")) {
+                                    Toast.makeText(Login.this, error_jsonObject.get("status").toString(), Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(Login.this, "Service Error", Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                Toast.makeText(Login.this, "Service Error", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    } else if (error instanceof TimeoutError) {
+                        Toast.makeText(Login.this, "Time Out Error", Toast.LENGTH_LONG).show();
+                    } else if (error instanceof ServerError) {
+                        Toast.makeText(Login.this, "Service Error", Toast.LENGTH_LONG).show();
                     }
                     error.printStackTrace();
                 }
-
-
             }
         }){
             @Override
