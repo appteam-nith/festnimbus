@@ -240,8 +240,12 @@ public class Register extends AppCompatActivity {
         params.put("name",string2);
         params.put("email",string);
         params.put("password",string1);
-        params.put("rollno",string3);
-        params.put("nitian",""+isnitian);
+        params.put("nitian",""+nitian);
+
+        if(nitian==true){
+        	params.put("rollno",string3);	
+        }
+        
         Log.d("json",new JSONObject(params).toString());
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST,getURL(), new JSONObject(params),
                 new Response.Listener<JSONObject>() {

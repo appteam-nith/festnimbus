@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +51,9 @@ public class EventRegisterActivity extends AppCompatActivity {
     ImageView error_image;
     private static String KEY_STRING="key string message";
     private static String KEY_EVENT="key event";
+    private static String KEY_SHOW_BUTTON="register button";
+    boolean current_event_registered=false;
+    private Button register_button;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +62,8 @@ public class EventRegisterActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        register_button=(Button)findViewById(R.id.hackathon_register_button);
 
         loadToast=new LoadToast(EventRegisterActivity.this);
         loadToast.setText("LOADING");
@@ -72,25 +78,32 @@ public class EventRegisterActivity extends AppCompatActivity {
             logo_image.setTransitionName(getString(R.string.transition_name));
         }
 
-
         String toshow="";
+
+        getRegisteredEventRequest(); // for getting array of registered events
+        register_button.setVisibility(View.GONE);
 
         if (savedInstanceState != null) {
             toshow = (String) savedInstanceState.getString(KEY_STRING);
             event=(EventClass) savedInstanceState.getSerializable(KEY_EVENT);
+            current_event_registered=(Boolean)savedInstanceState.getSerializable(KEY_SHOW_BUTTON);
+            if(current_event_registered==true)
+            {register_button.setText("Unregister");}
+            else{register_button.setText("Register");}
 
             if(toshow.contains("Details about event is currently unavailable.")){
-                findViewById(R.id.hackathon_register_button).setVisibility(View.GONE);
+                register_button.setVisibility(View.GONE);
                 error_image.setVisibility(View.VISIBLE);
             }else{
-                findViewById(R.id.hackathon_register_button).setVisibility(View.VISIBLE);
+                register_button.setVisibility(View.VISIBLE);
             }
         }else{
             toshow+="Please wait...\n\n\n";
             event=(EventClass)getIntent().getSerializableExtra("eventPassed");
-            findViewById(R.id.hackathon_register_button).setVisibility(View.GONE);
+            register_button.setVisibility(View.GONE);
 
             loadToast.show();
+
             getRequest();
 
         }
@@ -99,7 +112,7 @@ public class EventRegisterActivity extends AppCompatActivity {
 
         text.setText(toshow);
 
-        findViewById(R.id.hackathon_register_button).setOnClickListener(new View.OnClickListener() {
+        register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getRegistrationRequest(event);
@@ -119,8 +132,20 @@ public class EventRegisterActivity extends AppCompatActivity {
                     String status=response.getString("status");
                     loadToast.success();
 
-                        Toast.makeText(EventRegisterActivity.this,status,Toast.LENGTH_LONG).show();
+                    Toast.makeText(EventRegisterActivity.this,status,Toast.LENGTH_LONG).show();
 
+                    if(response.has("validity")){
+                        int v=response.getInt("validity");
+                        if(v==1){
+                            register_button.setText("Unregister");
+                            current_event_registered=true;
+                        }else{
+                            register_button.setText("Register");
+                            current_event_registered=false;
+                        }
+                    }
+
+                    register_button.setVisibility(View.VISIBLE);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -294,7 +319,8 @@ public class EventRegisterActivity extends AppCompatActivity {
                             }
 
                             text.setText(toshow);
-                            findViewById(R.id.hackathon_register_button).setVisibility(View.VISIBLE);
+                            register_button.setText("Checking Status...");
+                            register_button.setVisibility(View.VISIBLE);
                         }
 
                         loadToast.success();
@@ -339,6 +365,7 @@ public class EventRegisterActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putString(KEY_STRING, text.getText().toString());
         savedInstanceState.putSerializable(KEY_EVENT, event);
+        savedInstanceState.putSerializable(KEY_SHOW_BUTTON, current_event_registered);
     }
 
     @Override
@@ -354,6 +381,63 @@ public class EventRegisterActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    private void getRegisteredEventRequest() {
+
+        final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(getRegisteredEventsURL(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("profile response", response.toString());
+                try {
+                    JSONObject data=response.getJSONObject("data");
+                    String status=response.getString("status");
+
+                    if(status.equals("User Profile Info")){
+                        JSONArray arr=new JSONArray();
+
+                        if(data.has("events_register")){
+                            arr=data.getJSONArray("events_register");
+
+                            register_button.setText("Register");
+
+                            for(int i=0;i<arr.length();i++){
+                                Log.v("%&#$",arr.getString(i));
+
+                                if(event.getName().equals(arr.getString(i))){
+                                    current_event_registered=true;
+                                    register_button.setText("Unregister");
+                                    register_button.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        }
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> map=new HashMap<>();
+                map.put("Authorization","bearer "+new PersonalData(EventRegisterActivity.this).getToken());
+                return map;
+            }
+        };
+
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        MySingleton.getInstance(MyApplication.getAppContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    private String getRegisteredEventsURL() {
+        return "https://festnimbus.herokuapp.com/api/user/profile";
     }
 
 }
