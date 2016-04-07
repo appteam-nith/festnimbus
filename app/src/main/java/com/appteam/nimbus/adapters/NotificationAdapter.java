@@ -7,14 +7,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.appteam.nimbus.R;
+import com.appteam.nimbus.model.NotificationItem;
 
 import java.util.ArrayList;
 
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder>{
-    private ArrayList<String> list;
+    private ArrayList<NotificationItem> list;
 
-    public NotificationAdapter(ArrayList<String> list) {
+    public NotificationAdapter(ArrayList<NotificationItem> list) {
         this.list = list;
     }
 
@@ -26,10 +27,15 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if(!list.get(position).isEmpty()&&list.get(position).length()!=0)
-holder.textView.setText(list.get(position));
+        if(!list.get(position).Message.isEmpty()&&list.get(position).Message.length()!=0)
+holder.textView.setText(list.get(position).Message);
         else {
-            holder.textView.setText("NO DATA");
+            holder.textView.setVisibility(View.GONE);
+        }
+        if(!list.get(position).title.isEmpty()&&list.get(position).title.length()!=0)
+            holder.title.setText(list.get(position).Message);
+        else {
+            holder.title.setVisibility(View.GONE);
         }
     }
 
@@ -39,10 +45,11 @@ holder.textView.setText(list.get(position));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-TextView textView;
+TextView textView,title;
         public ViewHolder(View itemView) {
             super(itemView);
             textView= (TextView) itemView.findViewById(R.id.text_message);
+            title= (TextView) itemView.findViewById(R.id.text_title);
         }
     }
 }

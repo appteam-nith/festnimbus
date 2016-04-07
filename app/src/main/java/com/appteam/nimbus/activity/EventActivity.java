@@ -38,7 +38,7 @@ public class EventActivity extends AppCompatActivity{
     EventsAdapter adapter;
     LoadToast loadToast;
 
-    String teamNameArray[]={"MEDEXTROUS","EXE","VIBHAV", "OJAS", "HERMETICA"};  //jUST cHANGE tHE ARRAY VALUES FOR MORE REQUESTS
+    String teamNameArray[]={"MEDEXTROUS","EXE","VIBHAV", "OJAS", "HERMETICA","C-HELIX"};  //jUST cHANGE tHE ARRAY VALUES FOR MORE REQUESTS
 
     private ArrayList<TeamClass> list;
     int globalResponseCount=0;
@@ -110,7 +110,7 @@ public class EventActivity extends AppCompatActivity{
 
     private void getRequest(final String teamName) {
 
-        Log.v("Sending request", "for team "+teamName);
+        Log.v("Sending request", "for team " + teamName);
 
         final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(getURL(teamName), new Response.Listener<JSONObject>() {
             @Override
@@ -249,7 +249,7 @@ public class EventActivity extends AppCompatActivity{
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putSerializable(KEY_EVENTS_ARRAY, list);
-        savedInstanceState.putBoolean(KEY_CHECK,responseRecievedSuccessfull);
+        savedInstanceState.putBoolean(KEY_CHECK, responseRecievedSuccessfull);
     }
 
 

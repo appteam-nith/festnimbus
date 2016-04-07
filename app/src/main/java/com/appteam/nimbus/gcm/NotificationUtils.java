@@ -111,7 +111,7 @@ public class NotificationUtils {
         if (Config.appendNotificationMessages) {
             // store the notification in shared pref first
             MyApplication.getInstance().getPrefManager().addNotification(message);
-            dbHelper.insertData(message);
+            dbHelper.insertData(message,title);
             // get the notifications from shared preferences
             String oldNotification = MyApplication.getInstance().getPrefManager().getNotifications();
 

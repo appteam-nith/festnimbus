@@ -186,6 +186,7 @@ public class EventRegisterActivity extends AppCompatActivity {
 
     private void getRequest() {
 
+        getRegisteredEventRequest();
         Log.v("Sending request", "for team " + event.getTeamname()+"/"+event.getName());
 
         final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(getURL(event.getTeamname(),event.getName()), new Response.Listener<JSONObject>() {
@@ -321,6 +322,7 @@ public class EventRegisterActivity extends AppCompatActivity {
                             text.setText(toshow);
                             register_button.setText("Checking Status...");
                             register_button.setVisibility(View.VISIBLE);
+
                         }
 
                         loadToast.success();

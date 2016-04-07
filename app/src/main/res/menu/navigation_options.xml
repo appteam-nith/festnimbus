@@ -6,11 +6,6 @@
         android:id="@+id/navigation_to_profile"
         android:orderInCategory="100"/>
     <item
-        android:icon="@drawable/ic_action_event"
-        android:title="Hackathon"
-        android:id="@+id/hackathon_nav"
-        android:orderInCategory="100"/>
-    <item
         android:icon="@drawable/ic_action_about"
         android:title="About Us"
         android:id="@+id/aboutus_nav"
