@@ -27,11 +27,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if(!list.get(position).Message.isEmpty()&&list.get(position).Message.length()!=0)
-holder.textView.setText(list.get(position).Message);
-        else {
+        if(list.get(position).Message!=null){
+            if(!list.get(position).Message.isEmpty()&&list.get(position).Message.length()!=0)
+                holder.textView.setText(list.get(position).Message);
+            else {
+                holder.textView.setVisibility(View.GONE);
+            }
+        }else{
             holder.textView.setVisibility(View.GONE);
         }
+
         if(!list.get(position).title.isEmpty()&&list.get(position).title.length()!=0)
             holder.title.setText(list.get(position).title);
         else {
