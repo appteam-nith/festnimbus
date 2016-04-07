@@ -16,16 +16,36 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.appteam.nimbus.R;
+import com.appteam.nimbus.app.MyApplication;
 import com.appteam.nimbus.app.ViewActivity;
+import com.appteam.nimbus.helper.Utils;
 import com.appteam.nimbus.model.PersonalData;
+import com.appteam.nimbus.model.User;
+import com.appteam.nimbus.singleton.MySingleton;
+
+import net.steamcrafted.loadtoast.LoadToast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -203,20 +223,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog welcomeAlert = builder.create();
             welcomeAlert.show();
             ((TextView) welcomeAlert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-        } else if (id == R.id.hackathon_nav) {
-            Intent i = new Intent(homeActivity.this, HackathonActivity.class);
-            startActivity(i);
-
         } else if (id == R.id.feedback_nav) {
-            /*Intent intent=new Intent(Intent.ACTION_SEND);
-            intent.setType("text/html");
-            String email_arr[]={"appteam.nith@gmail.com"};
-            intent.putExtra(Intent.EXTRA_EMAIL, email_arr);
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Reporting A Bug/Feedback");
-            intent.putExtra(Intent.EXTRA_TEXT, "Hello, Appteam \nI want to report a bug/give feedback corresponding to the app Nimbus 2k16.\n.....\n\n-Your name");
-            startActivity(Intent.createChooser(intent,"Send Email"));*/
-
-
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             String uriText = "mailto:" + Uri.encode("appteam.nith@gmail.com") + "?subject=" +
                     Uri.encode("Reporting A Bug/Feedback") + "&body=" + Uri.encode("Hello, Appteam \nI want to report a bug/give feedback corresponding to the app Nimbus 2k16.\n.....\n\n-Your name");
@@ -252,4 +259,3 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 }
-
