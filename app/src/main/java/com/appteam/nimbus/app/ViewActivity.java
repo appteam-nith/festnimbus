@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.appteam.nimbus.R;
 import com.appteam.nimbus.adapters.NotificationAdapter;
+import com.appteam.nimbus.model.NotificationItem;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class ViewActivity extends AppCompatActivity {
 
         RecyclerView recyclerView= (RecyclerView) findViewById(R.id.recycler_view_notification);
         MyDbHelper dbHelper=new MyDbHelper(this);
-        ArrayList<String> list=dbHelper.readData();
+        ArrayList<NotificationItem> list=dbHelper.readData();
         NotificationAdapter adapter=new NotificationAdapter(list);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

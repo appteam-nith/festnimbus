@@ -102,15 +102,6 @@
                 android:value=".activity.homeActivity" />
         </activity>
         <activity
-            android:name=".activity.HackathonActivity"
-            android:label="Hackathon"
-            android:parentActivityName=".activity.homeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.homeActivity" />
-        </activity>
-        <activity
             android:name=".activity.EventRegisterActivity"
             android:label="Event Register"
             android:parentActivityName=".activity.EventActivity"
