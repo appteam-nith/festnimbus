@@ -9,8 +9,8 @@ android {
         applicationId "com.appteam.nimbus"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 5
-        versionName "1.4"
+        versionCode 7
+        versionName "1.6"
     }
     buildTypes {
         release {
