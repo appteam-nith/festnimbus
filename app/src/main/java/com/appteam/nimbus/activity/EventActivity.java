@@ -38,7 +38,7 @@ public class EventActivity extends AppCompatActivity{
     EventsAdapter adapter;
     LoadToast loadToast;
 
-    String teamNameArray[]={"MEDEXTROUS","EXE","VIBHAV", "OJAS", "HERMETICA","C-HELIX"};  //jUST cHANGE tHE ARRAY VALUES FOR MORE REQUESTS
+    String teamNameArray[]={"MEDEXTROUS","EXE","VIBHAV", "OJAS", "HERMETICA","CHELIX"};  //jUST cHANGE tHE ARRAY VALUES FOR MORE REQUESTS
 
     private ArrayList<TeamClass> list;
     int globalResponseCount=0;

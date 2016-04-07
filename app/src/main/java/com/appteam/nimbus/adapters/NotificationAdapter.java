@@ -33,7 +33,7 @@ holder.textView.setText(list.get(position).Message);
             holder.textView.setVisibility(View.GONE);
         }
         if(!list.get(position).title.isEmpty()&&list.get(position).title.length()!=0)
-            holder.title.setText(list.get(position).Message);
+            holder.title.setText(list.get(position).title);
         else {
             holder.title.setVisibility(View.GONE);
         }
