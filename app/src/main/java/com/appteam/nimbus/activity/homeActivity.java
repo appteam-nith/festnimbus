@@ -1,14 +1,11 @@
 package com.appteam.nimbus.activity;
 
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,36 +13,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.appteam.nimbus.R;
-import com.appteam.nimbus.app.MyApplication;
 import com.appteam.nimbus.app.ViewActivity;
-import com.appteam.nimbus.helper.Utils;
 import com.appteam.nimbus.model.PersonalData;
-import com.appteam.nimbus.model.User;
-import com.appteam.nimbus.singleton.MySingleton;
-
-import net.steamcrafted.loadtoast.LoadToast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class homeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -58,6 +35,7 @@ public class homeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         personalData = new PersonalData(this);
+
         if (personalData.getStatus() == false) {
             Intent i = new Intent(homeActivity.this, Login.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

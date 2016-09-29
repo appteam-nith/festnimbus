@@ -21,22 +21,21 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 
-import com.appteam.nimbus.app.MyApplication;
 import com.appteam.nimbus.R;
 import com.appteam.nimbus.app.Config;
+import com.appteam.nimbus.app.MyApplication;
 import com.appteam.nimbus.app.MyDbHelper;
+import com.bumptech.glide.Glide;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -44,7 +43,7 @@ import java.util.List;
  */
 public class NotificationUtils {
 
-   private MyDbHelper dbHelper;
+    private MyDbHelper dbHelper;
     private static String TAG = NotificationUtils.class.getSimpleName();
 
     private Context mContext;
@@ -54,7 +53,7 @@ public class NotificationUtils {
 
     public NotificationUtils(Context mContext) {
         this.mContext = mContext;
-        dbHelper=new MyDbHelper(mContext);
+        dbHelper = new MyDbHelper(mContext);
     }
 
     public void showNotificationMessage(String title, String message, String timeStamp, Intent intent) {
@@ -101,6 +100,9 @@ public class NotificationUtils {
             showSmallNotification(mBuilder, icon, title, message, timeStamp, resultPendingIntent, alarmSound);
             playNotificationSound();
         }
+
+
+
     }
 
 
@@ -171,17 +173,18 @@ public class NotificationUtils {
      */
     public Bitmap getBitmapFromURL(String strURL) {
         try {
-            URL url = new URL(strURL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
+            return Glide.with(mContext).load(strURL).asBitmap().into(100,100).get();
+        } catch (InterruptedException e) {
+            Log.d("eroor","error");
             e.printStackTrace();
-            return null;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            Log.d("eroor","error1");
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.d("eroor","error23");
         }
+        return  null;
     }
 
     // Playing notification sound
