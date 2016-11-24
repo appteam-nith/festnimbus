@@ -2,6 +2,10 @@
 
 #### This is the official Android Application of Technical Festival of NIT Hamirpur **NIMBUS** made by YOU :smile:.
 
+Screencast can be found at [youtube.](https://www.youtube.com/watch?v=j-AvIOA7_Nk)
+
+Google Play link: https://play.google.com/store/apps/details?id=com.appteam.nimbus&hl=en
+
 ## How to setup this project in Android Studio :-
 
 1. Firstly, **fork** this repo from **appteam-nith/festnimbus** by clicking on fork button
